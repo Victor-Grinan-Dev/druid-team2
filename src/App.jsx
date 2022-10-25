@@ -1,6 +1,13 @@
 
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
 import { Project } from './classes/project';
+
+
+//components
+import Layout from './pages/Layout';
+import TestPage from './components/views/TestPage';
+
 function App() {
 
   //read from database
@@ -19,19 +26,22 @@ function App() {
 
 
   return (
-    <div className="App">
-      <header className="App-header">
-    hello druid!
-
-
-    {localRedux.map((project,index)=>(
-      <p key={index}>{project.name}-{project.client}</p>
-    ))
-    }
-
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<Layout />} >
+          
+          <Route index element={<TestPage />}/>
+          
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
 export default App;
+
+/*
+
+
+    <Route index element={} />
+*/

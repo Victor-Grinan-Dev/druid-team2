@@ -12,6 +12,6 @@ export class Project {
         this.dev.push(newDev);
     }
     changeStatus(newStatus){
-        this.status = newStatus
+        this.status = newStatus;
     }
 }
