@@ -4,6 +4,3 @@
         "users":[]
     }
 }
-
-
-npm install "json-server" --save-dev
