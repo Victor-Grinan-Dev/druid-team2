@@ -4,8 +4,7 @@ const TestPage = () => {
   return (
     <div className="App">
     <header className="App-header">
-  hello druid!
-
+  Hello druid!
 
   {/*
   localRedux.map((project,index)=>(
