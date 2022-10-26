@@ -4,8 +4,9 @@ import { Project } from "./classes/project";
 
 //components
 import Layout from "./pages/Layout";
-// import TestPage from "./components/views/TestPage";
-import Home from "./components/views/Home";
+import TestPage from "./components/views/TestPage";
+import CustomersProjects from "./components/views/CustomersProjects";
+import ProjectInfo from "./components/views/ProjectInfo";
 
 function App() {
   //read from database
@@ -26,8 +27,9 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
-          {/* <Route index element={<TestPage />} /> */}
-          <Route index element={<Home />} />
+          <Route index element={<TestPage />} />
+          <Route path="customersprojects" element={<CustomersProjects />} />
+          <Route path="projectinfo" element={<ProjectInfo />} />
         </Route>
       </Routes>
     </BrowserRouter>
@@ -35,9 +37,3 @@ function App() {
 }
 
 export default App;
-
-/*
-
-
-    <Route index element={} />
-*/

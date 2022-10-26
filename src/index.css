@@ -50,3 +50,8 @@ body {
 .infoButton:hover {
   box-shadow: inset 0 0 6px white;
 }
+
+.projectInfo {
+  background-color: white;
+  color: black;
+}

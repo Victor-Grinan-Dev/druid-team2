@@ -1,7 +1,7 @@
 import React from "react";
 import ProjectBox from "./ProjectBox";
 
-const Home = () => {
+const CustomersProjects = () => {
   return (
     <div className="homeContainer">
       <h1 className="welcomeH1">Welcome to Druid system!</h1>
@@ -17,4 +17,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default CustomersProjects;
