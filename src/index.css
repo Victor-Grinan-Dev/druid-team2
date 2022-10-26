@@ -8,6 +8,34 @@ body {
   font-family: "Euclid Circular B", sans-serif;
 }
 
+.logo {
+  margin: 1rem;
+}
+
+nav ul {
+  display: flex;
+  flex-direction: row;
+}
+
+nav ul li {
+  list-style-type: none;
+  margin: 2rem 0rem 1rem 0rem;
+}
+
+.homeLink {
+  margin-left: 1rem;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #e42816;
+  background-color: transparent;
+  border-style: solid solid none solid;
+  border-radius: 3px 3px 0 0;
+  border-color: black;
+  padding: 1rem;
+}
+
 .homeContainer {
   background-color: #313131;
   color: white;
@@ -54,4 +82,14 @@ body {
 .projectInfo {
   background-color: white;
   color: black;
+}
+
+.footer {
+  text-align: center;
+  margin: 3rem;
+}
+
+.footer h2,
+p {
+  margin-bottom: 0.5rem;
 }

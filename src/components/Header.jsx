@@ -1,10 +1,11 @@
 import React from "react";
 import Navbar from "./Navbar";
+import image from "../assets/images/druid.png";
 
 const Header = () => {
   return (
     <header>
-      <h1>Druid</h1>
+      <img src={image} alt="Druid logo" className="logo" />
       <div>
         <Navbar />
       </div>
