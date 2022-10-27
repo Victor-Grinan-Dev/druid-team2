@@ -1,6 +1,28 @@
 {
     "database":{
-        "projects":[],
+        "projects":[
+            {
+                "id":1,
+                "name":"poke app",
+                "client": "victor oy"
+            },
+            {
+                "id":2,
+                "name":"countries app",
+                "client": "margit oy"
+            },
+
+            {
+                "id":3,
+                "name":"food app",
+                "client": "jenna oy"
+            },
+            {
+                "id":4,
+                "name":"project manager",
+                "client": "Druid oy"
+            }
+        ],
         "users":[]
     }
 }
