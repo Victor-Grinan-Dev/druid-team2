@@ -5,7 +5,8 @@ export const druidSlice = createSlice({
     initialState: {
         projects:[],
         user:{},
-        isLoading:true
+        isLoading:true,
+        search:"",
     }, 
     reducers:{
         setProjects(state, action){

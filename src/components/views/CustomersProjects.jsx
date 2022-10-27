@@ -4,7 +4,12 @@ import ProjectBox from "./ProjectBox";
 import { useSelector } from "react-redux";
   
 const CustomersProjects = () => {
-  const projects = useSelector((state) => state.druid.projects);
+  const projects = useSelector(state => state.druid.projects);
+  const isLoading = useSelector(state => state.druid.isLoading);
+  
+  if(isLoading){
+    return <p>... Loading data ...</p>
+  }
 
   return (
     <div className="homeContainer">
