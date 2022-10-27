@@ -4,23 +4,27 @@
             {
                 "id":1,
                 "name":"poke app",
-                "client": "victor oy"
+                "client": "victor oy",
+                "devs":["pravesh", "otto"]
             },
             {
                 "id":2,
                 "name":"countries app",
-                "client": "margit oy"
+                "client": "margit oy",
+                "devs":["eric", "otto"]
             },
 
             {
                 "id":3,
                 "name":"food app",
-                "client": "jenna oy"
+                "client": "jenna oy",
+                "devs":["pravesh", "toni"]
             },
             {
                 "id":4,
                 "name":"project manager",
-                "client": "Druid oy"
+                "client": "jenna oy",
+                "devs":["ali", "otto"]
             }
         ],
         "users":[]

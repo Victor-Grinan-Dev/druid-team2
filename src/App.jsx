@@ -11,8 +11,7 @@ import CustomersProjects from "./components/views/CustomersProjects";
 import { useEffect } from 'react';
 import { setProjects } from "./features/druidSlice";
 
-import TestPage from "./components/views/TestPage";
-import CustomersProjects from "./components/views/CustomersProjects";
+
 import ProjectInfo from "./components/views/ProjectInfo";
 
 function App() {
@@ -31,7 +30,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
 
-          <Route index element={<TestPage />} />
+          
           <Route path="customersprojects" element={<CustomersProjects />} />
           <Route path="projectinfo" element={<ProjectInfo />} />
 
