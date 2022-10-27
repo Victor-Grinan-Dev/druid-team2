@@ -7,7 +7,6 @@ import druidService from './services/druid';
 import Layout from "./pages/Layout";
 import CustomersProjects from "./components/views/CustomersProjects";
 
-//import { initializeDatabase } from './features/druidSlice';
 import { useEffect } from 'react';
 import { setProjects } from "./features/druidSlice";
 
