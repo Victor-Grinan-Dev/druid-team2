@@ -8,3 +8,9 @@ import axios from 'axios';
   };
   
   export default { getDatabase };
+
+
+  export const postProject = async (newProject) => {
+    const response = await axios.post(`${baseUrl}/projects`, newProject)
+    return response;
+  }
