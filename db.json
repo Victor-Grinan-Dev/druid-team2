@@ -16,6 +16,11 @@
                 "id":3,
                 "name":"food app",
                 "client": "jenna oy"
+            },
+            {
+                "id":4,
+                "name":"project manager",
+                "client": "Druid oy"
             }
         ],
         "users":[]
