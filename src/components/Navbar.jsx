@@ -12,6 +12,7 @@ const Navbar = () => {
           <Link to="customersprojects">Projects</Link>
         </li>
       </ul>
+      {/* comment */}
     </nav>
   );
 };
