@@ -5,7 +5,7 @@ const ProjectBox = () => {
   return (
     <div className="projectBox">
       <p>Project name</p>
-      <Link to={`projectinfo`}>
+      <Link to="/projectinfo">
         <button className="infoButton">More info</button>
       </Link>
     </div>
