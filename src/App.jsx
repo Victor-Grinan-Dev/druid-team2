@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import druidService from './services/druid';
 //components
@@ -13,15 +13,13 @@ import { setProjects } from "./features/druidSlice";
 
 function App() {
   const dispatch = useDispatch();
-  const projects = useSelector((state)=>{
-    return state.druid.projects;
-  })
 
-  useEffect(() => {//hooks cant be use out of react components
-    //console.log("useEffct in app.jsx");
-    //initializeDatabase();
-    const database = druidService.getDatabase();
-    dispatch(setProjects(database.projects))
+  useEffect(() => {
+    druidService.getDatabase().then(res => {
+      const projects = res.projects;
+      dispatch(setProjects(projects));
+    });
+
   }, [dispatch]);
 
   return (
@@ -37,8 +35,3 @@ function App() {
 
 export default App;
 
-/*
-
-
-    <Route index element={} />
-*/

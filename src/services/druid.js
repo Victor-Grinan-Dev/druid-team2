@@ -1,18 +1,5 @@
-/*
-import axios from "../api/axios";
+import axios from 'axios';
 
-const getDatabase = async () => {
-    console.log("hello from getDatabase")
-    const response = await axios.get();
-    return response.data;
-  };
-  
-  export default { getDatabase };
-*/
-
-
-  import axios from 'axios';
-import { setProjects } from '../features/druidSlice';
   const baseUrl = 'http://localhost:8010/database';
   
   const getDatabase = async () => {
@@ -21,18 +8,3 @@ import { setProjects } from '../features/druidSlice';
   };
   
   export default { getDatabase };
-
-
-
-export const initializeDatabase = async () => {
-
-   // const data = await getDatabase()
-   // console.log("initializer has runned", data);
-
-    return async (dispatch) => { 
-        const data = await getDatabase();
-        dispatch(setProjects(data.projects));
-        
-        console.log("initializer returns values", data)
-    }
-  };
