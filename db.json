@@ -1,32 +1,53 @@
 {
-    "database":{
-        "projects":[
-            {
-                "id":1,
-                "name":"poke app",
-                "client": "victor oy",
-                "devs":["pravesh", "otto"]
-            },
-            {
-                "id":2,
-                "name":"countries app",
-                "client": "margit oy",
-                "devs":["eric", "otto"]
-            },
-
-            {
-                "id":3,
-                "name":"food app",
-                "client": "jenna oy",
-                "devs":["pravesh", "toni"]
-            },
-            {
-                "id":4,
-                "name":"project manager",
-                "client": "jenna oy",
-                "devs":["ali", "otto"]
-            }
-        ],
-        "users":[]
-    }
+  "database": {
+    "projects": [
+      {
+        "id": 1,
+        "code": "iz11",
+        "name": "poke app",
+        "client": "victor oy",
+        "devs": [
+          "pravesh",
+          "otto"
+        ]
+      },
+      {
+        "id": 2,
+        "code": "63&*",
+        "name": "countries app",
+        "client": "margit oy",
+        "devs": [
+          "eric",
+          "otto"
+        ]
+      },
+      {
+        "id": 3,
+        "code": "4%n#",
+        "name": "food app",
+        "client": "jenna oy",
+        "devs": [
+          "pravesh",
+          "toni"
+        ]
+      },
+      {
+        "id": 4,
+        "code": "u%x2",
+        "name": "project manager",
+        "client": "jenna oy",
+        "devs": [
+          "ali",
+          "otto"
+        ]
+      },
+      {
+        "id": 5,
+        "developers": [],
+        "name": "Food-app",
+        "client": "Margit"
+      }
+    ],
+    "users": []
+  }
 }

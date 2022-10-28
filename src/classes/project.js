@@ -1,5 +1,6 @@
 export class Project {
-
+    id = undefined
+    code = undefined
     developers = []
     status = undefined //progress, complete, pending
 
