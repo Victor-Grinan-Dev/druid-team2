@@ -12,6 +12,7 @@ import { useEffect } from "react";
 import { setProjects } from "./features/druidSlice";
 
 import ProjectInfo from "./components/views/ProjectInfo";
+import Home from "./components/Home";
 
 function App() {
   const dispatch = useDispatch();
@@ -27,6 +28,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
           <Route path="customersprojects" element={<CustomersProjects />} />
           <Route path="projectinfo" element={<ProjectInfo />} />
         </Route>

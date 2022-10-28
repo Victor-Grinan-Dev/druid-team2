@@ -45,15 +45,42 @@ nav ul li a:hover {
   text-shadow: 0 0 0.5px #e42816;
 }
 
-.homeContainer {
+.home {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   background-color: #353535;
-  color: white;
-  padding: 6rem 10rem;
+  height: 50vh;
+}
+
+.welcomeContainer {
+  display: flex;
+  flex-direction: row;
+  padding: 0 5rem;
 }
 
 .welcomeH1 {
-  margin: 0 0.8rem 3rem;
-  color: #e42816;
+  color: #fa2d1d;
+  font-size: 3rem;
+  margin: 0.5rem;
+}
+
+.logo2 {
+  height: 3rem;
+  margin: 1rem;
+}
+
+.homeText {
+  color: white;
+  padding: 1rem 10rem;
+  margin: 1rem;
+}
+
+.customersProjects {
+  background-color: #353535;
+  color: white;
+  padding: 6rem 10rem;
 }
 
 .listH2 {
