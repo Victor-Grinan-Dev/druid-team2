@@ -20,27 +20,27 @@ const ProjectInfo = () => {
             <th>Search</th>
           </tr>
           <tr>
-            <td>Mailjet</td>
-            <td>Solr 8</td>
             <td>url1</td>
             <td>Drupal</td>
             <td>9.4</td>
             <td>8.0</td>
-            <td>webpack</td>
             <td>16</td>
+            <td>webpack</td>
+            <td>Mailjet</td>
+            <td>Solr 8</td>
             <td>11</td>
             <td>x</td>
             <td>MariaDB 10.5</td>
           </tr>
           <tr>
-            <td>x</td>
-            <td>x</td>
             <td>url2</td>
             <td>Drupal</td>
             <td>8.9</td>
             <td>7.3</td>
-            <td>Gulp</td>
             <td>8</td>
+            <td>x</td>
+            <td>x</td>
+            <td>x</td>
             <td>x</td>
             <td>x</td>
             <td>x</td>
@@ -70,9 +70,9 @@ const ProjectInfo = () => {
             <td>x</td>
             <td>x</td>
             <td>x</td>
-            <td>Dependapot</td>
-            <td>Jenkins</td>
-            <td>master</td>
+            <td>x</td>
+            <td>x</td>
+            <td>x</td>
           </tr>
         </table>
       </div>
