@@ -35,11 +35,11 @@ const AddProject = () => {
       <form className="addProjectForm" onSubmit={createProject}>
         <div className="addProjectInputs">
           <div className="projectNameInput">
-            <label htmlFor="name">Project name </label>
+            <label htmlFor="name">Project name: </label>
             <input type="text" name="name" id="name" onChange={changeData} />
           </div>
           <div className="customerInput">
-            <label htmlFor="client">Customer company </label>
+            <label htmlFor="client">Customer company: </label>
             <input type="text" name="client" id="name" onChange={changeData} />
           </div>
         </div>
