@@ -23,8 +23,6 @@ function App() {
     });
   }, [dispatch]);
 
-  // comment
-
   return (
     <BrowserRouter>
       <Routes>
