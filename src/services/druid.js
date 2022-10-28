@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { genId } from '../functions/genId';
 
   const baseUrl = 'http://localhost:8010/database';
   
@@ -10,8 +11,11 @@ import axios from 'axios';
   export default { getDatabase };
 
   export const postProject = async (newProject) => {
+
+    
     const database = await getDatabase();
-    const newDatabase = {...database, "projects": [ ...database.projects, newProject]}
+    const toPostProject = {...newProject, "id": database.projects.length + 1, "code": genId()}
+    const newDatabase = {...database, "projects": [ ...database.projects, toPostProject]}
     const response = await axios.patch(baseUrl, newDatabase)
     .then((response) => console.log(response))
     .catch((err) => console.log(err));

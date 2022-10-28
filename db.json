@@ -3,6 +3,7 @@
     "projects": [
       {
         "id": 1,
+        "code": "iz11",
         "name": "poke app",
         "client": "victor oy",
         "devs": [
@@ -12,6 +13,7 @@
       },
       {
         "id": 2,
+        "code": "63&*",
         "name": "countries app",
         "client": "margit oy",
         "devs": [
@@ -21,6 +23,7 @@
       },
       {
         "id": 3,
+        "code": "4%n#",
         "name": "food app",
         "client": "jenna oy",
         "devs": [
@@ -30,6 +33,7 @@
       },
       {
         "id": 4,
+        "code": "u%x2",
         "name": "project manager",
         "client": "jenna oy",
         "devs": [
@@ -38,12 +42,10 @@
         ]
       },
       {
-        "name": "MySQL",
-        "client": "Qwerty"
-      },
-      {
-        "name": "NewQerty",
-        "client": "Qwerty"
+        "id": 5,
+        "developers": [],
+        "name": "Food-app",
+        "client": "Margit"
       }
     ],
     "users": []

@@ -6,6 +6,7 @@ import { addProject, setProject } from '../../features/druidSlice';
 
 import { capitalStart } from '../../functions/capitalStart';
 
+
 //service
 import { postProject } from '../../services/druid';
 
@@ -20,8 +21,9 @@ const AddProject = () => {
      const createProject = (e) => {
         e.preventDefault();
         if(project.name && project.client){
-            dispatch(addProject(project))
-            postProject(project)
+            dispatch(addProject(project));
+            const projectObj = new Project(project.name, project.client);
+            postProject(projectObj);
         }else{
             console.log("missing info in the project")
         }
