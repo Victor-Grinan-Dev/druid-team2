@@ -1,24 +1,30 @@
 import React from 'react';
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Project } from '../../classes/project';
+import { addProject, setProject } from '../../features/druidSlice';
+
 import { capitalStart } from '../../functions/capitalStart';
 
 //service
 import { postProject } from '../../services/druid';
 
 const AddProject = () => {
-    const [data, setData] = useState(new Project("", ""));
+    const dispatch = useDispatch()
+    const project = useSelector(state => state.druid.project) 
 
     const changeData = (e) => {
-        setData({ ...data, [e.target.name]: capitalStart(e.target.value) });
+        dispatch(setProject({...project, [e.target.name]: capitalStart(e.target.value)}))
       };
 
      const createProject = (e) => {
         e.preventDefault();
-        if(data.project && data.client){
-            console.log("project created", );
+        if(project.name && project.client){
+            dispatch(addProject(project))
+            postProject(project)
+        }else{
+            console.log("missing info in the project")
         }
-
      }
 
   return (

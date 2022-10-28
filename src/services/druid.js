@@ -9,8 +9,20 @@ import axios from 'axios';
   
   export default { getDatabase };
 
-
   export const postProject = async (newProject) => {
-    const response = await axios.post(`${baseUrl}/projects`, newProject)
+    const database = await getDatabase();
+    const newDatabase = {...database, "projects": [ ...database.projects, newProject]}
+    const response = await axios.patch(baseUrl, newDatabase)
+    .then((response) => console.log(response))
+    .catch((err) => console.log(err));
+    return response;
+  }
+
+  export const postUser = async (newUser) => {
+    const database = await getDatabase();
+    const newDatabase = {...database, "users": [ ...database.projects, newUser]}
+    const response = await axios.patch(baseUrl, newDatabase)
+    .then((response) => console.log(response))
+    .catch((err) => console.log(err));
     return response;
   }
