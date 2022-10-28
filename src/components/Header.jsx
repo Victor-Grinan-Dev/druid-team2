@@ -1,6 +1,6 @@
 import React from "react";
 import Navbar from "./Navbar";
-import image from "../assets/images/druid.png";
+import image from "../assets/images/druid.jpg";
 
 const Header = () => {
   return (
