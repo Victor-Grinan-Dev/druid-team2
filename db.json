@@ -48,6 +48,28 @@
         "client": "Margit"
       }
     ],
-    "users": []
+    "users": [],
+    "config":{
+      "projects_attrs":[
+        "Service",
+        "Engine",
+        "Version",
+        "PHP",
+        "JS",
+        "Node",
+        "Drush",
+        "Omen",
+        "DBS",
+        "Mails",
+        "Search",
+        "CDN",
+        "Infra",
+        "Docker",
+        "Hosting",
+        "Deps",
+        "CI",
+        "dev & Main"
+      ]
+    }
   }
 }
