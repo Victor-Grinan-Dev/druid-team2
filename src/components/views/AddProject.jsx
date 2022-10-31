@@ -45,7 +45,7 @@ const AddProject = () => {
           </div>
           {
             projectAttrs.map((attr, i) => (
-
+              console.log(attr),
             <div className={`project${capitalStart(attr)}Input`} key={i}>
               <label htmlFor={`${attr}`}>{attr}: </label>
               <input type="text" name={`${attr}`} id={`${attr}`} onChange={changeData} />
