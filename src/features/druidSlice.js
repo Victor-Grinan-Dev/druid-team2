@@ -5,6 +5,8 @@ export const druidSlice = createSlice({
     initialState: {
         projects:[],
         user:{},
+
+        //temporal
         isLoading:true,
         search:"",
         project:{}
@@ -22,6 +24,9 @@ export const druidSlice = createSlice({
         isLoading(state, action){
             state.isLoading = action.payload;
         },
+        setSearch(state, action){
+            state.search = action.payload;
+        },
         setProject(state, action){
             state.project = action.payload;
         }
@@ -32,7 +37,9 @@ export const {
     setProjects,
     addProject,
 
+    //temporal
     isLoading,
+    setSearch,
     setProject
 } = druidSlice.actions;
 
