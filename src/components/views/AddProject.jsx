@@ -30,6 +30,10 @@ const AddProject = () => {
     }
   };
 
+  const dev_n_main_handler = () => {//temporal solution
+    return "dev_n_main";
+  }
+
   return (
     <div className="addProject">
       <h3>Create new project</h3>
@@ -48,9 +52,16 @@ const AddProject = () => {
           <div className="projectDetails">
             {
               projectAttrs.map((attr, i) => (
-                <div className={`project${capitalStart(attr)}Input`} key={i}>
+                
+                <div key={i}
+                  className={ attr === "Dev & Main" ? "dev-n-main detail-input" : `${attr} detail-input`.toLowerCase()} >
                   <label htmlFor={`${attr}`.toLowerCase()}>{attr}: </label>
-                  <input type="text" name={`${attr}`.toLowerCase()} id={`${attr}`.toLowerCase()} onChange={changeData} />
+                  <input 
+                      type="text" 
+                      name= { attr === "Dev & Main" ? "dev_n_main" : `${attr}`.toLowerCase() }
+                      id={ attr === "Dev & Main" ? "dev_n_main" : `${attr}`.toLowerCase() } 
+                      onChange={changeData} 
+                    />
                 </div>
               ))
             }
