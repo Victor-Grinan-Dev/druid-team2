@@ -4,7 +4,7 @@ import image from "../assets/images/druid.jpg";
 
 const Header = () => {
   return (
-    <header>
+    <header className="header">
       <img src={image} alt="Druid logo" className="logo" />
       <div>
         <Navbar />
