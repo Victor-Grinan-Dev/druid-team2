@@ -36,7 +36,7 @@ const AddProject = () => {
   const dispatch = useDispatch();
   const project = useSelector((state) => state.druid.project);
   const projectAttrs = useSelector(state => state.druid.config.projects_attrs)
-  const isDefaultDetails = useSelector(state => state.druid.isDefaultDetails)
+  
   const changeData = (e) => {
     if(e.target.name === "name" || e.target.name === "client"){
       dispatch(
