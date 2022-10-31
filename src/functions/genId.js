@@ -22,6 +22,5 @@ export const genId = (amount = 4) => {
     for (let len = 0; len < amount; len++){
         id.push(allowedChars[getRandomIndex()])
     }
-    console.log(id.join(""))
-    return 
+    return id.join("");
 };

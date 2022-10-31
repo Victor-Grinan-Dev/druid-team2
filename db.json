@@ -3,54 +3,167 @@
     "projects": [
       {
         "id": 1,
-        "code": "iz11",
-        "name": "poke app",
-        "client": "victor oy",
-        "devs": [
-          "pravesh",
-          "otto"
-        ]
+        "code": "8k9c",
+        "developers": [],
+        "status": "started",
+        "service": [
+          "s",
+          "e",
+          "r",
+          "v",
+          "i",
+          "c",
+          "e",
+          "Gmail"
+        ],
+        "engine": [
+          "e",
+          "n",
+          "g",
+          "i",
+          "n",
+          "e",
+          "V8"
+        ],
+        "version": [
+          "v",
+          "e",
+          "r",
+          "s",
+          "i",
+          "o",
+          "n",
+          "2"
+        ],
+        "php": [
+          "p",
+          "h",
+          "p",
+          "-"
+        ],
+        "js": [
+          "j",
+          "s",
+          "16"
+        ],
+        "node": [
+          "n",
+          "o",
+          "d",
+          "e",
+          "16"
+        ],
+        "drush": [
+          "d",
+          "r",
+          "u",
+          "s",
+          "h",
+          "-"
+        ],
+        "omen": [
+          "o",
+          "m",
+          "e",
+          "n",
+          "-"
+        ],
+        "dbs": [
+          "d",
+          "b",
+          "s",
+          "-"
+        ],
+        "mails": [
+          "m",
+          "a",
+          "i",
+          "l",
+          "s",
+          "All"
+        ],
+        "search": [
+          "s",
+          "e",
+          "a",
+          "r",
+          "c",
+          "h",
+          "Treasure"
+        ],
+        "cdn": [
+          "c",
+          "d",
+          "n",
+          "?"
+        ],
+        "infra": [
+          "i",
+          "n",
+          "f",
+          "r",
+          "a",
+          "Red"
+        ],
+        "docker": [
+          "d",
+          "o",
+          "c",
+          "k",
+          "e",
+          "r",
+          "Yes"
+        ],
+        "hosting": [
+          "h",
+          "o",
+          "s",
+          "t",
+          "i",
+          "n",
+          "g",
+          "Ppl"
+        ],
+        "deps": [
+          "d",
+          "e",
+          "p",
+          "s",
+          "-"
+        ],
+        "ci": [
+          "c",
+          "i",
+          "-"
+        ],
+        "dev_n_main": [
+          "d",
+          "e",
+          "v",
+          "_",
+          "n",
+          "_",
+          "m",
+          "a",
+          "i",
+          "n",
+          "-"
+        ],
+        "name": "Test",
+        "client": "Qwerty"
       },
       {
         "id": 2,
-        "code": "63&*",
-        "name": "countries app",
-        "client": "margit oy",
-        "devs": [
-          "eric",
-          "otto"
-        ]
-      },
-      {
-        "id": 3,
-        "code": "4%n#",
-        "name": "food app",
-        "client": "jenna oy",
-        "devs": [
-          "pravesh",
-          "toni"
-        ]
-      },
-      {
-        "id": 4,
-        "code": "u%x2",
-        "name": "project manager",
-        "client": "jenna oy",
-        "devs": [
-          "ali",
-          "otto"
-        ]
-      },
-      {
-        "id": 5,
+        "code": "s&hy",
         "developers": [],
-        "name": "Food-app",
+        "status": "started",
+        "name": "Test2",
         "client": "Margit"
       }
     ],
     "users": [],
-    "config":{
-      "projects_attrs":[
+    "config": {
+      "projects_attrs": [
         "Service",
         "Engine",
         "Version",

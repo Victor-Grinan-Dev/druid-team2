@@ -10,7 +10,8 @@ export const druidSlice = createSlice({
         //temporal
         isLoading:true,
         search:"",
-        project:{}
+        project:{},
+        isDefaultDetails:false
     }, 
     reducers:{
         setProjects(state, action){
@@ -35,6 +36,9 @@ export const druidSlice = createSlice({
         },
         setProject(state, action){
             state.project = action.payload;
+        },
+        setIsDefaultDetails(state, action){
+            state.isDefaultDetails = action.payload;
         }
     }
 })
@@ -47,7 +51,10 @@ export const {
     //temporal
     isLoading,
     setSearch,
-    setProject
+    setProject,
+    setIsDefaultDetails
 } = druidSlice.actions;
 
 export default druidSlice.reducer;
+
+
