@@ -32,7 +32,6 @@ const defaultValues =
     dev_n_main:"X" 
   }
 
-
 const AddProject = () => {
   const dispatch = useDispatch();
   const project = useSelector((state) => state.druid.project);
@@ -43,11 +42,9 @@ const AddProject = () => {
       dispatch(
         setProject({ ...project, [e.target.name]: capitalStart(e.target.value) })
       );
-    }else if (e.target.name === "defaultDetails"){
-      dispatch(setIsDefaultDetails(!isDefaultDetails))
     }else{
       dispatch(
-        setProject({ ...project, [e.target.name]: [ [...e.target.name], capitalStart(e.target.value)] })
+        setProject({ ...project, [e.target.name]: capitalStart(e.target.value) })
       );
     }
   };
@@ -63,24 +60,25 @@ const AddProject = () => {
       dispatch(addProject(project));
       const projectObj = new Project(project.name, project.client);
 
-      projectObj.service = project.service;
-      projectObj.engine = project.engine;
-      projectObj.version = project.version;
-      projectObj.php = project.php;
-      projectObj.node = project.node;
-      projectObj.js = project.js;
-      projectObj.drush = project.drush;
-      projectObj.omen = project.omen;
-      projectObj.dbs = project.dbs;
-      projectObj.mails = project.mails;
-      projectObj.search = project.search;
-      projectObj.cdn = project.cdn;
-      projectObj.infra = project.infra;
-      projectObj.docker = project.docker;
-      projectObj.hosting = project.hosting;
-      projectObj.deps = project.deps;
-      projectObj.ci = project.ci;
-      projectObj.dev_n_main = project.dev_n_main;
+ 
+      project.service ? projectObj.service = project.service : projectObj.service = defaultValues["service"];
+      project.engine ? projectObj.engine = project.engine : project.engine = defaultValues["engine"];
+      project.version ? projectObj.version = project.version : project.version = defaultValues["version"];
+      project.php ? projectObj.php = project.php : project.php = defaultValues["php"];
+      project.node ? projectObj.node = project.node : project.node = defaultValues["node"];
+      project.js ? projectObj.js = project.js : project.js = defaultValues["js"];
+      project.drush ? projectObj.drush = project.drush : project.drush = defaultValues["drush"];
+      project.omen ? projectObj.omen = project.omen : project.omen = defaultValues["omen"];
+      project.dbs ? projectObj.dbs = project.dbs : project.dbs = defaultValues["dbs"];
+      project.mails ? projectObj.mails = project.mails : project.mails = defaultValues["mails"];
+      project.search ? projectObj.search = project.search : project.search = defaultValues["search"];
+      project.cdn ? projectObj.cdn = project.cdn : project.cdn = defaultValues["cdn"];
+      project.infra ? projectObj.infra = project.infra : project.infra = defaultValues["infra"];
+      project.docker ? projectObj.docker = project.docker : project.docker = defaultValues["docker"];
+      project.hosting ? projectObj.hosting = project.hosting : project.hosting = defaultValues["hosting"];
+      project.deps ? projectObj.deps = project.deps : project.deps = defaultValues["deps"];
+      project.ci ? projectObj.ci = project.ci : project.ci = defaultValues["ci"];
+      project.dev_n_main ? projectObj.dev_n_main = project.dev_n_main : project.dev_n_main = defaultValues["dev_n_main"];
 
       projectObj.code = genId();
 
@@ -107,10 +105,6 @@ const AddProject = () => {
               <input type="text" name="client" id="name" onChange={changeData} />
             </div>
 
-            <div className="default details">
-              <label htmlFor="defaultDetails">use default details: </label>
-              <input type="checkbox" name="defaultDetails" id="defaultDetails" onChange={changeData} />
-            </div>
           </div>
           
           <div className="projectDetails" style={{display:"flex", fontSize:"8px"}}>
@@ -118,7 +112,10 @@ const AddProject = () => {
               projectAttrs.map((attr, i) => (
                 
                 <div key={i}
-                  className={ attr === "Dev & Main" ? "dev-n-main detail-input" : `${attr} detail-input`.toLowerCase()} >
+                  className={ attr === "Dev & Main" ? "dev-n-main detail-input" : `${attr} detail-input`.toLowerCase()} style={{
+                    display:"flex",
+                    flexDirection:"column"
+                  }}>
                   <label htmlFor={`${attr}`.toLowerCase()}>{attr}: </label>
                   <input 
                       type="text" 
@@ -126,12 +123,12 @@ const AddProject = () => {
                       id={ attr === "Dev & Main" ? "dev_n_main" : `${attr}`.toLowerCase() } 
                       onChange={changeData} 
                       style={{width:"50px", fontSize:"10px"}}
-                      value={isDefaultDetails ? defaultValues[attr.toLowerCase()] : " - "}
+                      placeholder={ attr === "Dev & Main" ? defaultValues["dev_n_main"] :defaultValues[attr.toLowerCase()]}
                     />
                 </div>
               ))
             }
-            
+            <button>reset</button>
           </div>
           <button style={{width:"75px", marginTop:"10px"}}>add row</button>
         </div>
