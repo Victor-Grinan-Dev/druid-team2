@@ -11,7 +11,7 @@ import { postProject } from "../../services/druid";
 const AddProject = () => {
   const dispatch = useDispatch();
   const project = useSelector((state) => state.druid.project);
-
+  const projectAttrs = useSelector(state => state.druid.config.projects_attrs)
   const changeData = (e) => {
     dispatch(
       setProject({ ...project, [e.target.name]: capitalStart(e.target.value) })
@@ -33,8 +33,9 @@ const AddProject = () => {
     <div className="addProject">
       <h3>Create new project</h3>
       <form className="addProjectForm" onSubmit={createProject}>
+
         <div className="addProjectInputs">
-          <div className="projectNameInput">
+        <div className="projectNameInput">
             <label htmlFor="name">Project name: </label>
             <input type="text" name="name" id="name" onChange={changeData} />
           </div>
@@ -42,6 +43,17 @@ const AddProject = () => {
             <label htmlFor="client">Customer company: </label>
             <input type="text" name="client" id="name" onChange={changeData} />
           </div>
+          {
+            projectAttrs.map((attr, i) => (
+
+            <div className={`project${capitalStart(attr)}Input`} key={i}>
+              <label htmlFor={`${attr}`}>{attr}: </label>
+              <input type="text" name={`${attr}`} id={`${attr}`} onChange={changeData} />
+            </div>
+            ))
+          }
+        
+          
         </div>
         <input
           type="submit"

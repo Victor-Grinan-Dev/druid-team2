@@ -5,6 +5,7 @@ export const druidSlice = createSlice({
     initialState: {
         projects:[],
         user:{},
+        config:{},//...or settings?
 
         //temporal
         isLoading:true,
@@ -19,7 +20,12 @@ export const druidSlice = createSlice({
         addProject(state, action){
             state.projects.push(action.payload);
         },
-        
+
+        setConfig(state, action){
+            state.config = action.payload;
+        },
+
+
         //temporal slices
         isLoading(state, action){
             state.isLoading = action.payload;
@@ -36,6 +42,7 @@ export const druidSlice = createSlice({
 export const {
     setProjects,
     addProject,
+    setConfig,
 
     //temporal
     isLoading,
