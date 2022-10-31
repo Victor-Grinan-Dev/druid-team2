@@ -4,6 +4,7 @@ import { Project } from "../../classes/project";
 import { addProject, setProject } from "../../features/druidSlice";
 
 import { capitalStart } from "../../functions/capitalStart";
+import { lowerCaseStart } from "../../functions/lowerCaseStart";
 
 //service
 import { postProject } from "../../services/druid";
@@ -35,24 +36,25 @@ const AddProject = () => {
       <form className="addProjectForm" onSubmit={createProject}>
 
         <div className="addProjectInputs">
-        <div className="projectNameInput">
-            <label htmlFor="name">Project name: </label>
-            <input type="text" name="name" id="name" onChange={changeData} />
-          </div>
+          <div className="projectNameInput">
+              <label htmlFor="name">Project name: </label>
+              <input type="text" name="name" id="name" onChange={changeData} />
+            </div>
           <div className="customerInput">
             <label htmlFor="client">Customer company: </label>
             <input type="text" name="client" id="name" onChange={changeData} />
           </div>
-          {
-            projectAttrs.map((attr, i) => (
-              console.log(attr),
-            <div className={`project${capitalStart(attr)}Input`} key={i}>
-              <label htmlFor={`${attr}`}>{attr}: </label>
-              <input type="text" name={`${attr}`} id={`${attr}`} onChange={changeData} />
-            </div>
-            ))
-          }
-        
+
+          <div className="projectDetails">
+            {
+              projectAttrs.map((attr, i) => (
+                <div className={`project${capitalStart(attr)}Input`} key={i}>
+                  <label htmlFor={`${attr}`.toLowerCase()}>{attr}: </label>
+                  <input type="text" name={`${attr}`.toLowerCase()} id={`${attr}`.toLowerCase()} onChange={changeData} />
+                </div>
+              ))
+            }
+          </div>
           
         </div>
         <input
