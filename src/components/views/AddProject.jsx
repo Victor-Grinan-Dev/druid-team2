@@ -41,8 +41,6 @@ const AddProject = () => {
   dispatch(setProject(new Project("name", "client")))
   }, []);
 
-  
-
   const project = useSelector((state) => state.druid.project);
 
   const projectAttrs = useSelector(state => state.druid.config.projects_attrs)
@@ -52,7 +50,8 @@ const AddProject = () => {
   };
 
   const changeDetail = (e) => {
-    dispatch(setProject({ ...project.services, [e.target.name]: e.target.value }));
+    console.log(e.target.name);
+    //dispatch(setProject({ ...project.services, [e.target.name]: e.target.value }));
   };
 
   //attributes
@@ -63,32 +62,35 @@ const AddProject = () => {
 
   const createProject = (e) => {
     e.preventDefault()
-    if (project.name && project.client) {
+    if ((project.name && project.client) && (project.name !== "name" || project.client !== "client") ) {
+      
+      
       setTemProj(new Project(project.name, project.client))
       dispatch(addProject(project));
       const projectObj = new Project(project.name, project.client);
 
       project.services[0].service ? projectObj.service = project.service : projectObj.service = defaultValues["service"];
-      project.services[0].engine ? projectObj.engine = project.engine : project.engine = defaultValues["engine"];
-      project.services[0].version ? projectObj.version = project.version : project.version = defaultValues["version"];
-      project.services[0].php ? projectObj.php = project.php : project.php = defaultValues["php"];
-      project.services[0].node ? projectObj.node = project.node : project.node = defaultValues["node"];
+      project.services[0].engine ? projectObj.engine = project.engine : project[0].engine = defaultValues["engine"];
+      project.services[0].version ? projectObj.version = project.version : project[0].version = defaultValues["version"];
+      project.services[0].php ? projectObj.php = project.php : project[0].php = defaultValues["php"];
+      project.services[0].node ? projectObj.node = project.node : project[0].node = defaultValues["node"];
       project.services[0].js ? projectObj.js = project.js : project.js = defaultValues["js"];
-      project.services[0].drush ? projectObj.drush = project.drush : project.drush = defaultValues["drush"];
-      project.services[0].omen ? projectObj.omen = project.omen : project.omen = defaultValues["omen"];
-      project.services[0].dbs ? projectObj.dbs = project.dbs : project.dbs = defaultValues["dbs"];
-      project.services[0].mails ? projectObj.mails = project.mails : project.mails = defaultValues["mails"];
-      project.services[0].search ? projectObj.search = project.search : project.search = defaultValues["search"];
-      project.services[0].cdn ? projectObj.cdn = project.cdn : project.cdn = defaultValues["cdn"];
-      project.services[0].infra ? projectObj.infra = project.infra : project.infra = defaultValues["infra"];
-      project.services[0].docker ? projectObj.docker = project.docker : project.docker = defaultValues["docker"];
-      project.services[0].hosting ? projectObj.hosting = project.hosting : project.hosting = defaultValues["hosting"];
-      project.services[0].deps ? projectObj.deps = project.deps : project.deps = defaultValues["deps"];
-      project.services[0].ci ? projectObj.ci = project.ci : project.ci = defaultValues["ci"];
-      project.services[0].dev_n_main ? projectObj.dev_n_main = project.dev_n_main : project.dev_n_main = defaultValues["dev_n_main"];
+      project.services[0].drush ? projectObj.drush = project.drush : project[0].drush = defaultValues["drush"];
+      project.services[0].omen ? projectObj.omen = project.omen : project[0].omen = defaultValues["omen"];
+      project.services[0].dbs ? projectObj.dbs = project.dbs : project[0].dbs = defaultValues["dbs"];
+      project.services[0].mails ? projectObj.mails = project.mails : project[0].mails = defaultValues["mails"];
+      project.services[0].search ? projectObj.search = project.search : project[0].search = defaultValues["search"];
+      project.services[0].cdn ? projectObj.cdn = project.cdn : project[0].cdn = defaultValues["cdn"];
+      project.services[0].infra ? projectObj.infra = project.infra : project[0].infra = defaultValues["infra"];
+      project.services[0].docker ? projectObj.docker = project.docker : project[0].docker = defaultValues["docker"];
+      project.services[0].hosting ? projectObj.hosting = project.hosting : project[0].hosting = defaultValues["hosting"];
+      project.services[0].deps ? projectObj.deps = project.deps : project[0].deps = defaultValues["deps"];
+      project.services[0].ci ? projectObj.ci = project.ci : project[0].ci = defaultValues["ci"];
+      project.services[0].dev_n_main ? projectObj.dev_n_main = project.dev_n_main : project[0].dev_n_main = defaultValues["dev_n_main"];
+      
 
       projectObj.code = genId();
-      postProject(projectObj);
+      //postProject(projectObj);
     } else {
       console.log("missing info in the project");
     }
