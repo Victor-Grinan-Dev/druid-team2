@@ -2,11 +2,12 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Project } from "../../classes/project";
+import { Service } from "../../classes/service";
 import { addProject, setIsDefaultDetails, setProject } from "../../features/druidSlice";
 
 import { capitalStart } from "../../functions/capitalStart";
 import { genId } from "../../functions/genId";
-
+import ProjectServiceRow from "../ProjectServiceRow";
 
 //service
 import { postProject } from "../../services/druid";
@@ -41,18 +42,23 @@ const AddProject = () => {
   dispatch(setProject(new Project("name", "client")))
   }, []);
 
-  
-
+  const config = useSelector((state) => state.druid.config);
   const project = useSelector((state) => state.druid.project);
+  const serviceAttr = useSelector(state => state.druid.config.service_attrs);
+  const projects = useSelector(state => state.druid.projects);
 
-  const projectAttrs = useSelector(state => state.druid.config.projects_attrs)
-  
   const changeData = (e) => {
     dispatch(setProject({ ...project, [e.target.name]: capitalStart(e.target.value) }));
   };
 
   const changeDetail = (e) => {
-    dispatch(setProject({ ...project.services, [e.target.name]: e.target.value }));
+    const[rowIndex, name] = e.target.name.split(" ")
+    const service = project.services[rowIndex]
+    const newService = {...service, [name]:e.target.value}
+    const newServices = project.services.filter(service => {
+      return parseInt(service.id, 10) !== parseInt(rowIndex, 10) + 1;
+    })
+    dispatch(setProject({...project, "services":[...newServices, newService]}))
   };
 
   //attributes
@@ -63,37 +69,29 @@ const AddProject = () => {
 
   const createProject = (e) => {
     e.preventDefault()
-    if (project.name && project.client) {
-      setTemProj(new Project(project.name, project.client))
-      dispatch(addProject(project));
-      const projectObj = new Project(project.name, project.client);
+    if ((project.name && project.client) && (project.name !== "name" || project.client !== "client")) {
+      
+      const newProject = new Project(project.name, project.client);
+      
+      newProject.code = genId();
 
-      project.services[0].service ? projectObj.service = project.service : projectObj.service = defaultValues["service"];
-      project.services[0].engine ? projectObj.engine = project.engine : project.engine = defaultValues["engine"];
-      project.services[0].version ? projectObj.version = project.version : project.version = defaultValues["version"];
-      project.services[0].php ? projectObj.php = project.php : project.php = defaultValues["php"];
-      project.services[0].node ? projectObj.node = project.node : project.node = defaultValues["node"];
-      project.services[0].js ? projectObj.js = project.js : project.js = defaultValues["js"];
-      project.services[0].drush ? projectObj.drush = project.drush : project.drush = defaultValues["drush"];
-      project.services[0].omen ? projectObj.omen = project.omen : project.omen = defaultValues["omen"];
-      project.services[0].dbs ? projectObj.dbs = project.dbs : project.dbs = defaultValues["dbs"];
-      project.services[0].mails ? projectObj.mails = project.mails : project.mails = defaultValues["mails"];
-      project.services[0].search ? projectObj.search = project.search : project.search = defaultValues["search"];
-      project.services[0].cdn ? projectObj.cdn = project.cdn : project.cdn = defaultValues["cdn"];
-      project.services[0].infra ? projectObj.infra = project.infra : project.infra = defaultValues["infra"];
-      project.services[0].docker ? projectObj.docker = project.docker : project.docker = defaultValues["docker"];
-      project.services[0].hosting ? projectObj.hosting = project.hosting : project.hosting = defaultValues["hosting"];
-      project.services[0].deps ? projectObj.deps = project.deps : project.deps = defaultValues["deps"];
-      project.services[0].ci ? projectObj.ci = project.ci : project.ci = defaultValues["ci"];
-      project.services[0].dev_n_main ? projectObj.dev_n_main = project.dev_n_main : project.dev_n_main = defaultValues["dev_n_main"];
-
-      projectObj.code = genId();
-      postProject(projectObj);
+      for (let attr of config.projects_attrs){
+        newProject[attr] = project[attr]
+      }
+      dispatch(addProject(newProject));
+      postProject(newProject);
     } else {
       console.log("missing info in the project");
     }
   };
 
+  const addRow = (e) => {
+    e.preventDefault()
+    const num = project.services.length + 1;
+    const tempServ = {...project, "services": [...project.services, new Service(num, `url${num}`)]}
+    //console.log(tempServ);
+    dispatch(setProject(tempServ))
+  }
   return (
     <div className="addProject">
       <h3>Create new project</h3>
@@ -113,30 +111,45 @@ const AddProject = () => {
 
           </div>
           
-          <div className="projectDetails" style={{display:"flex", fontSize:"8px"}}>
+          <div className="projectDetails" style={{display:"flex", fontSize:"8px", flexDirection:"column"}}>
+            
             {
-              projectAttrs.map((attr, i) => (
-                
-                <div key={i}
-                  className={ attr === "Dev & Main" ? "dev-n-main detail-input" : `${attr} detail-input`.toLowerCase()} style={{
+                project?.services?.map((_, j) => (
+                  
+                  <div className="row" name={`${j}`} key={j} style={{
                     display:"flex",
-                    flexDirection:"column"
+                    flexDirection:"row"
                   }}>
-                  <label htmlFor={`${attr}`.toLowerCase()}>{attr}: </label>
-                  <input 
-                      type="text" 
-                      name= { attr === "Dev & Main" ? "dev_n_main" : `${attr}`.toLowerCase() }
-                      id={ attr === "Dev & Main" ? "dev_n_main" : `${attr}`.toLowerCase() } 
-                      onChange={changeDetail} 
-                      style={{width:"50px", fontSize:"10px"}}
-                      placeholder={ attr === "Dev & Main" ? defaultValues["dev_n_main"] :defaultValues[attr.toLowerCase()]}
-                    />
-                </div>
-              ))
+
+                  {serviceAttr?.map((attr, i) => (
+                    
+                      <ProjectServiceRow key={`${j}${i}`} attr={attr} changeDetail={changeDetail} index={j} defaultValues={defaultValues}/>
+                    
+                  ))
+                  }
+                  </div>
+                ))
+              /*
+              <div 
+                        className={ attr === "Dev & Main" ? "dev-n-main detail-input" : `${attr} detail-input`.toLowerCase()} style={{
+                          display:"flex",
+                          flexDirection:"column"
+                        }}>
+                        <label htmlFor={`${attr}`.toLowerCase()}>{attr}: </label>
+                        <input 
+                            type="text" 
+                            name= { attr === "Dev & Main" ? "dev_n_main" : `${j} ${attr}`.toLowerCase() }
+                            id={ attr === "Dev & Main" ? "dev_n_main" : `${attr}`.toLowerCase() } 
+                            onChange={changeDetail} 
+                            style={{width:"50px", fontSize:"10px"}}
+                            placeholder={ attr === "Dev & Main" ? defaultValues["dev_n_main"] :defaultValues[attr.toLowerCase()]}
+                          />
+                      </div>
+              */
             }
             <button>reset</button>
           </div>
-          <button style={{width:"75px", marginTop:"10px"}}>add row</button>
+          <button style={{width:"75px", marginTop:"10px"}} onClick={addRow}>add row</button>
         </div>
         <input
           type="submit"
@@ -154,36 +167,24 @@ export default AddProject;
 //default data: [url]	Drupal	9.4	8.0	16	webpack	Mailjet	Solr 8	11	x	MariaDB 10.5	CloudFront	-	uselagoon	Lagoon	Renovate	GHA	x
 
 /* 
-const addIngrdient = (e) => {
-    e.preventDefault();
-    const newIngredient = { id: ingredients.length + 1, ingredient: '', quantity: '' };
-    setIngredients([...ingredients, newIngredient])
-  }
-          <div className={css.ingredientsArea}>             
-            <p>Ingredients</p>         
-              {ingredients.map((_, i) => {
-                    return (
-
-                      <div key={i} className={css.spacedIngredients}>
-                        <div className={css.spaced}>
-                            <label htmlFor="ingredient">Ingredient </label>
-                            <input type="text" name="ingredient" id="ingredient" onChange={(e) => changeIngredient(e, i)} className={css.input2} />
-                            <br></br>
-                        </div>
-                                       
-                        <div className={css.spaced}>
-                            <label htmlFor="quantity">Quantity </label>
-                            <input type="text" name="quantity" id="quantity" onChange={(e) => changeIngredient(e, i)} className={css.input2} />
-                        </div>
-   
-                      </div>
-                    );
-              })}
-              <div>
-                <button onClick={addIngrdient}>Add ingredient</button>
-              </div>
-              
-            </div>
+      project.services[0].service ? projectObj.service = project.service : projectObj.service = defaultValues["service"];
+      project.services[0].engine ? projectObj.engine = project.engine : project[0].engine = defaultValues["engine"];
+      project.services[0].version ? projectObj.version = project.version : project[0].version = defaultValues["version"];
+      project.services[0].php ? projectObj.php = project.php : project[0].php = defaultValues["php"];
+      project.services[0].node ? projectObj.node = project.node : project[0].node = defaultValues["node"];
+      project.services[0].js ? projectObj.js = project.js : project.js = defaultValues["js"];
+      project.services[0].drush ? projectObj.drush = project.drush : project[0].drush = defaultValues["drush"];
+      project.services[0].omen ? projectObj.omen = project.omen : project[0].omen = defaultValues["omen"];
+      project.services[0].dbs ? projectObj.dbs = project.dbs : project[0].dbs = defaultValues["dbs"];
+      project.services[0].mails ? projectObj.mails = project.mails : project[0].mails = defaultValues["mails"];
+      project.services[0].search ? projectObj.search = project.search : project[0].search = defaultValues["search"];
+      project.services[0].cdn ? projectObj.cdn = project.cdn : project[0].cdn = defaultValues["cdn"];
+      project.services[0].infra ? projectObj.infra = project.infra : project[0].infra = defaultValues["infra"];
+      project.services[0].docker ? projectObj.docker = project.docker : project[0].docker = defaultValues["docker"];
+      project.services[0].hosting ? projectObj.hosting = project.hosting : project[0].hosting = defaultValues["hosting"];
+      project.services[0].deps ? projectObj.deps = project.deps : project[0].deps = defaultValues["deps"];
+      project.services[0].ci ? projectObj.ci = project.ci : project[0].ci = defaultValues["ci"];
+      project.services[0].dev_n_main ? projectObj.dev_n_main = project.dev_n_main : project[0].dev_n_main = defaultValues["dev_n_main"];
 */
 /*
 {
