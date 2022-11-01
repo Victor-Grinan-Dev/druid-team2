@@ -4,8 +4,8 @@ import { useEffect } from "react";
 
 //redux
 import { useDispatch } from "react-redux";
-import { isLoading, setProjects } from "./features/druidSlice";
-import druidService from "./services/druid";
+import { isLoading, setConfig, setProjects } from "./features/druidSlice";
+import druidService from './services/druid';
 
 //components
 import Layout from "./pages/Layout";
@@ -21,7 +21,9 @@ function App() {
   useEffect(() => {
     druidService.getDatabase().then((res) => {
       const projects = res.projects;
+      const config = res.config;
       dispatch(setProjects(projects));
+      dispatch(setConfig(config));
       dispatch(isLoading(false));
     });
   }, [dispatch]);

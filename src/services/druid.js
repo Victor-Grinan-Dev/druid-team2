@@ -24,7 +24,7 @@ export const postProject = async (newProject) => {
   };
   const response = await axios
     .patch(baseUrl, newDatabase)
-    .then((response) => console.log(response))
+    //.then((response) => console.log(response))
     .catch((err) => console.log(err));
   return response;
 };

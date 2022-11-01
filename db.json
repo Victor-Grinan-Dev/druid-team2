@@ -3,51 +3,57 @@
     "projects": [
       {
         "id": 1,
-        "code": "iz11",
-        "name": "poke app",
-        "client": "victor oy",
-        "devs": [
-          "pravesh",
-          "otto"
-        ]
-      },
-      {
-        "id": 2,
-        "code": "63&*",
-        "name": "countries app",
-        "client": "margit oy",
-        "devs": [
-          "eric",
-          "otto"
-        ]
-      },
-      {
-        "id": 3,
-        "code": "4%n#",
-        "name": "food app",
-        "client": "jenna oy",
-        "devs": [
-          "pravesh",
-          "toni"
-        ]
-      },
-      {
-        "id": 4,
-        "code": "u%x2",
-        "name": "project manager",
-        "client": "jenna oy",
-        "devs": [
-          "ali",
-          "otto"
-        ]
-      },
-      {
-        "id": 5,
+        "code": "e1yg",
         "developers": [],
-        "name": "Food-app",
-        "client": "Margit"
+        "status": "started",
+        "services": [
+          {
+            "engine": "Drupal",
+            "version": "9.4",
+            "php": "8.0",
+            "node": "16",
+            "js": "webpack",
+            "drush": "Mailjet",
+            "omen": "Solr",
+            "dbs": "8",
+            "mails": "11",
+            "search": "MariaDB",
+            "cdn": "CloudFron",
+            "infra": "-",
+            "docker": "uselagoon",
+            "hosting": "Lagoon",
+            "deps": "Renovate",
+            "ci": "GHA",
+            "dev_n_main": "X",
+            "service": "url1"
+          }
+        ],
+        "name": "Poke app",
+        "client": "Victor oy"
       }
     ],
-    "users": []
+    "users": [],
+    "config": {
+      "projects_attrs": [
+        "Service",
+        "Engine",
+        "Version",
+        "PHP",
+        "JS",
+        "Node",
+        "Drush",
+        "Omen",
+        "DBS",
+        "Mails",
+        "Search",
+        "CDN",
+        "Infra",
+        "Docker",
+        "Hosting",
+        "Deps",
+        "CI",
+        "Dev & Main"
+      ]
+    }
   }
 }
