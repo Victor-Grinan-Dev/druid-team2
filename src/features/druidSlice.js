@@ -20,7 +20,6 @@ export const druidSlice = createSlice({
         addProject(state, action){
             state.projects.push(action.payload);
         },
-
         setConfig(state, action){
             state.config = action.payload;
         },

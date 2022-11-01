@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Project } from "../../classes/project";
+import { Service } from "../../classes/service";
 import { addProject, setIsDefaultDetails, setProject } from "../../features/druidSlice";
 
 import { capitalStart } from "../../functions/capitalStart";
@@ -50,7 +51,11 @@ const AddProject = () => {
   };
 
   const changeDetail = (e) => {
-    console.log(e.target.name);
+    const[rowIndex, name] = e.target.name.split(" ")
+    const service = project.services[rowIndex]
+    const newService = {...service, [name]:e.target.value}
+    console.log("services:", project.services)
+    console.log("index:",rowIndex,"service:", project.services)
     //dispatch(setProject({ ...project.services, [e.target.name]: e.target.value }));
   };
 
@@ -62,7 +67,7 @@ const AddProject = () => {
 
   const createProject = (e) => {
     e.preventDefault()
-    if ((project.name && project.client) && (project.name !== "name" || project.client !== "client") ) {
+    if ((project.name && project.client) && (project.name !== "name" || project.client !== "client")) {
       
       
       setTemProj(new Project(project.name, project.client))
@@ -96,6 +101,13 @@ const AddProject = () => {
     }
   };
 
+  const addRow = (e) => {
+    e.preventDefault()
+    const num = project.services.length + 1;
+    const tempServ = {...project, "services": [...project.services, new Service(num, `url${num}`)]}
+    //console.log(tempServ);
+    dispatch(setProject(tempServ))
+  }
   return (
     <div className="addProject">
       <h3>Create new project</h3>
@@ -117,28 +129,37 @@ const AddProject = () => {
           
           <div className="projectDetails" style={{display:"flex", fontSize:"8px"}}>
             {
-              projectAttrs.map((attr, i) => (
-                
-                <div key={i}
-                  className={ attr === "Dev & Main" ? "dev-n-main detail-input" : `${attr} detail-input`.toLowerCase()} style={{
-                    display:"flex",
-                    flexDirection:"column"
-                  }}>
-                  <label htmlFor={`${attr}`.toLowerCase()}>{attr}: </label>
-                  <input 
-                      type="text" 
-                      name= { attr === "Dev & Main" ? "dev_n_main" : `${attr}`.toLowerCase() }
-                      id={ attr === "Dev & Main" ? "dev_n_main" : `${attr}`.toLowerCase() } 
-                      onChange={changeDetail} 
-                      style={{width:"50px", fontSize:"10px"}}
-                      placeholder={ attr === "Dev & Main" ? defaultValues["dev_n_main"] :defaultValues[attr.toLowerCase()]}
-                    />
-                </div>
-              ))
+                project?.services.map((_, j) => (
+                  projectAttrs.map((attr, i) => (
+                    <div className="row" name={`${j}`} key={i} style={{
+                      display:"flex",
+                      flexDirection:"column"
+                    }}>
+                      <div 
+                        className={ attr === "Dev & Main" ? "dev-n-main detail-input" : `${attr} detail-input`.toLowerCase()} style={{
+                          display:"flex",
+                          flexDirection:"column"
+                        }}>
+                        <label htmlFor={`${attr}`.toLowerCase()}>{attr}: </label>
+                        <input 
+                            type="text" 
+                            name= { attr === "Dev & Main" ? "dev_n_main" : `${j} ${attr}`.toLowerCase() }
+                            id={ attr === "Dev & Main" ? "dev_n_main" : `${attr}`.toLowerCase() } 
+                            onChange={changeDetail} 
+                            style={{width:"50px", fontSize:"10px"}}
+                            placeholder={ attr === "Dev & Main" ? defaultValues["dev_n_main"] :defaultValues[attr.toLowerCase()]}
+                          />
+                      </div>
+                    </div>
+                  ))
+                ))
+              /*
+              
+              */
             }
             <button>reset</button>
           </div>
-          <button style={{width:"75px", marginTop:"10px"}}>add row</button>
+          <button style={{width:"75px", marginTop:"10px"}} onClick={addRow}>add row</button>
         </div>
         <input
           type="submit"

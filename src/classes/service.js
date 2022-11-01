@@ -1,3 +1,4 @@
+
 export class Service{
 
     engine = "Drupal";
@@ -18,7 +19,8 @@ export class Service{
     ci = "GHA";
     dev_n_main = "X";
 
-    constructor(service){
+    constructor(id, service){
+        this.id = id;
         this.service = service;
     }
 }

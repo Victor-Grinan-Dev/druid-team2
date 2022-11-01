@@ -11,9 +11,8 @@ export class Project {
     constructor(name, client ){
         this.name = name;
         this.client = client;
-
         this.code = genId();
-        this.services.push(new Service("url1"))
+        this.services.push(new Service("1", "url1"))
     }
 
     addDev(newDev){
