@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Project } from "../../classes/project";
 import { Service } from "../../classes/service";
-import { addProject, setIsDefaultDetails, setProject } from "../../features/druidSlice";
+import { addProject, setProject } from "../../features/druidSlice";
 
 import { capitalStart } from "../../functions/capitalStart";
 import { genId } from "../../functions/genId";
@@ -37,7 +37,6 @@ const defaultValues =
 const AddProject = () => {
   const dispatch = useDispatch();
 
-  const [tempProj, setTemProj] = useState({})
   useEffect(() => {
   dispatch(setProject(new Project("name", "client")))
   }, []);
@@ -129,23 +128,6 @@ const AddProject = () => {
                   }
                   </div>
                 ))
-              /*
-              <div 
-                        className={ attr === "Dev & Main" ? "dev-n-main detail-input" : `${attr} detail-input`.toLowerCase()} style={{
-                          display:"flex",
-                          flexDirection:"column"
-                        }}>
-                        <label htmlFor={`${attr}`.toLowerCase()}>{attr}: </label>
-                        <input 
-                            type="text" 
-                            name= { attr === "Dev & Main" ? "dev_n_main" : `${j} ${attr}`.toLowerCase() }
-                            id={ attr === "Dev & Main" ? "dev_n_main" : `${attr}`.toLowerCase() } 
-                            onChange={changeDetail} 
-                            style={{width:"50px", fontSize:"10px"}}
-                            placeholder={ attr === "Dev & Main" ? defaultValues["dev_n_main"] :defaultValues[attr.toLowerCase()]}
-                          />
-                      </div>
-              */
             }
             <button>reset</button>
           </div>
@@ -163,74 +145,3 @@ const AddProject = () => {
 };
 
 export default AddProject;
-
-//default data: [url]	Drupal	9.4	8.0	16	webpack	Mailjet	Solr 8	11	x	MariaDB 10.5	CloudFront	-	uselagoon	Lagoon	Renovate	GHA	x
-
-/* 
-      project.services[0].service ? projectObj.service = project.service : projectObj.service = defaultValues["service"];
-      project.services[0].engine ? projectObj.engine = project.engine : project[0].engine = defaultValues["engine"];
-      project.services[0].version ? projectObj.version = project.version : project[0].version = defaultValues["version"];
-      project.services[0].php ? projectObj.php = project.php : project[0].php = defaultValues["php"];
-      project.services[0].node ? projectObj.node = project.node : project[0].node = defaultValues["node"];
-      project.services[0].js ? projectObj.js = project.js : project.js = defaultValues["js"];
-      project.services[0].drush ? projectObj.drush = project.drush : project[0].drush = defaultValues["drush"];
-      project.services[0].omen ? projectObj.omen = project.omen : project[0].omen = defaultValues["omen"];
-      project.services[0].dbs ? projectObj.dbs = project.dbs : project[0].dbs = defaultValues["dbs"];
-      project.services[0].mails ? projectObj.mails = project.mails : project[0].mails = defaultValues["mails"];
-      project.services[0].search ? projectObj.search = project.search : project[0].search = defaultValues["search"];
-      project.services[0].cdn ? projectObj.cdn = project.cdn : project[0].cdn = defaultValues["cdn"];
-      project.services[0].infra ? projectObj.infra = project.infra : project[0].infra = defaultValues["infra"];
-      project.services[0].docker ? projectObj.docker = project.docker : project[0].docker = defaultValues["docker"];
-      project.services[0].hosting ? projectObj.hosting = project.hosting : project[0].hosting = defaultValues["hosting"];
-      project.services[0].deps ? projectObj.deps = project.deps : project[0].deps = defaultValues["deps"];
-      project.services[0].ci ? projectObj.ci = project.ci : project[0].ci = defaultValues["ci"];
-      project.services[0].dev_n_main ? projectObj.dev_n_main = project.dev_n_main : project[0].dev_n_main = defaultValues["dev_n_main"];
-*/
-/*
-{
-        "id": 1,
-        "code": "iz11",
-        "name": "poke app",
-        "client": "victor oy",
-        "devs": [
-          "pravesh",
-          "otto"
-        ]
-      },
-      {
-        "id": 2,
-        "code": "63&*",
-        "name": "countries app",
-        "client": "margit oy",
-        "devs": [
-          "eric",
-          "otto"
-        ]
-      },
-      {
-        "id": 3,
-        "code": "4%n#",
-        "name": "food app",
-        "client": "jenna oy",
-        "devs": [
-          "pravesh",
-          "toni"
-        ]
-      },
-      {
-        "id": 4,
-        "code": "u%x2",
-        "name": "project manager",
-        "client": "jenna oy",
-        "devs": [
-          "ali",
-          "otto"
-        ]
-      },
-      {
-        "id": 5,
-        "developers": [],
-        "name": "countries-app",
-        "client": "Margit"
-      }
-*/
