@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Project } from "../../classes/project";
+import { Service } from "../../classes/service";
 import { addProject, setIsDefaultDetails, setProject } from "../../features/druidSlice";
 
 import { capitalStart } from "../../functions/capitalStart";
@@ -33,9 +35,12 @@ const defaultValues =
   }
 
 const AddProject = () => {
+
+  const [tempProject, setTemporalProject] = useState({});
+
+  //setTemporalProject(new Project("name", "client"))
   const dispatch = useDispatch();
   const project = useSelector((state) => state.druid.project);
-
   const projectAttrs = useSelector(state => state.druid.config.projects_attrs)
   
   const changeData = (e) => {
@@ -47,16 +52,18 @@ const AddProject = () => {
   };
 
   //attributes
-  const addAttr = (e) => {
-    console.log(e.target.name)
-    //const newInAttr = { id: ingredients.length + 1, ingredient: '', quantity: '' };
+  const addService = (e) => {
+    e.preventDefault()
+    dispatch(setProject({ ...project, "services":[...project.services, new Service(`url${project.services.length + 1}`)] }));
+    console.log(project)
   }
 
   const createProject = (e) => {
-    
+    e.preventDefault()
     if (project.name && project.client) {
       dispatch(addProject(project));
       const projectObj = new Project(project.name, project.client);
+/*
 
       project.service ? projectObj.service = project.service : projectObj.service = defaultValues["service"];
       project.engine ? projectObj.engine = project.engine : project.engine = defaultValues["engine"];
@@ -76,9 +83,11 @@ const AddProject = () => {
       project.deps ? projectObj.deps = project.deps : project.deps = defaultValues["deps"];
       project.ci ? projectObj.ci = project.ci : project.ci = defaultValues["ci"];
       project.dev_n_main ? projectObj.dev_n_main = project.dev_n_main : project.dev_n_main = defaultValues["dev_n_main"];
+*/
 
       projectObj.code = genId();
 
+      //postProject(projectObj);
     } else {
       console.log("missing info in the project");
     }
@@ -105,6 +114,17 @@ const AddProject = () => {
           
           <div className="projectDetails" style={{display:"flex", fontSize:"8px"}}>
             {
+              
+                /*
+                project.services.map((service, i) => (
+                  projectAttrs.map((attr, i) => (
+                    console.log(attr)
+                    )) 
+                ))
+                */
+              /* 
+                          
+              
               projectAttrs.map((attr, i) => (
                 
                 <div key={i}
@@ -122,11 +142,11 @@ const AddProject = () => {
                       placeholder={ attr === "Dev & Main" ? defaultValues["dev_n_main"] :defaultValues[attr.toLowerCase()]}
                     />
                 </div>
-              ))
+              )) */
             }
             <button>reset</button>
           </div>
-          <button style={{width:"75px", marginTop:"10px"}}>add row</button>
+          <button onClick={addService} style={{width:"75px", marginTop:"10px"}}>add service</button>
         </div>
         <input
           type="submit"

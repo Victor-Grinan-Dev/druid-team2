@@ -10,7 +10,7 @@ export const druidSlice = createSlice({
         //temporal
         isLoading:true,
         search:"",
-        project:{},
+        project: {},
     }, 
     reducers:{
         setProjects(state, action){
