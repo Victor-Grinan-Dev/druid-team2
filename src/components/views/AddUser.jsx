@@ -1,9 +1,11 @@
-import React from 'react';
+import React from "react";
 
 const AddUser = () => {
   return (
-    <div>AddUser</div>
-  )
-}
+    <div>
+      <h1>AddUser</h1>
+    </div>
+  );
+};
 
 export default AddUser;

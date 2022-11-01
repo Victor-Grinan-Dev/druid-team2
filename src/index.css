@@ -8,6 +8,78 @@ body {
   font-family: "Euclid Circular B", sans-serif;
 }
 
+/* Login */
+
+.login {
+  background-color: #353535;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  min-height: 50vh;
+  padding: 5rem;
+}
+
+.loginLogo {
+  height: 5rem;
+}
+
+.loginH1 {
+  color: #fa2d1d;
+  margin: 1rem 0;
+}
+
+.loginLeftSide,
+.loginRightSide {
+  width: 50%;
+  margin: 2rem;
+}
+
+.loginLeftSide {
+  text-align: center;
+}
+
+.loginRightSide {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.username,
+.password {
+  display: flex;
+  flex-direction: column;
+  margin: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.username input,
+.password input {
+  width: 15rem;
+  height: 2.5rem;
+  padding: 0.5rem;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.loginButton {
+  background-color: #e42816;
+  color: white;
+  box-shadow: 0 0 4px black inset;
+  font-size: 1rem;
+  padding: 0.5rem;
+  width: 15rem;
+  border-style: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+.loginButton:hover {
+  box-shadow: inset 0 0 6px white;
+  text-shadow: 0 0 2px white;
+}
+
 /* Header */
 
 .logo {

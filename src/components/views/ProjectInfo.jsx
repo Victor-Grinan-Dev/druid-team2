@@ -41,13 +41,13 @@ const ProjectInfo = () => {
               <td>11</td>
               <td>x</td>
               <td>MariaDB 10.5</td>
-                          <td>CloudFront</td>
-            <td>-</td>
-            <td>uselagoon</td>
-            <td>Lagoon</td>
-            <td>Renovate</td>
-            <td>GHA</td>
-            <td>x</td>
+              <td>CloudFront</td>
+              <td>-</td>
+              <td>uselagoon</td>
+              <td>Lagoon</td>
+              <td>Renovate</td>
+              <td>GHA</td>
+              <td>x</td>
             </tr>
             <tr>
               <td>url2</td>
@@ -61,17 +61,16 @@ const ProjectInfo = () => {
               <td>x</td>
               <td>x</td>
               <td>x</td>
-                          <td>x</td>
-            <td>x</td>
-            <td>x</td>
-            <td>x</td>
-            <td>x</td>
-            <td>x</td>
-            <td>x</td>
+              <td>x</td>
+              <td>x</td>
+              <td>x</td>
+              <td>x</td>
+              <td>x</td>
+              <td>x</td>
+              <td>x</td>
             </tr>
           </tbody>
         </table>
-
       </div>
     </div>
   );

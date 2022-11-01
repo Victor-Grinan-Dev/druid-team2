@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
-import { useEffect } from 'react';
+import { useEffect } from "react";
 
 //redux
 import { useDispatch } from "react-redux";
@@ -13,6 +13,7 @@ import ProjectInfo from "./components/views/ProjectInfo";
 import CustomersProjects from "./components/views/CustomersProjects";
 import AddProject from "./components/views/AddProject";
 import Home from "./components/Home";
+import Login from "./components/Login";
 
 function App() {
   const dispatch = useDispatch();
@@ -31,12 +32,11 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
-
           <Route index element={<Home />} />
           <Route path="customersprojects" element={<CustomersProjects />} />
           <Route path="projectinfo" element={<ProjectInfo />} />
           <Route path="addproject" element={<AddProject />} />
-          
+          <Route path="login" element={<Login />} />
         </Route>
       </Routes>
     </BrowserRouter>
