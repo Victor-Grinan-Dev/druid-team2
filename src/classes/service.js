@@ -1,6 +1,5 @@
 export class Service{
 
-    service = "[url]";
     engine = "Drupal";
     version = "9.4";
     php = "8.0";
