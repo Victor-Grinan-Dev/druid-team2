@@ -495,7 +495,12 @@
       }
     ],
     "users": [
-
+      {
+        "id": "ukfsoern",
+        "email": "victorgrinan@gmail.com",
+        "username": "Victor",
+        "userType": "developer"
+      }
     ],
     "config": {
       "projects_attrs": [
