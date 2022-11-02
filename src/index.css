@@ -191,8 +191,7 @@ nav ul li a:hover {
   flex-direction: column;
 }
 
-.projectNameInput input,
-.customerInput input {
+.input-section {
   width: 14rem;
   height: 2rem;
   margin: 0 1rem;

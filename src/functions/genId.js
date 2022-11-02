@@ -1,5 +1,9 @@
 const alphabet = [
-    'a', 'b', 'c', 'd', 'e', 'f', 'g', 'f', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'
+    'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'
+];
+
+const capAlphabet = [
+    'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'
 ];
 
 const numbers = [
@@ -8,14 +12,14 @@ const numbers = [
 
 const symbols = [
     '*', '#', '%', '&', '!', '?'
-]
+];
 
-const allowedChars = [...symbols, ...alphabet, ...numbers]
+const allowedChars = [...symbols, ...alphabet, ...capAlphabet, ...numbers];
 
 export const getRandomIndex = () => {
    const max = allowedChars.length;
    return Math.floor(Math.random() * max);
-}
+};
 
 export const genId = (amount = 4) => {
     const id = []

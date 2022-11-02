@@ -30,7 +30,7 @@
           }
         ],
         "name": "Project 1",
-        "client": "Victor oy"
+        "customer": "Victor oy"
       },
       {
         "id": 2,
@@ -166,7 +166,7 @@
           }
         ],
         "name": "Victor",
-        "client": "Victor oy"
+        "customer": "Victor oy"
       },
       {
         "id": 3,
@@ -491,7 +491,7 @@
           }
         ],
         "name": "Jenna",
-        "client": "Jenna oy"
+        "customer": "Jenna oy"
       },
       {
         "id": 4,
@@ -543,7 +543,7 @@
           }
         ],
         "name": "Poke app",
-        "client": "Asdasdasd"
+        "customer": "Asdasdasd"
       },
       {
         "id": 5,
@@ -658,7 +658,7 @@
           }
         ],
         "name": "KEVIN",
-        "client": "Victor oy"
+        "customer": "Victor oy"
       }
     ],
     "users": [
@@ -680,14 +680,14 @@
         "id": "?11g1l*i",
         "email": "margit@gmail.com",
         "username": "Margit ltd",
-        "userType": "client",
+        "userType": "customer",
         "pwd": "1!faotfhk93?"
       },
       {
         "id": "*yz8a?hi",
         "email": "Santosh@gmail.com",
         "username": "Santosh Oy",
-        "userType": "client",
+        "userType": "customer",
         "pwd": "7pry?s7dlhfa"
       },
       {
@@ -715,7 +715,7 @@
         "id": "a#y*6all",
         "email": "druid@gmail.com",
         "username": "druid solutions",
-        "userType": "client",
+        "userType": "customer",
         "pwd": "o*al?qjd!1#e"
       },
       {
@@ -731,6 +731,13 @@
         "username": "oscar",
         "userType": "developer",
         "pwd": "ple4s0sdzxwm"
+      },
+      {
+        "id": "b53%5w15",
+        "email": "ILKA@gmail.com",
+        "username": "ILKA Enterprise",
+        "userType": "customer",
+        "pwd": "v0?u8d&hkef5"
       }
     ],
     "config": {
@@ -740,7 +747,7 @@
         "developers",
         "status",
         "name",
-        "client",
+        "customer",
         "code",
         "services"
       ],
@@ -764,26 +771,25 @@
         "CI",
         "Dev & Main"
       ],
-      "defaultValues":{
-        "service":"[url]",	
-        "engine":"Drupal",
-        "version":"9.4",
-        "php":"8.0",
+      "defaultValues": {
+        "service": "[url]",
+        "engine": "Drupal",
+        "version": "9.4",
+        "php": "8.0",
         "node": "16",
-        "js":"webpack",
-        "drush":"Mailjet",
-        "omen":"Solr",
-        "dbs":"8",
-        "mails":"11",
-        "search":"MariaDB",
-        "cdn":"CloudFron",
-        "infra":"-",
-        "docker":"uselagoon",
-        "hosting":"Lagoon",
-        "deps":"Renovate",
-        "ci":"GHA",
-        "dev_n_main":"X" 
-
+        "js": "webpack",
+        "drush": "Mailjet",
+        "omen": "Solr",
+        "dbs": "8",
+        "mails": "11",
+        "search": "MariaDB",
+        "cdn": "CloudFron",
+        "infra": "-",
+        "docker": "uselagoon",
+        "hosting": "Lagoon",
+        "deps": "Renovate",
+        "ci": "GHA",
+        "dev_n_main": "X"
       }
     }
   }
