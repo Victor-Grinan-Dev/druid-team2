@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 //redux
 import { useDispatch, useSelector } from "react-redux";
@@ -13,7 +13,6 @@ import ProjectServiceRow from "../ProjectServiceRow";
 
 //service
 import { getDefaultValues, postProject } from "../../services/druid";
-import { postProject } from "../../services/druid";
 
 //functions
 import { capitalStart } from "../../functions/capitalStart";
