@@ -1,8 +1,7 @@
 import React from "react";
 import ProjectBox from "./ProjectBox";
-
 import { useSelector } from "react-redux";
-import AddProject from "./AddProject";
+import Search from "./Search";
 
 const CustomersProjects = () => {
   const projects = useSelector((state) => state.druid.projects);
@@ -14,7 +13,8 @@ const CustomersProjects = () => {
 
   return (
     <div className="customersProjects">
-      <AddProject />
+
+      <Search />
       <h2 className="projectsH2">Projects</h2>
 
       <div>

@@ -10,6 +10,12 @@ const ProjectInfo = () => {
 
   return (
     <div className="infoContainer">
+
+      <div>
+        <button className="editButton"> edit </button>
+        <button className="delButton">X</button>
+      </div>
+
       <div className="projectInfo">
         <h3>Project name: {project.name}</h3>
         <table className="table">

@@ -15,7 +15,7 @@ const ProjectServiceRow = ({attr, changeDetail, index, defaultValues}) => {
             id={ attr === "Dev & Main" ? "dev_n_main" : `${attr}`.toLowerCase() } 
             onChange={changeDetail} 
             style={{width:"50px", fontSize:"10px"}}
-            placeholder={ attr === "Dev & Main" ? defaultValues["dev_n_main"] :defaultValues[attr.toLowerCase()]}
+            placeholder={ attr === "Dev & Main" ? defaultValues["dev_n_main"] : defaultValues[attr.toLowerCase()]}
         />
     </div>
   )
