@@ -10,35 +10,18 @@ import { genId } from "../../functions/genId";
 import ProjectServiceRow from "../ProjectServiceRow";
 
 //service
-import { postProject } from "../../services/druid";
-
-const defaultValues = 
-  {
-    service:"[url]",	
-    engine:"Drupal",
-    version:"9.4",
-    php:"8.0",
-    node: "16",
-    js:"webpack",
-    drush:"Mailjet",
-    omen:"Solr",
-    dbs:"8",
-    mails:"11",
-    search:"MariaDB",
-    cdn:"CloudFron",
-    infra:"-",
-    docker:"uselagoon",
-    hosting:"Lagoon",
-    deps:"Renovate",
-    ci:"GHA",
-    dev_n_main:"X" 
-  }
+import { getDefaultValues, postProject } from "../../services/druid";
 
 const AddProject = () => {
   const dispatch = useDispatch();
+  const [defaultValues, setDefaultValues] = useState({});
 
   useEffect(() => {
-  dispatch(setProject(new Project("name", "client")))
+    dispatch(setProject(new Project("name", "client")));
+    getDefaultValues().then(res => {
+      const temp = res;
+      setDefaultValues(temp);
+    })
   }, []);
 
   const config = useSelector((state) => state.druid.config);
