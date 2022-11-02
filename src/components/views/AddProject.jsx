@@ -116,6 +116,15 @@ const AddProject = () => {
               </select>
             </div>
 
+            <div className="developersInput">
+              <label htmlFor="developers"> developers</label>
+              <select onChange={changeData} >
+                <option value=""></option>
+                <option value=""></option>
+                <option value=""></option>
+              </select>
+            </div>
+
           </div>
           
           <div className="projectDetails" style={{display:"flex", fontSize:"8px", flexDirection:"column"}}>

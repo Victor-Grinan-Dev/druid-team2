@@ -13,7 +13,8 @@ export const druidSlice = createSlice({
         isLoading:true,
         search:"",
         project: {},
-        createUser:new User(" ", " "),
+        createUser: new User(" ", " "),
+
     }, 
     reducers:{
         setProjects(state, action){
@@ -43,8 +44,7 @@ export const druidSlice = createSlice({
             state.project = action.payload;
         },
         setCreateUser(state, action){
-            const name = action.payload[0];
-            const value = action.payload[0];
+            const [name, value] = action.payload;
             state.createUser = {
                 ...state.createUser, 
                 [name] : value
@@ -69,5 +69,4 @@ export const {
 } = druidSlice.actions;
 
 export default druidSlice.reducer;
-
 
