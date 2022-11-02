@@ -17,35 +17,39 @@ import AddUser from "./components/views/AddUser";
 
 import Home from "./components/Home";
 import Login from "./components/Login";
-import { User } from "./classes/user";
-
-const dummyUser = new User("victor", "pm")
 
 function App() {
   const dispatch = useDispatch();
-  const user = useSelector(state => state.druid.user)
+  const user = useSelector(state => state.druid.user);
+
   useEffect(() => {
     druidService.getDatabase().then((res) => {
       const projects = res.projects;
       const config = res.config;
-      dispatch(setUser(dummyUser))
-    
       dispatch(setProjects(projects));
       dispatch(setConfig(config));
       dispatch(isLoading(false));
     });
   }, [dispatch]);
 
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
+  const views = () => {
+    return (
+      <>
           <Route path="customersprojects" element={<CustomersProjects />} />
           <Route path="projectinfo/:name" element={<ProjectInfo />} />
           <Route path="addproject" element={<AddProject />} />
           <Route path="adduser" element={<AddUser />} />
           <Route path="login" element={<Login />} />
+      </>
+    )
+    
+  }
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          {user.username && views()}
         </Route>
       </Routes>
     </BrowserRouter>

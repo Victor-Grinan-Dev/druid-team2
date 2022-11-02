@@ -7,12 +7,16 @@ const Navbar = () => {
   return (
     <nav>
       <ul>
-        <li className="homeLink">
-          <Link to="/">Home</Link>
-        </li>
-        <li className="projectsLink">
-          <Link to="customersprojects">Projects</Link>
-        </li>
+        {/*
+          <li className="homeLink">
+            <Link to="/">Home</Link>
+          </li>
+        */}
+        {
+          user.username && <li className="projectsLink">
+              <Link to="customersprojects">Projects</Link>
+            </li>
+        }
         {
         user.userType === "pm" && <li className="projectsLink">
           <Link to="addproject">Add Project</Link>
@@ -23,6 +27,7 @@ const Navbar = () => {
           <Link to="adduser">Add User</Link>
         </li>
         }
+
       </ul>
     </nav>
   );

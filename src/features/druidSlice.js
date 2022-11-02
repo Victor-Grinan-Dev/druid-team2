@@ -6,6 +6,7 @@ export const druidSlice = createSlice({
     initialState: {
         projects:[],
         user:{},
+        isLogged:false,
         users:[],
         config:{},//...or settings?
 
@@ -26,12 +27,19 @@ export const druidSlice = createSlice({
         setUser(state, action){
             state.user = action.payload;
         },
-        setConfig(state, action){
-            state.config = action.payload;
+        setIsLogged(state, action){
+            state.isLogged = action.payload;
+        },
+        setUsers(state, action){
+            state.users = action.payload;
         },
         addUser(state, action){
             state.users = ([...state.users, action.payload]);
         },
+        setConfig(state, action){
+            state.config = action.payload;
+        },
+
 
         //temporal slices
         isLoading(state, action){
@@ -58,6 +66,9 @@ export const {
     setProjects,
     addProject,
     setUser,
+    setIsLogged,
+    setUsers,
+    addUser,
     setConfig,
 
     //temporal
