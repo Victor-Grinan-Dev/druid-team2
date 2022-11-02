@@ -29,7 +29,6 @@ export const postProject = async (newProject) => {
 };
 
 export const postUser = async (newUser) => {
-  console.log("clicked")
   const database = await getDatabase();
   const toPostUser = {
     ...newUser,

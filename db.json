@@ -731,6 +731,13 @@
         "username": "oscar",
         "userType": "developer",
         "pwd": "ple4s0sdzxwm"
+      },
+      {
+        "id": "b53%5w15",
+        "email": "ILKA@gmail.com",
+        "username": "ILKA Enterprise",
+        "userType": "customer",
+        "pwd": "v0?u8d&hkef5"
       }
     ],
     "config": {
@@ -764,26 +771,25 @@
         "CI",
         "Dev & Main"
       ],
-      "defaultValues":{
-        "service":"[url]",	
-        "engine":"Drupal",
-        "version":"9.4",
-        "php":"8.0",
+      "defaultValues": {
+        "service": "[url]",
+        "engine": "Drupal",
+        "version": "9.4",
+        "php": "8.0",
         "node": "16",
-        "js":"webpack",
-        "drush":"Mailjet",
-        "omen":"Solr",
-        "dbs":"8",
-        "mails":"11",
-        "search":"MariaDB",
-        "cdn":"CloudFron",
-        "infra":"-",
-        "docker":"uselagoon",
-        "hosting":"Lagoon",
-        "deps":"Renovate",
-        "ci":"GHA",
-        "dev_n_main":"X" 
-
+        "js": "webpack",
+        "drush": "Mailjet",
+        "omen": "Solr",
+        "dbs": "8",
+        "mails": "11",
+        "search": "MariaDB",
+        "cdn": "CloudFron",
+        "infra": "-",
+        "docker": "uselagoon",
+        "hosting": "Lagoon",
+        "deps": "Renovate",
+        "ci": "GHA",
+        "dev_n_main": "X"
       }
     }
   }

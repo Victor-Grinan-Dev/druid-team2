@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { User } from '../../classes/user';
 import { setCreateUser } from '../../features/druidSlice';
 import { postUser } from '../../services/druid';
 
@@ -40,11 +39,11 @@ const AddUser = () => {
                 <input type="text" name="email" id="name" onChange={changeData} />
             </div>
             <div >
-              <label htmlFor="client">User type</label>
+              <label htmlFor="customer">User type</label>
               <select name="userType"  onChange={changeData}>
                 <option hidden>Choose</option>
                 <option value="developer">Developer</option>
-                <option value="client">Client</option>
+                <option value="customer">customer</option>
                 <option value="manager">Project Manager</option>
               </select>
             </div>

@@ -103,15 +103,17 @@ const AddProject = () => {
 
             <div className="input-section">
               <div>
-                <label htmlFor="customer">Customer company: </label>
+                <label htmlFor="customer">Customer: </label>
               </div>
               
               <select name="customer" id="name" onChange={changeData} >
                 <option value="" hidden> choose </option>
                 {
-                  customers.map((cust, i) => {
-                    <option value={cust.username} key={i}>{capitalStart(cust.username)}</option>
+
+                    customers.map((cust, i) => {
+                    return <option value={cust.username} key={i}>{capitalStart(cust.username)}</option>
                   })
+                  
                 }
               </select>
             </div>
