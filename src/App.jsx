@@ -5,7 +5,7 @@ import { useEffect } from "react";
 //redux
 import { useDispatch } from "react-redux";
 import { isLoading, setConfig, setProjects } from "./features/druidSlice";
-import druidService from './services/druid';
+import druidService from "./services/druid";
 
 //components
 import Layout from "./pages/Layout";
@@ -34,7 +34,7 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="customersprojects" element={<CustomersProjects />} />
-          <Route path="projectinfo" element={<ProjectInfo />} />
+          <Route path="projectinfo/:name" element={<ProjectInfo />} />
           <Route path="addproject" element={<AddProject />} />
           <Route path="login" element={<Login />} />
         </Route>

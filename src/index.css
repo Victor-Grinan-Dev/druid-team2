@@ -250,18 +250,21 @@ nav ul li a:hover {
   text-shadow: 0 0 2px white;
 }
 
+/* ProjectInfo */
+
 .infoContainer {
   background-color: #353535;
-  padding: 6rem;
+  padding: 4rem;
+  position: relative;
 }
-
-/* ProjectInfo */
 
 .projectInfo {
   background-color: white;
   color: black;
   padding: 1rem;
   border-radius: 2px;
+  height: 50vh;
+  overflow: auto;
 }
 
 .projectInfo h3 {
@@ -274,6 +277,12 @@ nav ul li a:hover {
   border: 2px solid black;
   border-collapse: collapse;
   margin: 1rem;
+}
+
+.tableHead,
+.tableBody {
+  width: 40rem;
+  overflow: scroll;
 }
 
 .table th {

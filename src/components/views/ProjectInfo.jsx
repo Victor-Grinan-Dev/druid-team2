@@ -1,12 +1,16 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
 
 const ProjectInfo = () => {
+  const location = useLocation();
+  const project = location.state;
+
   return (
     <div className="infoContainer">
       <div className="projectInfo">
-        <h3>Project name</h3>
+        <h3>Project name: {project.name}</h3>
         <table className="table">
-          <thead>
+          <thead className="tableHead">
             <tr>
               <th>Service</th>
               <th>Engine</th>
@@ -28,7 +32,7 @@ const ProjectInfo = () => {
               <th>dev & main</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="tableBody">
             <tr>
               <td>url1</td>
               <td>Drupal</td>
