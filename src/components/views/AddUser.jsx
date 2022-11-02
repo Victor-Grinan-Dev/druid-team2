@@ -5,7 +5,6 @@ import { User } from '../../classes/user';
 import { setCreateUser } from '../../features/druidSlice';
 import { postUser } from '../../services/druid';
 
-
 const AddUser = () => {
 
   const dispatch = useDispatch();
@@ -25,8 +24,6 @@ const AddUser = () => {
     }else{
       console.log("missing data")
     }
-    
-
   }
 
   return (

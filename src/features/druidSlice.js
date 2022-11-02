@@ -14,6 +14,7 @@ export const druidSlice = createSlice({
         search:"",
         project: {},
         createUser: new User(" ", " "),
+
     }, 
     reducers:{
         setProjects(state, action){

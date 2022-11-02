@@ -1,16 +1,22 @@
 import React, { useEffect } from "react";
-import { useState } from "react";
+
+//redux
 import { useDispatch, useSelector } from "react-redux";
-import { Project } from "../../classes/project";
-import { Service } from "../../classes/service";
 import { addProject, setProject } from "../../features/druidSlice";
 
-import { capitalStart } from "../../functions/capitalStart";
-import { genId } from "../../functions/genId";
+//classes
+import { Project } from "../../classes/project";
+import { Service } from "../../classes/service";
+
+//components
 import ProjectServiceRow from "../ProjectServiceRow";
 
 //service
 import { getDefaultValues, postProject } from "../../services/druid";
+import { postProject } from "../../services/druid";
+
+//functions
+import { capitalStart } from "../../functions/capitalStart";
 
 const AddProject = () => {
   const dispatch = useDispatch();
@@ -43,19 +49,13 @@ const AddProject = () => {
     dispatch(setProject({...project, "services":[...newServices, newService]}))
   };
 
-  //attributes
-  const addAttr = (e) => {
-    console.log(e.target.name)
-    //const newInAttr = { id: ingredients.length + 1, ingredient: '', quantity: '' };
-  }
-
   const createProject = (e) => {
     e.preventDefault()
     if ((project.name && project.client) && (project.name !== "name" || project.client !== "client")) {
       
       const newProject = new Project(project.name, project.client);
       
-      newProject.code = genId();
+      //newProject.code = genId();
 
       for (let attr of config.projects_attrs){
         newProject[attr] = project[attr]
@@ -89,6 +89,15 @@ const AddProject = () => {
             <div className="customerInput">
               <label htmlFor="client">Customer company: </label>
               <input type="text" name="client" id="name" onChange={changeData} />
+            </div>
+            <div className="assignDevelopers">
+              <label htmlFor="client">add developer</label>
+              <select name="developers" onChange={changeData}>
+                //map developer users as options
+                <option value="developer 1">developer 1</option>
+                <option value="developer 2">developer 2</option>
+                <option value="developer 3">developer 3</option>
+              </select>
             </div>
 
             <div className="developersInput">

@@ -3,6 +3,7 @@ import "./App.css";
 import { useEffect } from "react";
 
 //redux
+
 import { useDispatch, useSelector } from "react-redux";
 import { isLoading, setConfig, setProjects, setUser } from "./features/druidSlice";
 import druidService from './services/druid';
@@ -41,7 +42,7 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="customersprojects" element={<CustomersProjects />} />
-          <Route path="projectinfo" element={<ProjectInfo />} />
+          <Route path="projectinfo/:name" element={<ProjectInfo />} />
           <Route path="addproject" element={<AddProject />} />
           <Route path="adduser" element={<AddUser />} />
           <Route path="login" element={<Login />} />
