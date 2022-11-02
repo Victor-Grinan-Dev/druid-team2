@@ -1,7 +1,9 @@
-export class user = {
-    constructor(id, name, userType){
-        this.id = id
-        this.name = name
-        this.userType = userType
+export class User{
+    id = undefined;
+    email = undefined;
+    //password
+    constructor(username, userType ){
+        this.username = username;
+        this.userType = userType;  
     }
 }
