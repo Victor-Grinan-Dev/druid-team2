@@ -30,11 +30,15 @@ export const postProject = async (newProject) => {
 };
 
 export const postUser = async (newUser) => {
+  console.log("clicked")
   const database = await getDatabase();
-  const newDatabase = { ...database, users: [...database.projects, newUser] };
+  const toPostUser = {
+    ...newUser,
+    id: genId(8),
+  };
+  const newDatabase = { ...database, users: [...database.users, toPostUser] };
   const response = await axios
     .patch(baseUrl, newDatabase)
-    .then((response) => console.log(response))
     .catch((err) => console.log(err));
   return response;
 };
