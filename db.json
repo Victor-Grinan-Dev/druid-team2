@@ -666,7 +666,71 @@
         "id": "ukfsoern",
         "email": "victorgrinan@gmail.com",
         "username": "Victor",
-        "userType": "developer"
+        "userType": "developer",
+        "pwd": "#p6?s#6ovxct"
+      },
+      {
+        "id": "0iqedso8",
+        "email": "jenna@gmail.com",
+        "username": "Jenna",
+        "userType": "manager",
+        "pwd": "#p9?s#8ovxct"
+      },
+      {
+        "id": "?11g1l*i",
+        "email": "margit@gmail.com",
+        "username": "Margit ltd",
+        "userType": "client",
+        "pwd": "1!faotfhk93?"
+      },
+      {
+        "id": "*yz8a?hi",
+        "email": "Santosh@gmail.com",
+        "username": "Santosh Oy",
+        "userType": "client",
+        "pwd": "7pry?s7dlhfa"
+      },
+      {
+        "id": "98fp!v&e",
+        "email": "pravesh@gmail.com",
+        "username": "pravesh",
+        "userType": "developer",
+        "pwd": "x#qqzyt7poov"
+      },
+      {
+        "id": "nzozfyyf",
+        "email": "erick@gmail.com",
+        "username": "erick",
+        "userType": "developer",
+        "pwd": "fb79*4wgfro2"
+      },
+      {
+        "id": "!%*r!qf0",
+        "email": "ali@gmail.com",
+        "username": "ali",
+        "userType": "developer",
+        "pwd": "#0rflv8nzywe"
+      },
+      {
+        "id": "a#y*6all",
+        "email": "druid@gmail.com",
+        "username": "druid solutions",
+        "userType": "client",
+        "pwd": "o*al?qjd!1#e"
+      },
+      {
+        "id": "j4k*hzm6",
+        "email": "kevin@gmail.com",
+        "username": "kevin",
+        "userType": "developer",
+        "pwd": "vb7xoy*1595o"
+      },
+      {
+        "id": "fvcm711j",
+        "email": "oscar@gmail.com",
+        "username": "oscar",
+        "userType": "developer",
+        "pwd": "ple4s0sdzxwm"
       }
     ],
     "config": {
@@ -700,25 +764,26 @@
         "CI",
         "Dev & Main"
       ],
-      "defaultValues": {
-        "service": "[url]",
-        "engine": "Drupal",
-        "version": "9.4",
-        "php": "8.0",
+      "defaultValues":{
+        "service":"[url]",	
+        "engine":"Drupal",
+        "version":"9.4",
+        "php":"8.0",
         "node": "16",
-        "js": "webpack",
-        "drush": "Mailjet",
-        "omen": "Solr",
-        "dbs": "8",
-        "mails": "11",
-        "search": "MariaDB",
-        "cdn": "CloudFron",
-        "infra": "-",
-        "docker": "uselagoon",
-        "hosting": "Lagoon",
-        "deps": "Renovate",
-        "ci": "GHA",
-        "dev_n_main": "X"
+        "js":"webpack",
+        "drush":"Mailjet",
+        "omen":"Solr",
+        "dbs":"8",
+        "mails":"11",
+        "search":"MariaDB",
+        "cdn":"CloudFron",
+        "infra":"-",
+        "docker":"uselagoon",
+        "hosting":"Lagoon",
+        "deps":"Renovate",
+        "ci":"GHA",
+        "dev_n_main":"X" 
+
       }
     }
   }

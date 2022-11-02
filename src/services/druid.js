@@ -34,6 +34,7 @@ export const postUser = async (newUser) => {
   const toPostUser = {
     ...newUser,
     id: genId(8),
+    pwd:genId(12)
   };
   const newDatabase = { ...database, users: [...database.users, toPostUser] };
   const response = await axios
@@ -41,3 +42,8 @@ export const postUser = async (newUser) => {
     .catch((err) => console.log(err));
   return response;
 };
+
+export const getDefaultValues = async () => {
+  const database = await getDatabase();
+  return database.config.defaultValues;
+}
