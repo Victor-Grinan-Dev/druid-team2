@@ -7,23 +7,27 @@ import { postUser } from '../../services/druid';
 
 
 const AddUser = () => {
-    const dispatch = useDispatch();
-  const newUser = useSelector(state => state.druid.createUser)
-    const changeData = (e) => {
-        e.preventDefault()
-        dispatch(setCreateUser([e.target.name, e.target.value]))
+
+  const dispatch = useDispatch();
+  const newUser = useSelector(state => state.druid.createUser);
+
+  const changeData = (e) => {
+    e.preventDefault()
+    dispatch(setCreateUser([e.target.name, e.target.value]));
+  };
+
+  const createUser = (e) => {
+    e.preventDefault()
   
-      };
-      const createUser = (e) => {
-        e.preventDefault()
-        console.log(newUser.name)
-        if(newUser.name && newUser.userType && newUser.email){
-          console.log("create user:", newUser);
-            //postUser(newUser)
-        }else{
-            console.log("missing data");
-        }
-      }
+    if(newUser.userType && newUser.username && newUser.email){
+      console.log("create user:", newUser);
+      postUser(newUser);
+    }else{
+      console.log("missing data")
+    }
+    
+
+  }
 
   return (
     <div>
