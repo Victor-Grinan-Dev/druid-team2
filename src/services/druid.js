@@ -43,7 +43,22 @@ export const postUser = async (newUser) => {
   return response;
 };
 
+export const getDevelopers = async () => {
+  const database = await getDatabase();
+  return database.users.filter(user => {
+    return user.userType === "developer";
+  });
+}
+
+export const getCustomers = async () => {
+  const database = await getDatabase();
+  return database.users.filter(user => {
+    return user.userType === "customer";
+  });
+}
+
 export const getDefaultValues = async () => {
   const database = await getDatabase();
   return database.config.defaultValues;
 }
+

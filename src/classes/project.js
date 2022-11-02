@@ -8,9 +8,9 @@ export class Project {
     status = "started"; //started, progress, complete, pending
     services = [];
 
-    constructor(name, client ){
+    constructor(name, customer ){
         this.name = name;
-        this.client = client;
+        this.customer = customer;
         this.code = genId();
         this.services.push(new Service("1", "url1"))
     }

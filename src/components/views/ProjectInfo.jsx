@@ -5,7 +5,6 @@ import TableRow from "../TableRow";
 const ProjectInfo = () => {
   const location = useLocation();
   const project = location.state;
-  console.log(project.services);
   const services = project.services;
 
   return (
