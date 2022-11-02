@@ -1,6 +1,13 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
+import TableRow from "../TableRow";
 
 const ProjectInfo = () => {
+  const location = useLocation();
+  const project = location.state;
+  console.log(project.services);
+  const services = project.services;
+
   return (
     <div className="infoContainer">
 
@@ -10,9 +17,9 @@ const ProjectInfo = () => {
       </div>
 
       <div className="projectInfo">
-        <h3>Project name</h3>
+        <h3>Project name: {project.name}</h3>
         <table className="table">
-          <thead>
+          <thead className="tableHead">
             <tr>
               <th>Service</th>
               <th>Engine</th>
@@ -34,47 +41,10 @@ const ProjectInfo = () => {
               <th>dev & main</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td>url1</td>
-              <td>Drupal</td>
-              <td>9.4</td>
-              <td>8.0</td>
-              <td>16</td>
-              <td>webpack</td>
-              <td>Mailjet</td>
-              <td>Solr 8</td>
-              <td>11</td>
-              <td>x</td>
-              <td>MariaDB 10.5</td>
-              <td>CloudFront</td>
-              <td>-</td>
-              <td>uselagoon</td>
-              <td>Lagoon</td>
-              <td>Renovate</td>
-              <td>GHA</td>
-              <td>x</td>
-            </tr>
-            <tr>
-              <td>url2</td>
-              <td>Drupal</td>
-              <td>8.9</td>
-              <td>7.3</td>
-              <td>8</td>
-              <td>x</td>
-              <td>x</td>
-              <td>x</td>
-              <td>x</td>
-              <td>x</td>
-              <td>x</td>
-              <td>x</td>
-              <td>x</td>
-              <td>x</td>
-              <td>x</td>
-              <td>x</td>
-              <td>x</td>
-              <td>x</td>
-            </tr>
+          <tbody className="tableBody">
+            {services.map((service, i) => (
+              <TableRow key={i} service={service} />
+            ))}
           </tbody>
         </table>
       </div>
