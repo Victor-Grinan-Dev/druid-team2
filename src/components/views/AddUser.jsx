@@ -1,13 +1,12 @@
-import React, { useEffect } from 'react';
+import React, { useEffect } from "react";
 
-import { useDispatch, useSelector } from 'react-redux';
-import { setCreateUser } from '../../features/druidSlice';
-import { postUser } from '../../services/druid';
+import { useDispatch, useSelector } from "react-redux";
+import { setCreateUser } from "../../features/druidSlice";
+import { postUser } from "../../services/druid";
 
 const AddUser = () => {
-
   const dispatch = useDispatch();
-  const newUser = useSelector(state => state.druid.createUser);
+  const newUser = useSelector((state) => state.druid.createUser);
 
   const changeData = (e) => {
     e.preventDefault();
@@ -15,50 +14,84 @@ const AddUser = () => {
   };
 
   const createUser = (e) => {
-    e.preventDefault()
-  
-    if(newUser.userType && newUser.username && newUser.email){
+    e.preventDefault();
+
+    if (newUser.userType && newUser.username && newUser.email) {
       console.log("create user:", newUser);
       postUser(newUser);
-    }else{
-      console.log("missing data")
+    } else {
+      console.log("missing data");
     }
-  }
-    
+  };
+
   return (
     <div>
-        <form  onSubmit={createUser}>
+      <h3 className="addUserH3">Create new user</h3>
+      <form onSubmit={createUser}>
+        <div className="createUserContainer">
+          <div>
+            <label htmlFor="username" className="createUserLabels">
+              {" "}
+              Username:{" "}
+            </label>
+            <input
+              type="text"
+              name="username"
+              id="name"
+              className="createUserInputs"
+              onChange={changeData}
+            />
+          </div>
+          <div>
+            <label htmlFor="email" className="createUserLabels">
+              {" "}
+              Email:{" "}
+            </label>
+            <input
+              type="text"
+              name="email"
+              id="name"
+              className="createUserInputs"
+              onChange={changeData}
+            />
+          </div>
 
           <div>
-            <div >
-                <label htmlFor="username">  Username: </label>
-                <input type="text" name="username" id="name" onChange={changeData} />
-            </div>
-            <div >
-                <label htmlFor="email">  email: </label>
-                <input type="text" name="email" id="name" onChange={changeData} />
-            </div>
-
-            <div >
-              <label htmlFor="customer">User type</label>
-              <select name="userType"  onChange={changeData}>
-                <option hidden>Choose</option>
-                <option value="developer">Developer</option>
-                <option value="customer">customer</option>
-                <option value="manager">Project Manager</option>
-              </select>
-            </div>
-{
-              newUser.userType === "customer" && <div >
-              <label htmlFor="company">  Company: </label>
-              <input type="text" name="company" id="company" onChange={changeData} />
-              </div>
-}
-            <input type="submit" />
+            <label htmlFor="customer" className="createUserLabels">
+              {" "}
+              User type:{" "}
+            </label>
+            <select
+              name="userType"
+              className="createUserInputs"
+              onChange={changeData}
+            >
+              <option hidden>Choose</option>
+              <option value="developer">Developer</option>
+              <option value="customer">Customer</option>
+              <option value="manager">Project Manager</option>
+            </select>
           </div>
-        </form>
+          {newUser.userType === "customer" && (
+            <div>
+              <label htmlFor="company"> Company: </label>
+              <input
+                type="text"
+                name="company"
+                id="company"
+                onChange={changeData}
+              />
+            </div>
+          )}
+          <input
+            type="submit"
+            value="Create user"
+            className="createUserButton"
+          />
+        </div>
+      </form>
     </div>
-  )
-}
+  );
+};
 
 export default AddUser;
