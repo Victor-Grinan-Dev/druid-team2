@@ -30,7 +30,7 @@
           }
         ],
         "name": "Project 1",
-        "customer": "Victor oy"
+        "customer": "Victor Oy"
       },
       {
         "id": 2,
@@ -166,7 +166,7 @@
           }
         ],
         "name": "Victor",
-        "customer": "Victor oy"
+        "customer": "Victor Oy"
       },
       {
         "id": 3,
@@ -383,115 +383,10 @@
             "dev_n_main": "X",
             "id": 10,
             "service": "url10"
-          },
-          {
-            "engine": "Drupal",
-            "version": "9.4",
-            "php": "8.0",
-            "node": "16",
-            "js": "webpack",
-            "drush": "Mailjet",
-            "omen": "Solr",
-            "dbs": "8",
-            "mails": "11",
-            "search": "MariaDB",
-            "cdn": "CloudFron",
-            "infra": "-",
-            "docker": "uselagoon",
-            "hosting": "Lagoon",
-            "deps": "Renovate",
-            "ci": "GHA",
-            "dev_n_main": "X",
-            "id": 11,
-            "service": "url11"
-          },
-          {
-            "engine": "Drupal",
-            "version": "9.4",
-            "php": "8.0",
-            "node": "16",
-            "js": "webpack",
-            "drush": "Mailjet",
-            "omen": "Solr",
-            "dbs": "8",
-            "mails": "11",
-            "search": "MariaDB",
-            "cdn": "CloudFron",
-            "infra": "-",
-            "docker": "uselagoon",
-            "hosting": "Lagoon",
-            "deps": "Renovate",
-            "ci": "GHA",
-            "dev_n_main": "X",
-            "id": 12,
-            "service": "url12"
-          },
-          {
-            "engine": "Drupal",
-            "version": "9.4",
-            "php": "8.0",
-            "node": "16",
-            "js": "webpack",
-            "drush": "Mailjet",
-            "omen": "Solr",
-            "dbs": "8",
-            "mails": "11",
-            "search": "MariaDB",
-            "cdn": "CloudFron",
-            "infra": "-",
-            "docker": "uselagoon",
-            "hosting": "Lagoon",
-            "deps": "Renovate",
-            "ci": "GHA",
-            "dev_n_main": "X",
-            "id": 13,
-            "service": "url13"
-          },
-          {
-            "engine": "Drupal",
-            "version": "9.4",
-            "php": "8.0",
-            "node": "16",
-            "js": "webpack",
-            "drush": "Mailjet",
-            "omen": "Solr",
-            "dbs": "8",
-            "mails": "11",
-            "search": "MariaDB",
-            "cdn": "CloudFron",
-            "infra": "-",
-            "docker": "uselagoon",
-            "hosting": "Lagoon",
-            "deps": "Renovate",
-            "ci": "GHA",
-            "dev_n_main": "X",
-            "id": 14,
-            "service": "url14"
-          },
-          {
-            "engine": "Drupal",
-            "version": "9.4",
-            "php": "8.0",
-            "node": "16",
-            "js": "webpack",
-            "drush": "Mailjet",
-            "omen": "Solr",
-            "dbs": "8",
-            "mails": "11",
-            "search": "MariaDB",
-            "cdn": "CloudFron",
-            "infra": "-",
-            "docker": "uselagoon",
-            "hosting": "Lagoon",
-            "deps": "Renovate",
-            "ci": "GHA",
-            "dev_n_main": "X",
-            "id": 15,
-            "service": "url15"
           }
         ],
         "name": "Jenna",
-        "customer": "Jenna oy"
+        "customer": "Jenna Oy"
       },
       {
         "id": 4,
@@ -542,8 +437,8 @@
             "service": "url2"
           }
         ],
-        "name": "Poke app",
-        "customer": "Asdasdasd"
+        "name": "Project 2",
+        "customer": "Asdasdasd Oy"
       },
       {
         "id": 5,
@@ -657,8 +552,102 @@
             "service": "url5"
           }
         ],
-        "name": "KEVIN",
-        "customer": "Victor oy"
+        "name": "Project 3",
+        "customer": "Victor Oy"
+      },
+      {
+        "id": 6,
+        "code": "aVVF",
+        "developers": "Ali",
+        "status": "started",
+        "services": [
+          {
+            "engine": "Drupal",
+            "version": "9.4",
+            "php": "8.0",
+            "node": "16",
+            "js": "webpack",
+            "drush": "Mailjet",
+            "omen": "Solr",
+            "dbs": "8",
+            "mails": "11",
+            "search": "MariaDB",
+            "cdn": "CloudFron",
+            "infra": "-",
+            "docker": "uselagoon",
+            "hosting": "Lagoon",
+            "deps": "Renovate",
+            "ci": "GHA",
+            "dev_n_main": "X",
+            "id": 2,
+            "service": "url2"
+          },
+          {
+            "engine": "Drupal",
+            "version": "9.4",
+            "php": "8.0",
+            "node": "16",
+            "js": "webpack",
+            "drush": "Mailjet",
+            "omen": "Solr",
+            "dbs": "8",
+            "mails": "11",
+            "search": "MariaDB",
+            "cdn": "CloudFron",
+            "infra": "-",
+            "docker": "uselagoon",
+            "hosting": "Lagoon",
+            "deps": "Renovate",
+            "ci": "GHA",
+            "dev_n_main": "X",
+            "id": 2,
+            "service": "ur"
+          },
+          {
+            "engine": "Drupal",
+            "version": "9.4",
+            "php": "8.0",
+            "node": "16",
+            "js": "webpack",
+            "drush": "Mailjet",
+            "omen": "Solr",
+            "dbs": "8",
+            "mails": "11",
+            "search": "MariaDB",
+            "cdn": "CloudFron",
+            "infra": "-",
+            "docker": "uselagoon",
+            "hosting": "Lagoon",
+            "deps": "Renovate",
+            "ci": "GHA",
+            "dev_n_main": "X",
+            "id": 2,
+            "service": "url"
+          },
+          {
+            "engine": "Drupal",
+            "version": "9.4",
+            "php": "8.0",
+            "node": "16",
+            "js": "webpack",
+            "drush": "Mailjet",
+            "omen": "Solr",
+            "dbs": "8",
+            "mails": "11",
+            "search": "MariaDB",
+            "cdn": "CloudFron",
+            "infra": "-",
+            "docker": "uselagoon",
+            "hosting": "Lagoon",
+            "deps": "Renovate",
+            "ci": "GHA",
+            "dev_n_main": "X",
+            "id": 2,
+            "service": "url1"
+          }
+        ],
+        "name": "Project 4",
+        "customer": "Hbc Oy"
       }
     ],
     "users": [
@@ -674,7 +663,7 @@
         "email": "jenna@gmail.com",
         "username": "Jenna",
         "userType": "pm",
-        "pwd": "#p9?s#8ovxct"
+        "pwd": "Jenna123"
       },
       {
         "id": "98fp!v&e",
@@ -729,10 +718,10 @@
       },
       {
         "id": "EBuz2CyJ",
-        "email": "ILKKA@gmail.com",
+        "email": "ilkka@gmail.com",
         "username": "ILKKA",
         "userType": "customer",
-        "company": "ILKKA Oy",
+        "company": "Ilkka Oy",
         "pwd": "nYkJMVLk6IqH"
       }
     ],

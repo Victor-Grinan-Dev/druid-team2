@@ -165,35 +165,67 @@ nav ul li a:hover {
 
 .addProject {
   text-align: center;
+  position: relative;
 }
 
 .addProject h3 {
   color: #fa2d1d;
   font-size: 1.4rem;
-  margin: 0 0 0.5rem 0;
-}
-
-.addProjectForm {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  margin: 0 0 1.7rem 0;
 }
 
 .addProjectInputs {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 
-.projectNameInput,
-.customerInput {
+.essentials {
+  display: flex;
+}
+
+.addProjInput {
+  width: 10rem;
+  height: 1.5rem;
+}
+
+.projDetailsContainer {
+  max-width: 100vw;
+  overflow: scroll;
+  padding: 1rem;
+}
+
+.projectDetails {
   display: flex;
   flex-direction: column;
+  font-size: 0.9rem;
+  margin: 1rem;
 }
 
 .input-section {
   width: 14rem;
   height: 2rem;
   margin: 0 1rem;
+}
+
+.resetButton,
+.addRowButton {
+  width: 7rem;
+  height: 2rem;
+  background-color: white;
+  color: #e42816;
+  box-shadow: 0 0 4px black inset;
+  font-size: 1rem;
+  padding: 0.5rem;
+  border-style: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 0.5rem 1rem;
+}
+
+.resetButton:hover,
+.addRowButton:hover {
+  box-shadow: inset 0 0 6px white;
+  text-shadow: 0 0 1px #e42816;
 }
 
 .createProjectButton {
@@ -216,7 +248,7 @@ nav ul li a:hover {
 
 /* Search */
 
-.search {
+.searchContainer {
   width: 25rem;
   height: 2rem;
   padding: 0.5rem;

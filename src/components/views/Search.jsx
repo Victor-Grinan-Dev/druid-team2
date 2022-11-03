@@ -3,7 +3,7 @@ import React from "react";
 const Search = () => {
   return (
     <div>
-      <input type="text" placeholder="Search" className="search" />
+      <input type="text" placeholder="Search" className="searchContainer" />
       <select name="serachBy" className="searchBy">
         <option value="customer">by customer</option>
         <option value="developer">by developer</option>
