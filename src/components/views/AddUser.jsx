@@ -10,7 +10,7 @@ const AddUser = () => {
   const newUser = useSelector(state => state.druid.createUser);
 
   const changeData = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     dispatch(setCreateUser([e.target.name, e.target.value]));
   };
 
@@ -38,6 +38,7 @@ const AddUser = () => {
                 <label htmlFor="email">  email: </label>
                 <input type="text" name="email" id="name" onChange={changeData} />
             </div>
+
             <div >
               <label htmlFor="customer">User type</label>
               <select name="userType"  onChange={changeData}>
@@ -47,6 +48,12 @@ const AddUser = () => {
                 <option value="manager">Project Manager</option>
               </select>
             </div>
+{
+              newUser.userType === "customer" && <div >
+              <label htmlFor="company">  Company: </label>
+              <input type="text" name="company" id="company" onChange={changeData} />
+              </div>
+}
             <input type="submit" />
           </div>
         </form>

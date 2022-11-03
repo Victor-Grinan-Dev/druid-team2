@@ -1,0 +1,3 @@
+-
+- add developer to project
+- delete developer from project
