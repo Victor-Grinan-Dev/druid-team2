@@ -52,7 +52,7 @@ export const getDevelopers = async () => {
 export const getCustomers = async () => {
   const database = await getDatabase();
   return database.users.filter(user => {
-    return user.userType === "customer";
+    return user.company;
   });
 }
 

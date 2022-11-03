@@ -710,6 +710,30 @@
         "username": "oscar",
         "userType": "developer",
         "pwd": "ple4s0sdzxwm"
+      },
+      {
+        "id": "JLb8Az9H",
+        "email": "margit@gmail.com",
+        "username": "margit",
+        "userType": "customer",
+        "company": "hbc",
+        "pwd": "ctsqsaBPP#4I"
+      },
+      {
+        "id": "uNiKXn%H",
+        "email": "santosh@gmail.com",
+        "username": "santosh",
+        "userType": "customer",
+        "company": "hbc",
+        "pwd": "RTz6ZU*0190L"
+      },
+      {
+        "id": "EBuz2CyJ",
+        "email": "ILKKA@gmail.com",
+        "username": "ILKKA",
+        "userType": "customer",
+        "company": "ILKKA Oy",
+        "pwd": "nYkJMVLk6IqH"
       }
     ],
     "config": {

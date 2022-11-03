@@ -36,8 +36,13 @@ const AddProject = () => {
     });
 
     getCustomers().then(res => {
-      const temp = res;
-      setCustomers(temp);
+      const unique = []
+      for (let item of res){
+        if (!unique.includes(item.company)){
+          unique.push(item.company)
+        }
+      }
+      setCustomers(unique);
     });
   }, []);
 
@@ -109,9 +114,8 @@ const AddProject = () => {
               <select name="customer" id="name" onChange={changeData} >
                 <option value="" hidden> choose </option>
                 {
-
                     customers.map((cust, i) => {
-                    return <option value={cust.username} key={i}>{capitalStart(cust.username)}</option>
+                    return <option value={cust} key={i}>{cust}</option>
                   })
                   
                 }
