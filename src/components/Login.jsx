@@ -1,4 +1,5 @@
 import axios from "axios";
+import Cookies from "js-cookie";
 import React, { useRef, useContext, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import logo from "../assets/images/logo.jpg";
@@ -41,23 +42,9 @@ const Login = () => {
             localStorage.setItem("druid", JSON.stringify(element));
             dispatch(setIsLogged(true));
             dispatch(setUser(element));
+            Cookies.set("druidLog", element.id )
           }
         });
-
-/*
-        const data = response.data;
-        for(let item of data){
-            if (item.username === user && item.pwd === pwd){
-                //set
-                dispatch(setIsLogged(true));
-                dispatch(setUser(item));
-                
-                //reset
-                setUsername('');
-                setPwd('');
-            }
-        };
-*/
 
     } catch (err){
         if(!err?.response){
