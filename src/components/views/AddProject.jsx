@@ -12,7 +12,12 @@ import { Service } from "../../classes/service";
 import ProjectServiceRow from "../ProjectServiceRow";
 
 //service
-import { getCustomers, getDefaultValues, getDevelopers, postProject } from "../../services/druid";
+import {
+  getCustomers,
+  getDefaultValues,
+  getDevelopers,
+  postProject,
+} from "../../services/druid";
 
 //functions
 import { capitalStart } from "../../functions/capitalStart";
@@ -25,21 +30,21 @@ const AddProject = () => {
 
   useEffect(() => {
     dispatch(setProject(new Project("name", "customer")));
-    getDefaultValues().then(res => {
+    getDefaultValues().then((res) => {
       const temp = res;
       setDefaultValues(temp);
     });
 
-    getDevelopers().then(res => {
+    getDevelopers().then((res) => {
       const temp = res;
       setDevelopers(temp);
     });
 
-    getCustomers().then(res => {
-      const unique = []
-      for (let item of res){
-        if (!unique.includes(item.company)){
-          unique.push(item.company)
+    getCustomers().then((res) => {
+      const unique = [];
+      for (let item of res) {
+        if (!unique.includes(item.company)) {
+          unique.push(item.company);
         }
       }
       setCustomers(unique);
@@ -48,32 +53,39 @@ const AddProject = () => {
 
   const config = useSelector((state) => state.druid.config);
   const project = useSelector((state) => state.druid.project);
-  const serviceAttr = useSelector(state => state.druid.config.service_attrs);
+  const serviceAttr = useSelector((state) => state.druid.config.service_attrs);
 
   const changeData = (e) => {
-    dispatch(setProject({ ...project, [e.target.name]: capitalStart(e.target.value) }));
+    dispatch(
+      setProject({ ...project, [e.target.name]: capitalStart(e.target.value) })
+    );
   };
 
   const changeDetail = (e) => {
-    const[rowIndex, name] = e.target.name.split(" ")
-    const service = project.services[rowIndex]
-    const newService = {...service, [name]:e.target.value}
-    const newServices = project.services.filter(service => {
+    const [rowIndex, name] = e.target.name.split(" ");
+    const service = project.services[rowIndex];
+    const newService = { ...service, [name]: e.target.value };
+    const newServices = project.services.filter((service) => {
       return parseInt(service.id, 10) !== parseInt(rowIndex, 10) + 1;
-    })
-    dispatch(setProject({...project, "services":[...newServices, newService]}))
+    });
+    dispatch(
+      setProject({ ...project, services: [...newServices, newService] })
+    );
   };
 
   const createProject = (e) => {
-    e.preventDefault()
-    if ((project.name && project.customer) && (project.name !== "name" || project.customer !== "customer")) {
-      
+    e.preventDefault();
+    if (
+      project.name &&
+      project.customer &&
+      (project.name !== "name" || project.customer !== "customer")
+    ) {
       const newProject = new Project(project.name, project.customer);
-      
+
       //newProject.code = genId();
 
-      for (let attr of config.projects_attrs){
-        newProject[attr] = project[attr]
+      for (let attr of config.projects_attrs) {
+        newProject[attr] = project[attr];
       }
       dispatch(addProject(newProject));
       postProject(newProject);
@@ -83,92 +95,119 @@ const AddProject = () => {
   };
 
   const addRow = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     const num = project.services.length + 1;
-    const tempServ = {...project, "services": [...project.services, new Service(num, `url${num}`)]}
+    const tempServ = {
+      ...project,
+      services: [...project.services, new Service(num, `url${num}`)],
+    };
     //console.log(tempServ);
-    dispatch(setProject(tempServ))
-  }
+    dispatch(setProject(tempServ));
+  };
   return (
     <div className="addProject">
       <h3>Create new project</h3>
       <form className="addProjectForm">
-
-        <div className="addProjectInputs" style={{display:"flex", flexDirection:"column"}}>
-
-          <div className="essentials"  style={{display:"flex"}}>
-
+        <div className="addProjectInputs">
+          <div className="essentials">
             <div className="input-section">
               <div>
                 <label htmlFor="name">Project name: </label>
               </div>
-                
-                <input type="text" name="name" id="name" onChange={changeData} />
-              </div>
+
+              <input
+                type="text"
+                name="name"
+                id="name"
+                onChange={changeData}
+                className="addProjInput"
+              />
+            </div>
 
             <div className="input-section">
               <div>
                 <label htmlFor="customer">Customer: </label>
               </div>
-              
-              <select name="customer" id="name" onChange={changeData} >
-                <option value="" hidden> choose </option>
-                {
-                    customers.map((cust, i) => {
-                    return <option value={cust} key={i}>{cust}</option>
-                  })
-                  
-                }
+
+              <select
+                name="customer"
+                id="name"
+                onChange={changeData}
+                className="addProjInput"
+              >
+                <option value="" hidden>
+                  {" "}
+                  Choose{" "}
+                </option>
+                {customers.map((cust, i) => {
+                  return (
+                    <option value={cust} key={i}>
+                      {cust}
+                    </option>
+                  );
+                })}
               </select>
             </div>
 
-            <div className="input-section" >
+            <div className="input-section">
               <div>
-                <label htmlFor="customer">add developer</label>
+                <label htmlFor="customer">Add developer:</label>
               </div>
-              
-              <select name="developers" onChange={changeData}>
-                <option value="" hidden>choose</option>
-                {
-                  developers.map((dev, i) => (
-                    <option key={i} value={dev.username}>{capitalStart(dev.username)} </option>
-                  ))
-                }
+
+              <select
+                name="developers"
+                onChange={changeData}
+                className="addProjInput"
+              >
+                <option value="" hidden>
+                  Choose
+                </option>
+                {developers.map((dev, i) => (
+                  <option key={i} value={dev.username}>
+                    {capitalStart(dev.username)}{" "}
+                  </option>
+                ))}
               </select>
-              <p onClick={(e)=>console.log("added", e.target.value)}>add +</p>
+              <p onClick={(e) => console.log("added", e.target.value)}>add +</p>
             </div>
 
             <div className="developersInput">
               <label htmlFor="developers"> Developers assigned:</label>
-              {
-                <p>[all developers in the project maped here]</p>
-              }
+              {<p>[all developers in the project will show here]</p>}
             </div>
-
           </div>
-          
-          <div className="projectDetails" style={{display:"flex", fontSize:"8px", flexDirection:"column"}}>
-            
-            {
-                project?.services?.map((_, j) => (
-                  
-                  <div className="row" name={`${j}`} key={j} style={{
-                    display:"flex",
-                    flexDirection:"row"
-                  }}>
 
+          <div className="projDetailsContainer">
+            <div className="projectDetails">
+              {project?.services?.map((_, j) => (
+                <div
+                  className="row"
+                  name={`${j}`}
+                  key={j}
+                  style={{
+                    display: "flex",
+                    flexDirection: "row",
+                  }}
+                >
                   {serviceAttr?.map((attr, i) => (
-                    
-                      <ProjectServiceRow key={`${j}${i}`} attr={attr} changeDetail={changeDetail} index={j} defaultValues={defaultValues}/>
-                    
-                  ))
-                  }
-                  </div>
-                ))
-            }
-            <button>reset</button>
+                    <ProjectServiceRow
+                      key={`${j}${i}`}
+                      attr={attr}
+                      changeDetail={changeDetail}
+                      index={j}
+                      defaultValues={defaultValues}
+                    />
+                  ))}
+                </div>
+              ))}
+            </div>
           </div>
-          <button style={{width:"75px", marginTop:"10px"}} onClick={addRow}>add row</button>
+          <div>
+            <button className="addRowButton" onClick={addRow}>
+              Add row
+            </button>
+            <button className="resetButton">Reset</button>
+          </div>
         </div>
         <input
           type="submit"

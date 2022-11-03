@@ -13,8 +13,9 @@ const CustomersProjects = () => {
 
   return (
     <div className="customersProjects">
-
-      <Search />
+      <div className="searchProjects">
+        <Search />
+      </div>
       <h2 className="projectsH2">Projects</h2>
 
       <div>

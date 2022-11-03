@@ -1,6 +1,7 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import TableRow from "../TableRow";
+import AddProject from "./AddProject";
 
 const ProjectInfo = () => {
   const location = useLocation();
@@ -9,11 +10,7 @@ const ProjectInfo = () => {
 
   return (
     <div className="infoContainer">
-
-      <div>
-        <button className="editButton"> edit </button>
-        <button className="delButton">X</button>
-      </div>
+      <div>{/* <button className="delButton">Delete</button> */}</div>
 
       <div className="projectInfo">
         <h3>Project name: {project.name}</h3>
@@ -46,6 +43,9 @@ const ProjectInfo = () => {
             ))}
           </tbody>
         </table>
+        <Link to="/addproject">
+          <button className="editButton">Edit</button>
+        </Link>
       </div>
     </div>
   );
