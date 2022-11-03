@@ -32,7 +32,7 @@ const Login = () => {
         const response = await axios.get(LOGIN_URL)
         const data = response.data;
         for(let item of data){
-            if (item.username === user && item.id === pwd){
+            if (item.username === user && item.pwd === pwd){
                 //set
                 dispatch(setIsLogged(true));
                 dispatch(setUser(item));
