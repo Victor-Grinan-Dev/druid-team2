@@ -7,7 +7,7 @@ import logo from "../assets/images/logo.jpg";
 import AuthContext from "../context/AuthProvider";
 import { setIsLogged, setUser } from "../features/druidSlice";
 
-const LOGIN_URL = 'http://localhost:8010/database/users'; //auth
+const LOGIN_URL = 'http://localhost:8010/database'; //auth
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -27,21 +27,37 @@ const Login = () => {
       setErrMsg('');
   },[user, pwd]);
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    
     try{
         const response = await axios.get(LOGIN_URL)
+        const arr = response.data.users;
+
+        arr.forEach(element => {
+          if (element.username.toLowerCase() === user.toLowerCase()){
+            console.log(element.username );
+            console.log(element.pwd );
+            localStorage.setItem("druid", JSON.stringify(element));
+            dispatch(setIsLogged(true));
+            dispatch(setUser(element));
+          }
+        });
+
+/*
         const data = response.data;
         for(let item of data){
             if (item.username === user && item.pwd === pwd){
                 //set
                 dispatch(setIsLogged(true));
                 dispatch(setUser(item));
-
+                
                 //reset
                 setUsername('');
                 setPwd('');
             }
         };
+*/
 
     } catch (err){
         if(!err?.response){
@@ -53,7 +69,8 @@ const Login = () => {
         } else {
             setErrMsg('Login failed');
         }
-        errRef.current.focus();
+        console.log(err)
+        //errRef.current.focus();
     }
 }
   return (
@@ -66,11 +83,11 @@ const Login = () => {
           answers to your questions.
         </p>
       </div>
-      <form onStalledCapture={handleSubmit} >
+      <form onSubmit={handleSubmit} >
       <div className="loginRightSide">
         <div className="username">
           <label htmlFor="username">Username</label>
-          <input type="text" placeholder="Enter username" />
+          <input type="text" placeholder="Enter username" onChange={(e)=>setUsername(e.target.value)}/>
         </div>
 
         <div className="password">
