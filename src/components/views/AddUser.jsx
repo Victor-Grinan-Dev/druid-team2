@@ -24,7 +24,7 @@ const AddUser = () => {
       console.log("missing data")
     }
   }
-
+    
   return (
     <div>
         <form  onSubmit={createUser}>
