@@ -11,7 +11,7 @@ body {
 main {
   background-color: #353535;
   color: white;
-  padding: 5rem;
+  padding: 3rem;
   min-height: 50vh;
 }
 
@@ -59,7 +59,6 @@ main {
   margin: 0.5rem;
   font-size: 1.1rem;
 }
-
 
 .username input,
 .password input {
@@ -215,12 +214,31 @@ nav ul li a:hover {
   text-shadow: 0 0 2px white;
 }
 
+/* Search */
+
+.search {
+  width: 25rem;
+  height: 2rem;
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+.searchBy {
+  width: 8rem;
+  height: 2rem;
+  padding: 0.3rem;
+}
+
 /* CustomersProjects */
 
 .customersProjects {
   background-color: #353535;
   color: white;
-  padding: 4rem 10rem;
+  padding: 4rem 7rem;
+}
+
+.searchProjects {
+  margin: 1rem;
 }
 
 .projectsH2 {
@@ -254,9 +272,20 @@ nav ul li a:hover {
   margin: 0.1rem;
 }
 
+.editButton {
+  width: 7rem;
+  height: 3rem;
+  margin: 1rem;
+}
+
+.editButton:hover {
+  box-shadow: inset 0 0 6px white;
+  text-shadow: 0 0 2px white;
+}
+
 .infoButton {
   width: 7rem;
- }
+}
 
 .infoButton:hover {
   box-shadow: inset 0 0 6px white;
@@ -267,7 +296,7 @@ nav ul li a:hover {
 
 .infoContainer {
   background-color: #353535;
-  padding: 4rem;
+  padding: 2rem;
   position: relative;
 }
 
@@ -276,7 +305,7 @@ nav ul li a:hover {
   color: black;
   padding: 1rem;
   border-radius: 2px;
-  height: 50vh;
+  min-height: 50vh;
   overflow: auto;
 }
 

@@ -6,7 +6,9 @@ import { capitalStart } from "../../functions/capitalStart";
 const ProjectBox = ({ project }) => {
   return (
     <div className="projectBox">
-      <p>{capitalStart(project.name)} App -{project.client} Oy</p>
+      <p>
+        {capitalStart(project.name)} - {project.customer}
+      </p>
       <Link to={`/projectinfo/${project.name}`} state={project}>
         <button className="infoButton">More info</button>
       </Link>
