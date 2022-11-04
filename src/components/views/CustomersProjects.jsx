@@ -28,7 +28,14 @@ const CustomersProjects = () => {
         });
 
       case "engine":
-        return projects
+        let projArr = [];
+        for (let proj of projects){
+          for (let serv of proj.services){
+            if (serv.engine.toLowerCase().includes(search)){
+              projArr.push(proj);
+            }
+          }
+        }
         /*
         .filter(proj => {
           return proj.services.filter(service =>{
@@ -36,7 +43,7 @@ const CustomersProjects = () => {
           })
         })
         */
-        ;
+        return projArr;
     }
   }
 
