@@ -62,7 +62,6 @@ export const druidSlice = createSlice({
                 [name] : value
             };
         },
-
     }
 })
 

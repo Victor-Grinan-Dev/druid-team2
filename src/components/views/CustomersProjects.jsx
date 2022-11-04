@@ -31,18 +31,12 @@ const CustomersProjects = () => {
         let projArr = [];
         for (let proj of projects){
           for (let serv of proj.services){
-            if (serv.engine.toLowerCase().includes(search)){
+            if (serv.engine.toLowerCase().includes(search.toLowerCase())){
               projArr.push(proj);
             }
           }
         }
-        /*
-        .filter(proj => {
-          return proj.services.filter(service =>{
-            return service.engine.toLowerCase().includes(search.toLowerCase())
-          })
-        })
-        */
+
         return projArr;
     }
   }
