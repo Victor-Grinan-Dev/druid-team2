@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import ProjectBox from "./ProjectBox";
 import { useSelector } from "react-redux";
 import Search from "./Search";
@@ -7,6 +7,38 @@ const CustomersProjects = () => {
   const projects = useSelector((state) => state.druid.projects);
   const isLoading = useSelector((state) => state.druid.isLoading);
   const user = useSelector((state) => state.druid.user);
+  const search = useSelector(state => state.druid.search);
+  const searchBy = useSelector(state => state.druid.searchBy);
+
+  const filteredProjectsHandler = () => {
+    switch (searchBy) {
+      case "customer":
+        return projects.filter(proj => {
+          return proj.customer.toLowerCase().includes(search.toLowerCase());
+        });
+
+      case "developer":
+        return projects.filter(proj => {
+          return proj.developers.toLowerCase().includes(search.toLowerCase());
+        });
+
+      case "project": 
+        return projects.filter(proj => {
+          return proj.name.toLowerCase().includes(search.toLowerCase());
+        });
+
+      case "engine":
+        return projects
+        /*
+        .filter(proj => {
+          return proj.services.filter(service =>{
+            return service.engine.toLowerCase().includes(search.toLowerCase())
+          })
+        })
+        */
+        ;
+    }
+  }
 
   const access = () => {
     if (user.userType === "customer") {
@@ -25,7 +57,7 @@ const CustomersProjects = () => {
       );
     }
 
-    return projects.map((project, i) => (
+    return filteredProjectsHandler().map((project, i) => (
       <ProjectBox project={project} key={i} />
     ));
   };
@@ -45,6 +77,5 @@ const CustomersProjects = () => {
     </div>
   );
 };
-// if ("customer") {render company}
-// if ("developer") {render company that includes developer}  userType === "developer"
+
 export default CustomersProjects;
