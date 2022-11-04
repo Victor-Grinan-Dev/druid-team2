@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import ProjectBox from "./ProjectBox";
 import { useSelector } from "react-redux";
 import Search from "./Search";
