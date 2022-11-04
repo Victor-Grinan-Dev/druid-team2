@@ -1,17 +1,17 @@
 import React from "react";
+import { useSelector } from "react-redux";
+
 import { Link, useLocation } from "react-router-dom";
 import TableRow from "../TableRow";
-import AddProject from "./AddProject";
 
 const ProjectInfo = () => {
   const location = useLocation();
   const project = location.state;
   const services = project.services;
+  const user = useSelector((state) => state.druid.user);
 
   return (
     <div className="infoContainer">
-      <div>{/* <button className="delButton">Delete</button> */}</div>
-
       <div className="projectInfo">
         <h3>Project name: {project.name}</h3>
         <table className="table">
@@ -43,9 +43,11 @@ const ProjectInfo = () => {
             ))}
           </tbody>
         </table>
-        <Link to="/addproject">
-          <button className="editButton">Edit</button>
-        </Link>
+        {user.userType === "pm" && (
+          <Link to="/addproject">
+            <button className="editButton">Edit</button>
+          </Link>
+        )}
       </div>
     </div>
   );
