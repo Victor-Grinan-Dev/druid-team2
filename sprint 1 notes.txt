@@ -1,0 +1,29 @@
+
+- retrieve password 
+- deploy page
+
+project cost (jere)
+issue bills (jere) 
+profile page (jere)
+ - manage their profile.
+user images (jere)
+
+search by engine type (oscar)
+square cards showing quick data about it, single page shows grid of data (oscar)
+
+landing page news letter (toni)
+
+from santosh: decouple user authentication for dupal (module)
+margit: create test user
+
+mikko: newsletter page be used for add also.
+mikko: customer have access to the bills 
+
+Mikko feedback: not all the projects uses all the services attributes, not horizontal.
+mikko: liked picture from the druid website. (oscar)
+mikko: for what custemers are paying for?.
+
+more dinamic, more attributes could be added in future. not all the project have all the attr. column looking, edit service attr at once. global frendly, 
+
+next sprint: mvp ready
+

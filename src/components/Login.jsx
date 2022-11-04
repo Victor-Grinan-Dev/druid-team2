@@ -13,9 +13,11 @@ const LOGIN_URL = 'http://localhost:8010/database'; //auth
 const Login = () => {
   const dispatch = useDispatch();
   const isLogged = (state => state.druid.isLogged);
+
   const [errMsg, setErrMsg] = useState('');
   const userRef = useRef();
   const errRef = useRef();
+
   const [pwd, setPwd] = useState('');
   const [user, setUsername] = useState('');
   const { setAuth } = useContext(AuthContext);
@@ -37,8 +39,7 @@ const Login = () => {
 
         arr.forEach(element => {
           if (element.username.toLowerCase() === user.toLowerCase()){
-            console.log(element.username );
-            console.log(element.pwd );
+ 
             localStorage.setItem("druid", JSON.stringify(element));
             dispatch(setIsLogged(true));
             dispatch(setUser(element));
