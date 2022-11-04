@@ -6,9 +6,7 @@ import { setSearch, setSearchBy } from "../../features/druidSlice";
 
 const Search = () => {
   const dispatch = useDispatch();
-  const search = useSelector(state => state.druid.search);
-  const searchBy = useSelector(state => state.druid.searchBy);
-  
+ 
   const handleSearch = (e) => {
     dispatch(setSearch(e.target.value))
   }
@@ -24,7 +22,6 @@ const Search = () => {
         <option value="project">by project</option>
         <option value="engine">by engine</option>
       </select>
-      <p>by {searchBy}, {search}</p>
     </div>
   );
 };
