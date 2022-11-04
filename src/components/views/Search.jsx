@@ -1,7 +1,7 @@
 import React from "react";
 
 //redux
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setSearch, setSearchBy } from "../../features/druidSlice";
 
 const Search = () => {
