@@ -7,6 +7,39 @@ const CustomersProjects = () => {
   const projects = useSelector((state) => state.druid.projects);
   const isLoading = useSelector((state) => state.druid.isLoading);
   const user = useSelector((state) => state.druid.user);
+  const search = useSelector(state => state.druid.search);
+  const searchBy = useSelector(state => state.druid.searchBy);
+
+  const filteredProjectsHandler = () => {
+    switch (searchBy) {
+      case "customer":
+        return projects.filter(proj => {
+          return proj.customer.toLowerCase().includes(search.toLowerCase());
+        });
+
+      case "developer":
+        return projects.filter(proj => {
+          return proj.developers.toLowerCase().includes(search.toLowerCase());
+        });
+
+      case "project": 
+        return projects.filter(proj => {
+          return proj.name.toLowerCase().includes(search.toLowerCase());
+        });
+
+      case "engine":
+        let projArr = [];
+        for (let proj of projects){
+          for (let serv of proj.services){
+            if (serv.engine.toLowerCase().includes(search.toLowerCase())){
+              projArr.push(proj);
+            }
+          }
+        }
+
+        return projArr;
+    }
+  }
 
   const access = () => {
     if (user.userType === "customer") {
@@ -25,7 +58,7 @@ const CustomersProjects = () => {
       );
     }
 
-    return projects.map((project, i) => (
+    return filteredProjectsHandler().map((project, i) => (
       <ProjectBox project={project} key={i} />
     ));
   };
@@ -45,6 +78,5 @@ const CustomersProjects = () => {
     </div>
   );
 };
-// if ("customer") {render company}
-// if ("developer") {render company that includes developer}  userType === "developer"
+
 export default CustomersProjects;

@@ -238,7 +238,7 @@
             "service": "url3"
           },
           {
-            "engine": "Drupal",
+            "engine": "WordPress",
             "version": "9.4",
             "php": "8.0",
             "node": "16",
