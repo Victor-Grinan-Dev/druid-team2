@@ -13,6 +13,7 @@ export const druidSlice = createSlice({
         //temporal
         isLoading:true,
         search:"",
+        searchBy:"customer",
         project: {},
         createUser: new User(" ", " "),
 
@@ -48,6 +49,9 @@ export const druidSlice = createSlice({
         setSearch(state, action){
             state.search = action.payload;
         },
+        setSearchBy(state, action){
+            state.searchBy = action.payload;
+        },
         setProject(state, action){
             state.project = action.payload;
         },
@@ -74,6 +78,7 @@ export const {
     //temporal
     isLoading,
     setSearch,
+    setSearchBy,
     setProject,
     setCreateUser,
 
