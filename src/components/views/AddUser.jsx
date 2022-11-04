@@ -1,5 +1,3 @@
-import React, { useEffect } from "react";
-
 import { useDispatch, useSelector } from "react-redux";
 import { setCreateUser } from "../../features/druidSlice";
 import { postUser } from "../../services/druid";
@@ -74,11 +72,15 @@ const AddUser = () => {
           </div>
           {newUser.userType === "customer" && (
             <div>
-              <label htmlFor="company"> Company: </label>
+              <label htmlFor="company" className="createUserLabels">
+                {" "}
+                Company:{" "}
+              </label>
               <input
                 type="text"
                 name="company"
                 id="company"
+                className="createUserInputs"
                 onChange={changeData}
               />
             </div>

@@ -11,8 +11,8 @@ body {
 main {
   background-color: #353535;
   color: white;
-  padding: 3rem;
-  min-height: 50vh;
+  padding: 2rem;
+  min-height: 45vh;
 }
 
 /* Login */
@@ -22,8 +22,8 @@ main {
   color: white;
   display: flex;
   flex-direction: row;
-  min-height: 50vh;
-  padding: 5rem;
+  min-height: 40vh;
+  padding: 3rem;
 }
 
 .loginLogo {
