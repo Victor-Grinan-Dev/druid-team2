@@ -31,7 +31,7 @@ const CustomersProjects = () => {
         let projArr = [];
         for (let proj of projects){
           for (let serv of proj.services){
-            if (serv.engine.toLowerCase().includes(search.toLowerCase())){
+            if (serv.engine.toLowerCase().includes(search.toLowerCase()) && !projArr.includes(proj)){
               projArr.push(proj);
             }
           }
