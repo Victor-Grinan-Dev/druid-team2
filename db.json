@@ -782,14 +782,14 @@
       {
         "id": "ukfsoern",
         "email": "victorgrinan@gmail.com",
-        "username": "Victor",
+        "username": "victor",
         "userType": "developer",
         "pwd": "Victor123"
       },
       {
         "id": "0iqedso8",
         "email": "jenna@gmail.com",
-        "username": "Jenna",
+        "username": "jenna",
         "userType": "pm",
         "pwd": "Jenna123"
       },
@@ -839,7 +839,7 @@
       {
         "id": "uNiKXn%H",
         "email": "santosh@gmail.com",
-        "username": "Santosh",
+        "username": "santosh",
         "userType": "customer",
         "company": "Hbc Oy",
         "pwd": "Santosh123"
@@ -847,7 +847,7 @@
       {
         "id": "EBuz2CyJ",
         "email": "ilkka@gmail.com",
-        "username": "ILKKA",
+        "username": "ilkka",
         "userType": "customer",
         "company": "Ilkka Oy",
         "pwd": "nYkJMVLk6IqH"
@@ -855,15 +855,15 @@
       {
         "id": "JYtbIin&",
         "email": "jamesbond@007.com",
-        "company": "Victor Oy",
-        "username": "James",
+        "company": "MI6",
+        "username": "james",
         "userType": "customer",
         "pwd": "pVjYiFxsasHx"
       },
       {
         "id": "Y#A%0*mi",
         "email": "john@mail.com",
-        "username": "John",
+        "username": "john",
         "userType": "manager",
         "pwd": "wzTa3OoVZ#DE"
       },
@@ -871,7 +871,7 @@
         "id": "HChFq6DH",
         "email": "mark@test.com",
         "company": "Victor Oy",
-        "username": "Mark",
+        "username": "mark",
         "userType": "customer",
         "pwd": "lEBKFMg?XkOX"
       },
@@ -879,7 +879,7 @@
         "id": "28ZDwJg0",
         "email": "mike@mail.com",
         "company": "Victor Oy",
-        "username": "Mike",
+        "username": "mike",
         "userType": "customer",
         "pwd": "ICxvJesgoKT!"
       }

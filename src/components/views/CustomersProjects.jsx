@@ -18,6 +18,7 @@ const CustomersProjects = () => {
         });
 
       case "developer":
+        const lowerCaseDevs = []
         return projects.filter(proj => {
           return proj.developers.includes(search);
         });
@@ -31,7 +32,7 @@ const CustomersProjects = () => {
         let projArr = [];
         for (let proj of projects){
           for (let serv of proj.services){
-            if (serv.engine.toLowerCase().includes(search.toLowerCase())){
+            if (serv.engine.toLowerCase().includes(search.toLowerCase()) && !projArr.includes(proj)){
               projArr.push(proj);
             }
           }
@@ -74,6 +75,7 @@ const CustomersProjects = () => {
       </div>
       <h2 className="projectsH2">Projects</h2>
 
+    <p></p>
       <div>{access()}</div>
     </div>
   );

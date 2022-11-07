@@ -17,7 +17,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "server": "json-server -p8010 --w db.json"
+    "server": "json-server -p8010 --w db.json",
+    "local": "serve -s build"
   },
   "eslintConfig": {
     "extends": [

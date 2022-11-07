@@ -8,14 +8,13 @@ const AddUser = () => {
 
   const changeData = (e) => {
     e.preventDefault();
-    dispatch(setCreateUser([e.target.name, e.target.value]));
+    dispatch(setCreateUser([e.target.name, e.target.value.toLowerCase()]));
   };
 
   const createUser = (e) => {
     e.preventDefault();
 
     if (newUser.userType && newUser.username && newUser.email) {
-      console.log("create user:", newUser);
       postUser(newUser);
     } else {
       console.log("missing data");
