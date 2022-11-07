@@ -1,15 +1,20 @@
 import React from "react";
+import { useEffect } from "react";
 
 //redux
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setSearch, setSearchBy } from "../../features/druidSlice";
 
 const Search = () => {
   const dispatch = useDispatch();
- 
+  const searchBy = useSelector(state =>state.druid.searchBy)
   const handleSearch = (e) => {
     dispatch(setSearch(e.target.value))
   }
+
+  useEffect(() => {
+    dispatch(setSearch(""))
+  }, [searchBy]);
 
   return (
     <div>

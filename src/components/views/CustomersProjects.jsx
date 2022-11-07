@@ -18,6 +18,7 @@ const CustomersProjects = () => {
         });
 
       case "developer":
+        const lowerCaseDevs = []
         return projects.filter(proj => {
           return proj.developers.includes(search);
         });
