@@ -74,6 +74,7 @@ const CustomersProjects = () => {
       </div>
       <h2 className="projectsH2">Projects</h2>
 
+    <p></p>
       <div>{access()}</div>
     </div>
   );

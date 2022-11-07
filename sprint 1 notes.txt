@@ -2,26 +2,28 @@
 - retrieve password 
 - deploy page
 
-project cost (jere)
-issue bills (jere) 
-profile page (jere)
+project cost (jere) ?
+issue bills (jere) ?
+
+profile page (jere) ok
  - manage their profile.
-user images (jere)
 
-search by engine type (oscar)
-square cards showing quick data about it, single page shows grid of data (oscar)
+user images (jere) extra
 
-landing page news letter (toni)
+search by engine type (oscar) extra
+square cards showing quick data about it, single page shows grid of data (oscar) ok maybe
+
+landing page news letter (toni) extra
 
 from santosh: decouple user authentication for dupal (module)
-margit: create test user
+margit: create test user ok
 
-mikko: newsletter page be used for add also.
-mikko: customer have access to the bills 
+mikko: newsletter page be used for add also. (click on logo)
+mikko: customer have access to the bills.
 
-Mikko feedback: not all the projects uses all the services attributes, not horizontal.
+Mikko feedback: not all the projects uses all the services attributes, not horizontal. (data enginering, dynamicly)
 mikko: liked picture from the druid website. (oscar)
-mikko: for what custemers are paying for?.
+mikko: for what customers are paying for?.
 
 more dinamic, more attributes could be added in future. not all the project have all the attr. column looking, edit service attr at once. global frendly, 
 
