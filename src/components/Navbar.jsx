@@ -42,6 +42,12 @@ const Navbar = () => {
         }
 
         {
+          user.userType === "pm" &&<li className="projectsLink">
+            <Link to="users">Users</Link>
+          </li>
+        }
+
+        {
           user.username &&<li className="projectsLink">
             <Link to="/" onClick={logout}>Logout</Link>
           </li>
