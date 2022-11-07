@@ -1,10 +1,11 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import { useEffect } from "react";
+import Cookies from "js-cookie";
 
 //redux
 import { useDispatch, useSelector } from "react-redux";
-import { isLoading, setConfig, setIsLogged, setProjects, setUser } from "./features/druidSlice";
+import { isLoading, setConfig, setIsLogged, setProjects, setUser, setUsers } from "./features/druidSlice";
 import druidService from './services/druid';
 
 //components
@@ -15,7 +16,8 @@ import AddProject from "./components/views/AddProject";
 import AddUser from "./components/views/AddUser";
 import Home from "./components/Home";
 import Login from "./components/Login";
-import Cookies from "js-cookie";
+import Users from "./components/views/Users";
+
 
 function App() {
   const dispatch = useDispatch();
@@ -28,6 +30,7 @@ function App() {
 
       const config = res.config;
       dispatch(setProjects(projects));
+      dispatch(setUsers(users));
       dispatch(setConfig(config));
 
       if(Cookies.get("druidLog")){
@@ -49,9 +52,10 @@ function App() {
       <>
           <Route path="customersprojects" element={<CustomersProjects />} />
           <Route path="projectinfo/:name" element={<ProjectInfo />} />
+          <Route path="userinfo/:name" element={<ProjectInfo />} />
           <Route path="addproject" element={<AddProject />} />
           <Route path="adduser" element={<AddUser />} />
-          <Route path="login" element={<Login />} />
+          <Route path="users" element={<Users />} />
       </>
     )
     
