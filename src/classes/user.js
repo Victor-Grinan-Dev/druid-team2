@@ -9,15 +9,6 @@ export class User{
         this.userType = userType; 
         this.firstName = firstName;
         this.lastName = lastName;
-        this.setInitials();
     }
 
-    setInitials(){
-        if(this.firstName && this.lastName){
-            this.initials = [firstName.splice(0)[0].toUpperCase(), lastName.splice(0)[0].toUpperCase()].join()
-        }
-        else {
-            this.initials = username.splice(2)[0];
-        }
-    }
 }
