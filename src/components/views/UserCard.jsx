@@ -13,7 +13,7 @@ const UserCard = ({user}) => {
             <button className="infoButton">More info</button>
         </Link>
         */}
-        <button className="infoButton">More info</button>
+        <Link to="profile" profile={user}><button className="infoButton">More info</button></Link>
     </div>
   )
 }
