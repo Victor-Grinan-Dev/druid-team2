@@ -4,7 +4,7 @@
       {
         "id": 1,
         "code": "gujz",
-        "developers": [],
+        "developers": ["kevin"],
         "status": "started",
         "services": [
           {
@@ -35,7 +35,7 @@
       {
         "id": 2,
         "code": "16ep",
-        "developers": [],
+        "developers": ["eric"],
         "status": "started",
         "services": [
           {
@@ -391,7 +391,7 @@
       {
         "id": 4,
         "code": "cnnw",
-        "developers": [],
+        "developers": ["pravesh"],
         "status": "started",
         "services": [
           {
@@ -445,7 +445,7 @@
         "code": "3fkm",
         "developers": [
           "oscar",
-          "Victor"
+          "victor"
         ],
         "status": "started",
         "services": [
@@ -561,7 +561,7 @@
       {
         "id": 6,
         "code": "aVVF",
-        "developers": "Ali",
+        "developers": "ali",
         "status": "started",
         "services": [
           {
@@ -655,7 +655,7 @@
       {
         "id": 7,
         "code": "YL1q",
-        "developers": "Victor",
+        "developers": "victor",
         "status": "started",
         "services": [
           {
@@ -707,7 +707,7 @@
       {
         "id": 8,
         "code": "p?dL",
-        "developers": "Victor",
+        "developers": "mikke",
         "status": "started",
         "services": [
           {

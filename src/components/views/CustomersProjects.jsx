@@ -53,7 +53,7 @@ const CustomersProjects = () => {
     } else if (user.userType === "developer") {
       return projects.map(
         (project, i) =>
-          project.developers.includes(user.username) && (
+          project.developers.includes(user.username.toLowerCase()) && (
             <ProjectBox project={project} key={i} />
           )
       );
