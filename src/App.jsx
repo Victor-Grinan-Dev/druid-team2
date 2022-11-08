@@ -53,10 +53,11 @@ function App() {
       <>
           <Route path="customersprojects" element={<CustomersProjects />} />
           <Route path="projectinfo/:name" element={<ProjectInfo />} />
-          <Route path="userinfo/:name" element={<ProjectInfo />} />
+          {/* <Route path="userinfo/:name" element={<Profile />} /> */}
           <Route path="addproject" element={<AddProject />} />
           <Route path="adduser" element={<AddUser />} />
           <Route path="users" element={<Users />} />
+
           <Route path="profile" element={<Profile />} />
       </>
     )
