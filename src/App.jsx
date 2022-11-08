@@ -17,6 +17,7 @@ import AddUser from "./components/views/AddUser";
 import Home from "./components/Home";
 import Login from "./components/Login";
 import Users from "./components/views/Users";
+import Profile from "./components/views/Profile";
 
 
 function App() {
@@ -56,6 +57,7 @@ function App() {
           <Route path="addproject" element={<AddProject />} />
           <Route path="adduser" element={<AddUser />} />
           <Route path="users" element={<Users />} />
+          <Route path="profile" element={<Profile />} />
       </>
     )
     

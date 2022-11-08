@@ -422,3 +422,59 @@ nav ul li a:hover {
 p {
   margin-bottom: 0.5rem;
 }
+
+/**** profile (by victor) ****/
+
+.profileSheet{
+  height: 40vh;
+  box-shadow: 0 0 10px black;
+  border-radius: 10px;
+  min-width: 650px;
+}
+.profileHeader{
+  background-color: rgb(27, 26, 26);
+  height: 8vh;
+  border-radius: 10px 10px 0 0 ;
+  padding: 20px;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+}
+.circleWrapper,
+.profileImage{
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  box-shadow: 0 0 10px #f7f5f4;
+}
+
+.circleWrapper{
+  background-color: #e42816;
+  background-color: #353535;
+  width: 100px;
+  height: 100px;
+
+  bottom: -15px;
+  left: 15px
+}
+.profileImage{
+  width: 85px;
+  height: 85px;
+  
+  background-color: #e42816;
+  background-color: #353535;
+  background-color: rgb(249, 249, 249);
+
+  color: #353535;
+  color: rgb(249, 249, 249);
+  color: #e42816;
+}
+.profileTitle{
+  font-size:xx-large;
+}
+.profileContent{
+  margin: 70px 15px;
+}
