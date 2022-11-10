@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useRef } from 'react';
+//import { useRef } from 'react';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setEditUser, setUser } from '../../features/druidSlice';
@@ -14,12 +14,16 @@ const Profile = ({profile = null}) => {
   const [isEditing, setIsEditing] = useState(false);
   const [isChangingPass, setIsChangingPass] = useState(false);
   const [verified, setVerified] = useState(false);
-  const [pwd, setPwd] = useState('');
   const [errMsg, setErrMsg] = useState('');
-  const pwdRef = useRef(null);
-  const errRef = useRef(null);
+  const [pwd, setPwd] = useState('');
+  const [newPwd, setNewPwd] = useState('');
+  const [pwdMatch, setPwdMatch] = useState("")
+  const [legalPwd, setLegalPwd] = useState(false)
+  const [passMatch, setPassMatch] = useState(false)
+  //const pwdRef = useRef(null);
+  //const errRef = useRef(null);
 
-  
+  const validator = new RegExp("^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$");
 
   useEffect(() => {
     dispatch(setEditUser(user));
@@ -28,6 +32,15 @@ const Profile = ({profile = null}) => {
   useEffect(()=>{
     setErrMsg('');
   },[pwd]);
+
+  useEffect(() => {  
+    setLegalPwd(validator.test(newPwd))
+    // eslint-disable-next-line
+  }, [newPwd]);
+
+  useEffect(() => {
+    setPassMatch(newPwd ? pwdMatch === newPwd : false);
+  }, [pwdMatch, newPwd]);
 
 
   const verifyHandler = () => {
@@ -126,8 +139,20 @@ const Profile = ({profile = null}) => {
 
               { verified && <div className='pwdSection'>
                 <button onClick={cancelEditPass} className="infoButton">cancel</button>
-                <input type="password" name='newPwd' onChange={changeData} placeholder="New Password..." className='addProjInput'/>
-                <input type="password" name='confPwd' onChange={changeData} placeholder="Confirm password..." className='addProjInput'/>
+                <div className="displayRow">
+                  <div className="displayColumn">
+                    <div className="displayRow">
+                      <input type="password" name='newPwd' onChange={(e)=>setNewPwd(e.target.value)} placeholder="New Password..." className='addProjInput'/>
+                      <p>{legalPwd ? "yes" : "nope"}</p>
+                    </div>
+                    <div className="displayRow">
+                      <input type="password" name='confPwd' onChange={(e)=>setPwdMatch(e.target.value)} placeholder="Confirm password..." className='addProjInput'/>
+                      <p>{passMatch ? "yes" : "nope"}</p>
+                    </div>
+                  </div>
+                </div>
+                
+                
                 
               </div>}
 
