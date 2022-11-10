@@ -2,14 +2,14 @@ import React, { useEffect, useState } from "react";
 
 //redux
 import { useDispatch, useSelector } from "react-redux";
-import { addProject, setProject } from "../../features/druidSlice";
+import { setProject, addProject } from "../../features/druidSlice";
 
 //classes
 import { Project } from "../../classes/project";
 import { Service } from "../../classes/service";
 
 //components
-import ProjectServiceRow from "../ProjectServiceRow";
+import ProjectServiceRow from "../reusableComponents/ProjectServiceRow";
 
 //service
 import {
