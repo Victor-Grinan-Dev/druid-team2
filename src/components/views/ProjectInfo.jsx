@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 import { Link, useLocation } from "react-router-dom";
-import TableRow from "../TableRow";
+import TableRow from "../reusableComponents/TableRow";
 
 const ProjectInfo = () => {
   const location = useLocation();

@@ -12,9 +12,11 @@ const Search = () => {
     dispatch(setSearch(e.target.value))
   }
 
+ 
   useEffect(() => {
     dispatch(setSearch(""))
-  }, [searchBy]);
+    
+  }, [searchBy, dispatch]);
 
   return (
     <div>

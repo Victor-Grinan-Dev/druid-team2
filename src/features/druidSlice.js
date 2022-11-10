@@ -1,4 +1,4 @@
-import { createSlice, current } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import { User } from "../classes/user";
 
 export const druidSlice = createSlice({
@@ -16,6 +16,7 @@ export const druidSlice = createSlice({
         searchBy:"customer",
         project: {},
         createUser: new User(" ", " "),
+        editUser:{},
 
     }, 
     reducers:{
@@ -62,6 +63,10 @@ export const druidSlice = createSlice({
                 [name] : value
             };
         },
+
+        setEditUser(state, action){
+            state.editUser = action.payload;
+        }
     }
 })
 
@@ -80,6 +85,7 @@ export const {
     setSearchBy,
     setProject,
     setCreateUser,
+    setEditUser,
 
 } = druidSlice.actions;
 
