@@ -159,9 +159,6 @@ const Profile = ({profile = null}) => {
                     </div>
                   </div>
                 </div>
-                
-                
-                
               </div>}
 
             </div>
@@ -179,7 +176,6 @@ const Profile = ({profile = null}) => {
 
             </div>
         }
-        
         <p>{errMsg}</p>
       </div>
       
@@ -188,7 +184,3 @@ const Profile = ({profile = null}) => {
 }
 
 export default Profile;
-
-/* 
-(userProfile.username === user.username || user.userType === "pm") ?  : <div></div>
-*/
