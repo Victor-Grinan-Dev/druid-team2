@@ -71,6 +71,11 @@ const Profile = ({profile = null}) => {
       dispatch(setEditUser({...editUser, [e.target.name]:e.target.value}))
     }
   }
+
+  const changeDataPwd = () => {
+    dispatch(setEditUser({...editUser, "pwd":newPwd}));
+    cancelEditPass();
+  }
   
   const cancelEdit = () => {
     setIsEditing(false);
@@ -138,16 +143,19 @@ const Profile = ({profile = null}) => {
               
 
               { verified && <div className='pwdSection'>
-                <button onClick={cancelEditPass} className="infoButton">cancel</button>
+                <div className="displayRow">
+                  <button onClick={cancelEditPass} className="infoButton">cancel</button>{ legalPwd && passMatch &&   <button name="pwd" onClick={changeDataPwd} className="infoButton">Confirm</button>}
+                </div>
+                
                 <div className="displayRow">
                   <div className="displayColumn">
                     <div className="displayRow">
                       <input type="password" name='newPwd' onChange={(e)=>setNewPwd(e.target.value)} placeholder="New Password..." className='addProjInput'/>
-                      <p>{legalPwd ? "yes" : "nope"}</p>
+                      <p>{legalPwd ? "✅" : "❌"}</p>
                     </div>
                     <div className="displayRow">
                       <input type="password" name='confPwd' onChange={(e)=>setPwdMatch(e.target.value)} placeholder="Confirm password..." className='addProjInput'/>
-                      <p>{passMatch ? "yes" : "nope"}</p>
+                      <p>{passMatch ? "✅" : "❌"}</p>
                     </div>
                   </div>
                 </div>
