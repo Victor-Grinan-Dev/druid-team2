@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { useRef } from 'react';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setEditUser, setUser } from '../../features/druidSlice';
@@ -8,29 +9,48 @@ const Profile = ({profile = null}) => {
   const dispatch = useDispatch();
   const user = useSelector(state => state.druid.user);
   const userProfile = profile ? profile : user;
+  const editUser = useSelector(state => state.druid.editUser);
 
   const [isEditing, setIsEditing] = useState(false);
   const [isChangingPass, setIsChangingPass] = useState(false);
   const [verified, setVerified] = useState(false);
+  const [pwd, setPwd] = useState('');
+  const [errMsg, setErrMsg] = useState('');
+  const pwdRef = useRef(null);
+  const errRef = useRef(null);
 
-  const editUser = useSelector(state => state.druid.editUser);
+  
 
   useEffect(() => {
     dispatch(setEditUser(user));
   }, [dispatch, user]);
 
-  const passwordHandler = () => {
-    
-    setVerified(true)
-    //setIsChangingPass(false)
-    console.log("verify user");
+  useEffect(()=>{
+    setErrMsg('');
+  },[pwd]);
+
+
+  const verifyHandler = () => {
+    let result = false;
+      console.log(pwd, user.pwd, pwd === user.pwd)
+      if (pwd === user.pwd){
+        result = true;
+      }else{
+        setErrMsg('Wrong Password')
+      }
+      setVerified(result);
+  }
+
+  const passwordHandler = (e) => {
+    setPwd(e.target.value);
   }
 
   const saveChanges = () => {
-    console.log("clicked")
-    setIsEditing(false)
+    setIsEditing(false);
+    setVerified(false);
+    setIsChangingPass(false);
     dispatch(setUser(editUser));
-    //save to the data base
+    //save to the database
   }
 
   const changeData = (e) => {
@@ -40,12 +60,14 @@ const Profile = ({profile = null}) => {
   }
   
   const cancelEdit = () => {
-    setIsEditing(false) 
-    setIsChangingPass(false)
+    setIsEditing(false);
+    setIsChangingPass(false);
+    setVerified(false);
   }
 
   const cancelEditPass = () => {
-    setIsChangingPass(false)
+    setIsChangingPass(false);
+    setVerified(false);
   }
     
   return (
@@ -90,13 +112,13 @@ const Profile = ({profile = null}) => {
             <div>
               {
               !isChangingPass &&
-                <button onClick={(e) => {setIsChangingPass(true)}} className="infoButton">change password</button>
+                <button onClick={() => {setIsChangingPass(true)}} className="infoButton">change password</button>
               }
 
               {isChangingPass && !verified &&
                 <div className='pwdSection'>
-                  <input type="password" name='pwd' placeholder="Password..."/>
-                  <button onClick={passwordHandler} className="infoButton">verify</button>
+                  <input type="password" name='pwd' placeholder="Enter Password..." onChange={passwordHandler}/>
+                  <button onClick={verifyHandler} className="infoButton" name="verify">verify</button>
                   <button onClick={cancelEditPass} className="infoButton">cancel</button>
                 </div>
               }
@@ -125,8 +147,9 @@ const Profile = ({profile = null}) => {
             </div>
         }
         
-
+        <p>{errMsg}</p>
       </div>
+      
     </div>
   )
 }
