@@ -1,6 +1,6 @@
 import axios from "axios";
 import Cookies from "js-cookie";
-import React, { useRef, useContext, useEffect, useState } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import logo from "../assets/images/logo.jpg";
 
@@ -12,7 +12,7 @@ const LOGIN_URL = 'http://localhost:8010/database'; //auth
 
 const Login = () => {
   const dispatch = useDispatch();
-  const isLogged = (state => state.druid.isLogged);
+  //const isLogged = (state => state.druid.isLogged);
 
   const [errMsg, setErrMsg] = useState('');
   const userRef = useRef();

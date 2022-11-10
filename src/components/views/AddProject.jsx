@@ -49,7 +49,7 @@ const AddProject = () => {
       }
       setCustomers(unique);
     });
-  }, []);
+  }, [dispatch]);
 
   const config = useSelector((state) => state.druid.config);
   const project = useSelector((state) => state.druid.project);

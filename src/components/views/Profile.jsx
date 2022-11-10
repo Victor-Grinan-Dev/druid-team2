@@ -17,7 +17,7 @@ const Profile = ({profile = null}) => {
 
   useEffect(() => {
     dispatch(setEditUser(user));
-  }, []);
+  }, [dispatch, user]);
 
   const passwordHandler = () => {
     
