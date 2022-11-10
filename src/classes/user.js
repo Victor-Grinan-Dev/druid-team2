@@ -3,6 +3,8 @@ export class User{
     email = undefined;
     company = undefined;
     initials = undefined;
+    pwd = undefined;
+    bio = undefined;
 
     constructor(username, userType, firstName=undefined, lastName=undefined ){
         this.username = username;

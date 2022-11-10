@@ -15,7 +15,6 @@ import CustomersProjects from "./components/views/CustomersProjects";
 import AddProject from "./components/views/AddProject";
 import AddUser from "./components/views/AddUser";
 import Home from "./components/Home";
-import Login from "./components/Login";
 import Users from "./components/views/Users";
 import Profile from "./components/views/Profile";
 
@@ -66,7 +65,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Layout />}>
+        <Route path="/*" element={<Layout />}>
           <Route index element={<Home />} />
           {user.username && views()}
         </Route>

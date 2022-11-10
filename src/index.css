@@ -477,4 +477,15 @@ p {
 }
 .profileContent{
   margin: 70px 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.profileBio{
+  height: 50px;
+}
+
+.pwdSection{
+  display: flex;
+  flex-direction: column;
 }

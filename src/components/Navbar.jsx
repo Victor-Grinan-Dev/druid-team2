@@ -1,14 +1,12 @@
 import Cookies from "js-cookie";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { setIsLogged, setUser } from "../features/druidSlice";
 
 const Navbar = () => {
   const user = useSelector(state => state.druid.user);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-
 
   const logout = () => {
      Cookies.remove("druidLog", { path: '/' });
@@ -20,36 +18,31 @@ const Navbar = () => {
   return (
     <nav>
       <ul>
-        {/*
-          <li className="homeLink">
-            <Link to="/">Home</Link>
-          </li>
-        */}
         {
           user.username && <li className="projectsLink">
-              <Link to="customersprojects">Projects</Link>
+              <Link to="/customersprojects">Projects</Link>
             </li>
         }
         {
           user.userType === "pm" && <li className="projectsLink">
-            <Link to="addproject">Add Project</Link>
+            <Link to="/addproject">Add Project</Link>
           </li>
         }
         {
           user.userType === "pm" &&<li className="projectsLink">
-            <Link to="adduser">Add User</Link>
+            <Link to="/adduser">Add User</Link>
           </li>
         }
 
         {
           user.userType === "pm" &&<li className="projectsLink">
-            <Link to="users">Users</Link>
+            <Link to="/users">Users</Link>
           </li>
         }
 
         {
-          <li className="projectsLink">
-            <Link to="profile">Profile</Link>
+          user.username && <li className="projectsLink">
+            <Link to="/profile">Profile</Link>
           </li>
         }
 

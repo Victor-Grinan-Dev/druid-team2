@@ -1,18 +1,18 @@
 import axios from "axios";
 import Cookies from "js-cookie";
-import React, { useRef, useContext, useEffect, useState } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import logo from "../assets/images/logo.jpg";
 
 //Auth:
-import AuthContext from "../context/AuthProvider";
+//import AuthContext from "../context/AuthProvider";
 import { setIsLogged, setUser } from "../features/druidSlice";
 
 const LOGIN_URL = 'http://localhost:8010/database'; //auth
 
 const Login = () => {
   const dispatch = useDispatch();
-  const isLogged = (state => state.druid.isLogged);
+  //const isLogged = (state => state.druid.isLogged);
 
   const [errMsg, setErrMsg] = useState('');
   const userRef = useRef();
@@ -20,7 +20,7 @@ const Login = () => {
 
   const [pwd, setPwd] = useState('');
   const [user, setUsername] = useState('');
-  const { setAuth } = useContext(AuthContext);
+  //const { setAuth } = useContext(AuthContext);
 
   useEffect(()=>{
     //userRef.current.focus();
@@ -38,14 +38,17 @@ const Login = () => {
         const arr = response.data.users;
 
         arr.forEach(element => {
-          if (element.username.toLowerCase() === user.toLowerCase()){
+          if (element.username.toLowerCase() === user.toLowerCase() && element.pwd === pwd){
  
             localStorage.setItem("druid", JSON.stringify(element));
             dispatch(setIsLogged(true));
             dispatch(setUser(element));
             Cookies.set("druidLog", element.id )
+          } else {
+            setErrMsg('Wrong Email or Password!');
           }
         });
+
 
     } catch (err){
         if(!err?.response){
@@ -58,7 +61,7 @@ const Login = () => {
             setErrMsg('Login failed');
         }
         console.log(err)
-        //errRef.current.focus();
+        errRef.current.focus();
     }
 }
   return (
@@ -75,7 +78,7 @@ const Login = () => {
       <div className="loginRightSide">
         <div className="username">
           <label htmlFor="username">Username</label>
-          <input type="text" placeholder="Enter username" onChange={(e)=>setUsername(e.target.value)}/>
+          <input ref={userRef} type="text" placeholder="Enter username" onChange={(e)=>setUsername(e.target.value)}/>
         </div>
 
         <div className="password">
@@ -85,6 +88,7 @@ const Login = () => {
 
         <button className="loginButton">Log in</button>
       </div>
+      <div ref={errRef}>{errMsg}</div>
       </form>
       
     </div>
