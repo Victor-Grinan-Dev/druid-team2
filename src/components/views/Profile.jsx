@@ -45,7 +45,6 @@ const Profile = ({profile = null}) => {
 
   const verifyHandler = () => {
     let result = false;
-      console.log(pwd, user.pwd, pwd === user.pwd)
       if (pwd === user.pwd){
         result = true;
       }else{
