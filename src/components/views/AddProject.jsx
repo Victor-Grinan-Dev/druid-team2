@@ -9,7 +9,7 @@ import { Project } from "../../classes/project";
 import { Service } from "../../classes/service";
 
 //components
-import ProjectServiceRow from "../reusableComponents/ProjectServiceRow";
+import ProjectServiceRow from "./ProjectServiceRow";
 
 //service
 import {

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setCreateUser, setEditUser, setUser } from '../../features/druidSlice';
+import { setEditUser, setUser } from '../../features/druidSlice';
 import { capitalStart } from '../../functions/capitalStart';
 
 const Profile = ({profile = null}) => {
