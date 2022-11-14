@@ -1,0 +1,30 @@
+name: druid-team2
+recipe: drupal9
+proxy:
+  druid-team2:
+    - druid-team2.lndo.site
+config:
+  composer_version: 2
+services:
+  appserver:
+    webroot: ./drupal/web
+  druid-team2:
+    type: node:14
+    portforward: true
+    port: 3000
+    ssl: true
+    command:
+      - npm start
+tooling:
+  npx:
+    service: druid-team2
+    cmd: cd /app/druid-team2 && npx
+  npm:
+    service: druid-team2
+    cmd: npm --cwd=/app/druid-team2
+  drush:
+    service: appserver
+    cmd: /app/drupal/vendor/bin/drush --root=/app/drupal/web
+  composer:
+    service: appserver
+    cmd: composer --working-dir=/app/drupal
