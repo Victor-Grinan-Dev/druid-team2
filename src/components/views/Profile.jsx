@@ -42,7 +42,6 @@ const Profile = ({profile = null}) => {
     setPassMatch(newPwd ? pwdMatch === newPwd : false);
   }, [pwdMatch, newPwd]);
 
-
   const verifyHandler = () => {
     let result = false;
       if (pwd === user.pwd){
