@@ -1,16 +1,12 @@
+
 import React from 'react';
+import events from 'events';
+import ajax from './ajax';
 
-const NodeList = () => {
-  return (
-    <div>NodeList</div>
-  )
-}
+const emitter = new events.EventEmitter();
 
-export default NodeList;
-
-/*
 // component to show a list of nodes
-class NodeList extends React.Component {
+export class NodeList extends React.Component {
   constructor() {
     super()
     this.state = {
@@ -84,4 +80,3 @@ class NodeList extends React.Component {
     )
   }
 }
-*/

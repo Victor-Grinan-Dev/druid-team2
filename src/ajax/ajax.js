@@ -20,7 +20,7 @@ let singleton = null; // a singleton instance of axios that the default init fun
 // eslint-disable-next-line
 export default async () => {
   if (!singleton) {
-    const tokenURL = config.drupal_url + "/session/token";
+    const tokenURL = config.drupal_url + "session/token";
     try {
       const response = await axios.get(tokenURL, {
         withCredentials: true, // required to send auth cookie
