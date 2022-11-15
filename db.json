@@ -561,7 +561,7 @@
       {
         "id": 6,
         "code": "aVVF",
-        "developers": "ali",
+        "developers": ["ali"],
         "status": "started",
         "services": [
           {
@@ -655,7 +655,7 @@
       {
         "id": 7,
         "code": "YL1q",
-        "developers": "victor",
+        "developers": ["victor"],
         "status": "started",
         "services": [
           {
@@ -707,7 +707,7 @@
       {
         "id": 8,
         "code": "p?dL",
-        "developers": "mikke",
+        "developers": ["mikke"],
         "status": "started",
         "services": [
           {

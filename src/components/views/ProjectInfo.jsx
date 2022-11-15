@@ -4,6 +4,8 @@ import { useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 import TableRow from "./TableRow";
 
+import ProjectCard from "./projectCard/ProjectCard";
+
 const ProjectInfo = () => {
   const location = useLocation();
   const project = location.state;
@@ -11,8 +13,14 @@ const ProjectInfo = () => {
   const user = useSelector((state) => state.druid.user);
 
   return (
-    <div className="infoContainer">
-      <div className="projectInfo">
+    <ProjectCard project={project} full={true}/>
+  );
+};
+
+export default ProjectInfo;
+
+/*
+<div className="projectInfo">
         <h3>Project name: {project.name}</h3>
         <table className="table">
           <thead className="tableHead">
@@ -49,8 +57,4 @@ const ProjectInfo = () => {
           </Link>
         )}
       </div>
-    </div>
-  );
-};
-
-export default ProjectInfo;
+*/
