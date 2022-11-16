@@ -1,15 +1,18 @@
-import { genId } from "../functions/genId";
-import { Service } from "./service";
-
-export class SevProject {
+export class PropProject{
     guid = undefined;
     name = undefined;
-    projectStatus = {
-        guid : undefined,
-        name : undefined,
-        description : null,
-        projectStatusTypeGuid : undefined
-    };
+    projectStatus = new Object;
+}
+
+const projectStatus = {
+    guid : undefined,
+    name : undefined,
+    description : null,
+    projectStatusTypeGuid : undefined
+}
+
+export class SevProject {
+
     isInternal = false;
     internalName = undefined;
     number = null;
@@ -126,69 +129,3 @@ export class SevProject {
         code : null
     }
 };
-
-export class Project {
-    id = undefined;
-    code = undefined
-    developers = [];
-    status = "started"; //started, progress, complete, pending
-    services = [];
-
-    constructor( name, customer ){
-        this.name = name;
-        this.customer = customer;
-        this.code = genId();
-        this.services.push(new Service("1", "url1"))
-    }
-
-    addDev(newDev){
-        this.dev.push(newDev);
-    }
-    changeStatus(newStatus){
-        this.status = newStatus;
-    }
-}
-/**** to add maybe ? ****/
-//guid 8 - 4 - 4 - 4 - 12
-//projectStatus {guid, name: Käynnissä}
-//
-
-
-/*
-"customer": {
-            "guid": "d24d00d4-b34b-0150-e769-39a135bbed65",
-            "name": "Tonin työpaja",
-            "number": 1002
-        },
-*/
-
-/*
-we could add customer conctact to projectInfo (many?)
-"customerContact": {
-            "guid": "110c0027-2bf8-daaa-12c3-c11e45cc2194",
-            "name": "Toni Työmies",
-            "firstName": "Toni",
-            "lastName": "Työmies",
-            "isDeleted": false
-        },
-*/
-
-/* all user have their own account, a customer can have many different users 
-
-
-part of the data
-no need to have exact json struct
- matching drupal fields 
-
- drupal pull from severa
-
- project must be enriched 
- use identifier to invoiced
-
- use the identifiers 
-
- question from jere:
- mikko: project manager has preffernce on his own project but has acces to all projects
-
- ping markos and mikko to get one hour of consultancy
-*/
