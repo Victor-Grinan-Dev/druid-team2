@@ -1,7 +1,8 @@
 import React from "react";
-import ProjectBox from "./ProjectBox";
+//import ProjectBox from "./ProjectBox";
 import { useSelector } from "react-redux";
 import Search from "./Search";
+import ProjectCard from "./projectCard/ProjectCard";
 
 const CustomersProjects = () => {
   const projects = useSelector((state) => state.druid.projects);
@@ -19,7 +20,16 @@ const CustomersProjects = () => {
 
       case "developer":
         return projects.filter(proj => {
-          return proj.developers.includes(search);
+          if(search){
+            for (let dev of proj.developers){
+              if(dev.includes(search.toLowerCase()))
+                return proj;
+            }
+            
+          }else{
+            return proj;
+          }
+          
         });
 
       case "project": 
@@ -48,20 +58,20 @@ const CustomersProjects = () => {
       return projects.map(
         (project, i) =>
           project.customer === user.company && (
-            <ProjectBox project={project} key={i} />
+            <ProjectCard project={project} index={i + 1} key={i} />
           )
       );
     } else if (user.userType === "developer") {
       return projects.map(
         (project, i) =>
           project.developers.includes(user.username.toLowerCase()) && (
-            <ProjectBox project={project} key={i} />
+            <ProjectCard project={project} index={i + 1} key={i} />
           )
       );
     }
 
     return filteredProjectsHandler().map((project, i) => (
-      <ProjectBox project={project} key={i} />
+      <ProjectCard project={project} index={i + 1} key={i} full={false}/>
     ));
   };
 
