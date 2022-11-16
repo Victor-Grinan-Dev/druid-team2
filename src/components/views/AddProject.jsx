@@ -9,7 +9,7 @@ import { Project } from "../../classes/project";
 import { Service } from "../../classes/service";
 
 //components
-import ProjectServiceRow from "../reusableComponents/ProjectServiceRow";
+import ProjectServiceRow from "./ProjectServiceRow";
 
 //service
 import {
@@ -49,7 +49,7 @@ const AddProject = () => {
       }
       setCustomers(unique);
     });
-  }, []);
+  }, [dispatch]);
 
   const config = useSelector((state) => state.druid.config);
   const project = useSelector((state) => state.druid.project);

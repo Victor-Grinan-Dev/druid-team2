@@ -1,36 +1,68 @@
 import React, { useEffect } from 'react';
+//import { useRef } from 'react';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setCreateUser, setEditUser, setUser } from '../../features/druidSlice';
+import { setEditUser, setUser } from '../../features/druidSlice';
 import { capitalStart } from '../../functions/capitalStart';
 
 const Profile = ({profile = null}) => {
   const dispatch = useDispatch();
   const user = useSelector(state => state.druid.user);
   const userProfile = profile ? profile : user;
+  const editUser = useSelector(state => state.druid.editUser);
 
   const [isEditing, setIsEditing] = useState(false);
   const [isChangingPass, setIsChangingPass] = useState(false);
   const [verified, setVerified] = useState(false);
+  const [errMsg, setErrMsg] = useState('');
+  const [pwd, setPwd] = useState('');
+  const [newPwd, setNewPwd] = useState('');
+  const [pwdMatch, setPwdMatch] = useState("")
+  const [legalPwd, setLegalPwd] = useState(false)
+  const [passMatch, setPassMatch] = useState(false)
+  //const pwdRef = useRef(null);
+  //const errRef = useRef(null);
 
-  const editUser = useSelector(state => state.druid.editUser);
+  const validator = new RegExp("^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$");
 
   useEffect(() => {
     dispatch(setEditUser(user));
-  }, []);
+  }, [dispatch, user]);
 
-  const passwordHandler = () => {
-    
-    setVerified(true)
-    //setIsChangingPass(false)
-    console.log("verify user");
+  useEffect(()=>{
+    setErrMsg('');
+  },[pwd]);
+
+  useEffect(() => {  
+    setLegalPwd(validator.test(newPwd))
+    // eslint-disable-next-line
+  }, [newPwd]);
+
+  useEffect(() => {
+    setPassMatch(newPwd ? pwdMatch === newPwd : false);
+  }, [pwdMatch, newPwd]);
+
+
+  const verifyHandler = () => {
+    let result = false;
+      if (pwd === user.pwd){
+        result = true;
+      }else{
+        setErrMsg('Wrong Password')
+      }
+      setVerified(result);
+  }
+
+  const passwordHandler = (e) => {
+    setPwd(e.target.value);
   }
 
   const saveChanges = () => {
-    console.log("clicked")
-    setIsEditing(false)
+    setIsEditing(false);
+    setVerified(false);
+    setIsChangingPass(false);
     dispatch(setUser(editUser));
-    //save to the data base
+    //save to the database
   }
 
   const changeData = (e) => {
@@ -38,14 +70,21 @@ const Profile = ({profile = null}) => {
       dispatch(setEditUser({...editUser, [e.target.name]:e.target.value}))
     }
   }
+
+  const changeDataPwd = () => {
+    dispatch(setEditUser({...editUser, "pwd":newPwd}));
+    cancelEditPass();
+  }
   
   const cancelEdit = () => {
-    setIsEditing(false) 
-    setIsChangingPass(false)
+    setIsEditing(false);
+    setIsChangingPass(false);
+    setVerified(false);
   }
 
   const cancelEditPass = () => {
-    setIsChangingPass(false)
+    setIsChangingPass(false);
+    setVerified(false);
   }
     
   return (
@@ -90,23 +129,35 @@ const Profile = ({profile = null}) => {
             <div>
               {
               !isChangingPass &&
-                <button onClick={(e) => {setIsChangingPass(true)}} className="infoButton">change password</button>
+                <button onClick={() => {setIsChangingPass(true)}} className="infoButton">change password</button>
               }
 
               {isChangingPass && !verified &&
                 <div className='pwdSection'>
-                  <input type="password" name='pwd' placeholder="Password..."/>
-                  <button onClick={passwordHandler} className="infoButton">verify</button>
+                  <input type="password" name='pwd' placeholder="Enter Password..." onChange={passwordHandler}/>
+                  <button onClick={verifyHandler} className="infoButton" name="verify">verify</button>
                   <button onClick={cancelEditPass} className="infoButton">cancel</button>
                 </div>
               }
               
 
               { verified && <div className='pwdSection'>
-                <button onClick={cancelEditPass} className="infoButton">cancel</button>
-                <input type="password" name='newPwd' onChange={changeData} placeholder="New Password..." className='addProjInput'/>
-                <input type="password" name='confPwd' onChange={changeData} placeholder="Confirm password..." className='addProjInput'/>
+                <div className="displayRow">
+                  <button onClick={cancelEditPass} className="infoButton">cancel</button>{ legalPwd && passMatch &&   <button name="pwd" onClick={changeDataPwd} className="infoButton">Confirm</button>}
+                </div>
                 
+                <div className="displayRow">
+                  <div className="displayColumn">
+                    <div className="displayRow">
+                      <input type="password" name='newPwd' onChange={(e)=>setNewPwd(e.target.value)} placeholder="New Password..." className='addProjInput'/>
+                      <p>{legalPwd ? "✅" : "❌"}</p>
+                    </div>
+                    <div className="displayRow">
+                      <input type="password" name='confPwd' onChange={(e)=>setPwdMatch(e.target.value)} placeholder="Confirm password..." className='addProjInput'/>
+                      <p>{passMatch ? "✅" : "❌"}</p>
+                    </div>
+                  </div>
+                </div>
               </div>}
 
             </div>
@@ -124,15 +175,11 @@ const Profile = ({profile = null}) => {
 
             </div>
         }
-        
-
+        <p>{errMsg}</p>
       </div>
+      
     </div>
   )
 }
 
 export default Profile;
-
-/* 
-(userProfile.username === user.username || user.userType === "pm") ?  : <div></div>
-*/
