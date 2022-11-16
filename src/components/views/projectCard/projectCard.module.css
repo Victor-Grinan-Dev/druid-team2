@@ -14,7 +14,7 @@
     position: relative;
     min-width:450px;
     width: 80vw;
-    height: 50vh;
+    min-height: 50vh;
     box-shadow: inset 5px 5px 5px rgba(0, 0, 0, 0.2),
         inset -5px -5px 15px rgba(255, 255, 255, 0.1),
         5px 5px 15px rgba(0, 0, 0, 0.3), -5px -5px 15px rgba(255, 255, 255, 0.1);
@@ -59,8 +59,8 @@ body .container .card:nth-child(1) .box .content a {
     background: #2a2b2f;
     border-radius: 15px;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-start;
+    align-items: flex-start;
     overflow: hidden;
   }
 
@@ -95,7 +95,7 @@ body .container .card:nth-child(1) .box .content a {
 
   .cardFull .boxFull .contentFull {
     padding: 20px;
-    text-align: center;
+    text-align: start;
   }
 
   .card .box .content h2 {

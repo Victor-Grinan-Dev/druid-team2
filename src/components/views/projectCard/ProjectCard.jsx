@@ -7,6 +7,7 @@ import { capitalStart } from "../../../functions/capitalStart";
 const ProjectCard = ({ project, index, full=false }) => {
 
     if(full){
+        //singlePage:
         return(
             <div className={style.cardFull}>  
                 <div className={style.boxFull}>
@@ -29,6 +30,7 @@ const ProjectCard = ({ project, index, full=false }) => {
             </div>
         )
     }
+    //card browser
   return (
     <div className={style.card}>  
         <div className={style.box}>
@@ -45,7 +47,7 @@ const ProjectCard = ({ project, index, full=false }) => {
                         <p key={i}>{capitalStart(dev)}</p>
                     )) : <p>No developers assigned</p>
                 }
-                {project.developers ? console.log(project.name, project.developers) : null}
+                {/* project.developers ? console.log(project.name, project.developers) : null */}
                 <Link to={`/projectinfo/${project.name}`} state={project}> <button className='infoButton'>More Info</button></Link>
             </div>
         </div>           

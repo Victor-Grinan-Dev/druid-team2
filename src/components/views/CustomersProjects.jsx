@@ -1,5 +1,5 @@
 import React from "react";
-import ProjectBox from "./ProjectBox";
+//import ProjectBox from "./ProjectBox";
 import { useSelector } from "react-redux";
 import Search from "./Search";
 import ProjectCard from "./projectCard/ProjectCard";
@@ -22,7 +22,8 @@ const CustomersProjects = () => {
         return projects.filter(proj => {
           if(search){
             for (let dev of proj.developers){
-              return dev.includes(search.toLowerCase());
+              if(dev.includes(search.toLowerCase()))
+                return proj;
             }
             
           }else{
