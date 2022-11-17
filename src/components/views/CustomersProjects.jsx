@@ -32,7 +32,7 @@ const CustomersProjects = () => {
           
         });
 
-      case "project": 
+      case "project" || "": 
         return projects.filter(proj => {
           return proj.name.toLowerCase().includes(search.toLowerCase());
         });

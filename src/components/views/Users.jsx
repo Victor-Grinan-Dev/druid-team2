@@ -13,6 +13,7 @@ const Users = () => {
     const dispatch = useDispatch();
     const users = useSelector(state=>state.druid.users);
     const searchBy = useSelector(state=>state.druid.searchBy);
+    const search = useSelector(state=>state.druid.search);
 
     const searchInputHandler = (e) => {
        dispatch(setSearch(e.target.value))
@@ -46,6 +47,15 @@ const Users = () => {
           return users;
       }
     }
+
+    const searchedUsers = () => {
+      return filteredUsers().filter(u => {
+        if(search){
+          return u.username.toLowerCase().includes(search.toLowerCase());
+        }
+        return filteredUsers();
+      })
+    }
   
   return (
     <div className="customersProjects">
@@ -63,7 +73,7 @@ const Users = () => {
         </select>
 
         {
-        filteredUsers().map((user, i) => (
+        searchedUsers().map((user, i) => (
             <UserCard key={i} user={user}/>
         ))
         }

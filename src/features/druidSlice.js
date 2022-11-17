@@ -13,12 +13,12 @@ export const druidSlice = createSlice({
         //temporal
         isLoading:true,
         search:"",
-        searchBy:"customer",
+        searchBy:"",
         project: {},
         createUser: new User(" ", " "),
         editUser:{},
-
     }, 
+    
     reducers:{
         setProjects(state, action){
             state.projects = action.payload;
