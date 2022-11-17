@@ -31,25 +31,33 @@ function App() {
   const user = useSelector((state) => state.druid.user);
 
   useEffect(() => {
+    if (localStorage.getItem("druid") && Cookies.get("druidLog")) {
+      const userStr = localStorage.getItem("druid");
+      const userObj = JSON.parse(userStr);
+      const cookies = Cookies.get("druidLog");
+      if (userObj.token === cookies) {
+        dispatch(setIsLogged(true));
+        dispatch(setUser(userObj));
+      }
+    }
     druidService.getDatabase().then((res) => {
       const projects = res.projects;
       const users = res.users;
-
       const config = res.config;
       dispatch(setProjects(projects));
       dispatch(setUsers(users));
       dispatch(setConfig(config));
-
-      if (Cookies.get("druidLog")) {
-        const cookie = Cookies.get("druidLog");
-        for (let user of users) {
-          if (user.id === cookie) {
-            dispatch(setUser(user));
-            dispatch(setIsLogged(true));
-          }
-        }
-      }
     });
+    //   if (Cookies.get("druidLog")) {
+    //     const cookie = Cookies.get("druidLog");
+    //     for (let user of users) {
+    //       if (user.id === cookie) {
+    //         dispatch(setUser(user));
+    //         dispatch(setIsLogged(true));
+    //       }
+    //     }
+    //   }
+    // });
 
     dispatch(isLoading(false));
   }, [dispatch]);
