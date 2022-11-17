@@ -1,5 +1,7 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setSearch, setSearchBy } from '../../features/druidSlice';
 import UserCard from './UserCard';
 
 /*
@@ -8,41 +10,42 @@ import { setSearch } from '../../features/druidSlice';
 */
 
 const Users = () => {
+    const dispatch = useDispatch();
     const users = useSelector(state=>state.druid.users);
+    const searchBy = useSelector(state=>state.druid.searchBy);
 
-/*
-    const filteredUsersHandler = () => {
+    const searchInputHandler = (e) => {
+       dispatch(setSearch(e.target.value))
+    }
+
+    const searchByHandler = (e) =>{
+      dispatch(setSearchBy(e.target.value))
+    }
+
+    const filteredUsers = () => {
       switch (searchBy) {
-        case "customer":
-          return projects.filter(proj => {
-            return proj.customer.toLowerCase().includes(search.toLowerCase());
-          });
-  
-        case "developer":
-          return projects.filter(proj => {
-            if(search){
-              for (let dev of proj.developers){
-                if(dev.includes(search.toLowerCase()))
-                  return proj;
-              }
-              
-            }else{
-              return proj;
-            }
-            
-          });
-  
+        case "all":
+          return users;
+
         case "pm": 
-          return projects.filter(proj => {
-            return proj.name.toLowerCase().includes(search.toLowerCase());
+          return users.filter(u => {
+            return u.userType === "pm";
           });
-  
-          return projArr;
+
+        case "developer": 
+          return users.filter(u => {
+            return u.userType === "developer";
+          });
+
+        case "customer": 
+          return users.filter(u => {
+            return u.userType === "customer";
+          });
+          
         default:
-          return null;
+          return users;
       }
     }
-*/
   
   return (
     <div className="customersProjects">
@@ -50,14 +53,17 @@ const Users = () => {
       
     </div>
     <h2 className="projectsH2">Users</h2>
-        <input type="text" placeholder='Search...'/> <select name="userType">
+        <input type="text" placeholder='Search...' onChange={searchInputHandler} /> 
+
+        <select name="userType" onChange={searchByHandler} >
             <option value="all">All</option>
             <option value="pm">Project Manager</option> 
             <option value="developer">Developer</option> 
             <option value="customer">Customer</option>
         </select>
+
         {
-        users.map((user, i) => (
+        filteredUsers().map((user, i) => (
             <UserCard key={i} user={user}/>
         ))
         }

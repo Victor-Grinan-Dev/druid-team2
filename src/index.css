@@ -310,6 +310,9 @@ nav ul li a:hover {
   background-color: #353535;
   color: white;
   padding: 4rem 7rem;
+  display: flex;
+  flex-direction: column;
+  position:relative;
 }
 
 .searchProjects {
@@ -320,7 +323,12 @@ nav ul li a:hover {
   color: #fa2d1d;
   margin: 0.8rem;
 }
-
+.cardsArea{
+  position: relative;
+  background-color: antiquewhite;
+  width: 90vw;
+  margin: 0;
+}
 .projectBox {
   background-color: white;
   color: black;

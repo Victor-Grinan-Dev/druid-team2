@@ -13,7 +13,7 @@ const ProjectCard = ({ project, index, full=false }) => {
                 <div className={style.boxFull}>
                     
                     <div className={style.contentFull}>
-                        <h2>Id: {project.id}</h2>
+                        <h2>{project.id < 10 ?`0${project.id}`: project.id }</h2>
                         <h3>"{capitalStart(project.name)}"</h3>
                         <div className="dataArea"></div>
                         <p>Custormer: {project.customer}</p>
