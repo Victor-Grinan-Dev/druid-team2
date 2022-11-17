@@ -6,20 +6,20 @@
         inset -5px -5px 15px rgba(255, 255, 255, 0.1),
         5px 5px 15px rgba(0, 0, 0, 0.3), -5px -5px 15px rgba(255, 255, 255, 0.1);
     border-radius: 15px;
-    margin: 30px;
+    margin: 5px;
     transition: 0.5s;
 }
 
 .cardFull{
     position: relative;
     min-width:450px;
-    width: 80vw;
+    width: 90vw;
     min-height: 50vh;
     box-shadow: inset 5px 5px 5px rgba(0, 0, 0, 0.2),
         inset -5px -5px 15px rgba(255, 255, 255, 0.1),
         5px 5px 15px rgba(0, 0, 0, 0.3), -5px -5px 15px rgba(255, 255, 255, 0.1);
     border-radius: 15px;
-    margin: 30px;
+    margin: 5px;
 }
 
 /*figure this out*/
@@ -62,7 +62,23 @@ body .container .card:nth-child(1) .box .content a {
     justify-content: flex-start;
     align-items: flex-start;
     overflow: hidden;
+    flex-direction: column;
   }
+
+    .extraInfo{
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .infoPiece{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 150px;
+        height: 50px;
+        background-color: #2196f3;
+        margin: 5px;
+    }
 
   .card .box:hover {
     transform: scale(105%);

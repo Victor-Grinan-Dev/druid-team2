@@ -3,9 +3,10 @@ import style from './projectCard.module.css';
 
 import { Link } from "react-router-dom";
 import { capitalStart } from "../../../functions/capitalStart";
+import { useSelector } from 'react-redux';
 
 const ProjectCard = ({ project, index, full=false }) => {
-
+    const user = useSelector(state => state.druid.user);
     if(full){
         //singlePage:
         return(
@@ -13,7 +14,7 @@ const ProjectCard = ({ project, index, full=false }) => {
                 <div className={style.boxFull}>
                     
                     <div className={style.contentFull}>
-                        <h2>Id: {project.id}</h2>
+                        <h2>{project.id < 10 ?`0${project.id}`: project.id }</h2>
                         <h3>"{capitalStart(project.name)}"</h3>
                         <div className="dataArea"></div>
                         <p>Custormer: {project.customer}</p>
@@ -26,6 +27,38 @@ const ProjectCard = ({ project, index, full=false }) => {
                         }
                         {project.developers ? console.log(project.name, project.developers) : null}
                     </div>
+                    <h3>extra Info?</h3>
+                    <div className={style.extraInfo}>
+                        
+                        <div className={style.infoPiece}>
+                            <p>closedDate:</p>
+                        </div>
+                        <div className={style.infoPiece}>
+                            <p>customerContact:</p>
+                        </div>
+                        <div className={style.infoPiece}>
+                            <p>startDate:</p>
+                        </div>
+                        <div className={style.infoPiece}>
+                            <p>deadline:</p>
+                        </div>
+                        <div className={style.infoPiece}>
+                            <p>projectStatus:</p>
+                        </div>
+                        <div className={style.infoPiece}>
+                            <p>services:</p>
+                        </div>
+                        <div className={style.infoPiece}>
+                            <p>name:</p>
+                        </div>
+                        <div className={style.infoPiece}>
+                            <p>customer:</p>
+                        </div>
+                        <div className={style.infoPiece}>
+                            <p>projectOwner:</p>
+                        </div>
+                    </div>
+                    {user.userType === "pm" && <button className='infoButton'>Edit</button>}
                 </div>           
             </div>
         )

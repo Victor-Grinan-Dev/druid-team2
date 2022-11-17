@@ -13,6 +13,8 @@ main {
   color: white;
   padding: 2rem;
   min-height: 45vh;
+  display: flex;
+  justify-content: center;
 }
 
 /* Login */
@@ -309,7 +311,10 @@ nav ul li a:hover {
 .customersProjects {
   background-color: #353535;
   color: white;
-  padding: 4rem 7rem;
+  /*padding: 4rem 7rem;*/
+  display: flex;
+  flex-direction: column;
+  position:relative;
 }
 
 .searchProjects {
@@ -320,7 +325,14 @@ nav ul li a:hover {
   color: #fa2d1d;
   margin: 0.8rem;
 }
-
+.cardsArea{
+  position: relative;
+  
+  display: flex;
+  flex-wrap: wrap;
+  width: 90vw;
+  margin: 0;
+}
 .projectBox {
   background-color: white;
   color: black;
