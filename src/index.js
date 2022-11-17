@@ -13,7 +13,4 @@ root.render(
       <App />
     </Provider>
   </AuthProvider>
-
 );
-
-

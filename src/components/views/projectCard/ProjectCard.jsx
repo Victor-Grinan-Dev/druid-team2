@@ -18,7 +18,7 @@ const ProjectCard = ({ project, index, full=false }) => {
                         <h3>"{capitalStart(project.name)}"</h3>
                         <div className="dataArea"></div>
                         <p>Custormer: {project.customer}</p>
-                        <p>Main engine: {project.services[0].engine}</p>
+                        <p>Main engine: {project.services[0].engine} {project.services[0].version}</p>
                         <p >Developers:</p>
                         {project.developers ?
                             project.developers.map((dev,i) => (
@@ -46,10 +46,7 @@ const ProjectCard = ({ project, index, full=false }) => {
                             <p>projectStatus:</p>
                         </div>
                         <div className={style.infoPiece}>
-                            <p>services:</p>
-                        </div>
-                        <div className={style.infoPiece}>
-                            <p>name:</p>
+                            <p>services:(url service engine version)</p>
                         </div>
                         <div className={style.infoPiece}>
                             <p>customer:</p>
@@ -73,7 +70,7 @@ const ProjectCard = ({ project, index, full=false }) => {
                 <h3>"{capitalStart(project.name)}"</h3>
                 <div className="dataArea"></div>
                 <p>Custormer: {project.customer}</p>
-                <p>Main engine: {project.services[0].engine}</p>
+                <p>Main engine: {project.services[0].engine} {project.services[0].version}</p>
                 <p >Developers:</p>
                 {project.developers ?
                     project.developers.map((dev,i) => (

@@ -49,7 +49,6 @@ const Login = () => {
           }
         });
 
-
     } catch (err){
         if(!err?.response){
             setErrMsg('No server response');

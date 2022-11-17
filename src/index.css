@@ -95,7 +95,9 @@ main {
   margin: 1rem;
   height: 6rem;
 }
-
+nav{
+  min-width: 518px;
+}
 nav ul {
   display: flex;
   flex-direction: row;
@@ -343,6 +345,7 @@ nav ul li a:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 370px;
 }
 
 .editButton,
