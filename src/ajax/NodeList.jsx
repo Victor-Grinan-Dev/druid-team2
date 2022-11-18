@@ -60,7 +60,7 @@ export class NodeList extends React.Component {
           <tr>
             <td>Title</td>
             <td>Content ID</td>
-            <td>Operations</td>
+            <td>Delete</td>
           </tr>
         </thead>
         <tbody>
@@ -69,11 +69,23 @@ export class NodeList extends React.Component {
             return (
               <tr key={index}>
                 <td>
-                  <a href={node}>{node.title[0].value}</a>
+                  <a href={node} 
+                  style ={{
+                    color:"white",
+                    marginRigth:"50px",
+                    textAlign: "center",
+                  }}
+                  >{node.title[0].value}</a>
                 </td>
-                <td>{node.nid[0].value}</td>
+                <td
+                style ={{
+                  color:"white",
+                  marginRigth:"50px",
+                  textAlign: "center",
+                }}
+                >{node.nid[0].value}</td>
                 <td>
-                  <button onClick={(e) => deleteNode(node.nid[0].value)}>
+                  <button onClick={(e) => deleteNode(node.nid[0].value)} className="delButton">
                     x
                   </button>
                 </td>
