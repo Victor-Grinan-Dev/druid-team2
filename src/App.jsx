@@ -14,7 +14,7 @@ import {
   setUsers,
 } from "./features/druidSlice";
 import druidService from "./services/druid";
-import { NodeList } from "./ajax/NodeList";
+
 
 //components
 import Layout from "./pages/Layout";
@@ -25,6 +25,7 @@ import AddUser from "./components/views/AddUser";
 import Home from "./components/Home";
 import Users from "./components/views/Users";
 import Profile from "./components/views/Profile";
+import Invoices from "./components/views/Invoices";
 
 function App() {
   const dispatch = useDispatch();
@@ -72,6 +73,7 @@ function App() {
         <Route path="adduser" element={<AddUser />} />
         <Route path="users" element={<Users />} />
         <Route path="profile" element={<Profile />} />
+        <Route path="invoices" element={<Invoices />} />
       </>
     );
   };
@@ -83,10 +85,7 @@ function App() {
           {user.username && views()}
         </Route>
       </Routes>
-      <div>
-        <NodeList />
-      </div>
-      {/* <NodeForm /> */}
+
     </BrowserRouter>
   );
 }
