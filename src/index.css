@@ -355,7 +355,7 @@ nav ul li a:hover {
   color: white;
   box-shadow: 0 0 4px black inset;
   font-size: 1rem;
-  padding: 1.2rem;
+  padding: 0.5rem;
   border-style: none;
   border-radius: 5px;
   cursor: pointer;
