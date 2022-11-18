@@ -60,7 +60,7 @@ export class NodeList extends React.Component {
           <tr>
             <td>Title</td>
             <td>Content ID</td>
-            <td>Delete</td>
+            <td>Action</td>
           </tr>
         </thead>
         <tbody>
@@ -86,7 +86,7 @@ export class NodeList extends React.Component {
                 >{node.nid[0].value}</td>
                 <td>
                   <button onClick={(e) => deleteNode(node.nid[0].value)} className="delButton">
-                    x
+                    See More
                   </button>
                 </td>
               </tr>
