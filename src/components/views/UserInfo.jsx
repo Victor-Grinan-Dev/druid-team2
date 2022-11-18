@@ -1,7 +1,6 @@
-import React from 'react';
+import React from "react";
 import { useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
-
 
 const UserInfo = () => {
   const location = useLocation();
@@ -10,20 +9,18 @@ const UserInfo = () => {
 
   return (
     <div className="infoContainer">
+      <h3 className="userInfoH3">{currentUser.name}</h3>
+      <p>{currentUser.type}</p>
+      <p>{currentUser.email}</p>
+      <p>{currentUser.company ? currentUser.company : "-"}</p>
 
-        <h3>{currentUser.name}</h3>
-        <p>{currentUser.type}</p>
-        <p>{currentUser.email}</p>
-        <p>{currentUser.company ? currentUser.company : "-"}</p>
-
-        {user.userType === "pm" && (
-          <Link >
-            <button className="editButton">Edit</button>
-          </Link>
-        )}
+      {user.userType === "pm" && (
+        <Link>
+          <button className="editButton">Edit</button>
+        </Link>
+      )}
     </div>
-   
   );
-}
+};
 
 export default UserInfo;

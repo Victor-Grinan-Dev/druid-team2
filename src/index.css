@@ -95,7 +95,7 @@ main {
   margin: 1rem;
   height: 6rem;
 }
-nav{
+nav {
   min-width: 518px;
 }
 nav ul {
@@ -316,7 +316,7 @@ nav ul li a:hover {
   /*padding: 4rem 7rem;*/
   display: flex;
   flex-direction: column;
-  position:relative;
+  position: relative;
 }
 
 .searchProjects {
@@ -327,9 +327,9 @@ nav ul li a:hover {
   color: #fa2d1d;
   margin: 0.8rem;
 }
-.cardsArea{
+.cardsArea {
   position: relative;
-  
+
   display: flex;
   flex-wrap: wrap;
   width: 90vw;
@@ -355,7 +355,7 @@ nav ul li a:hover {
   color: white;
   box-shadow: 0 0 4px black inset;
   font-size: 1rem;
-  padding: 0.5rem;
+  padding: 1.2rem;
   border-style: none;
   border-radius: 5px;
   cursor: pointer;
@@ -364,7 +364,7 @@ nav ul li a:hover {
 
 .editButton {
   width: 7rem;
-  height: 3rem;
+  height: 4rem;
   margin: 1rem;
 }
 
@@ -440,23 +440,23 @@ p {
 
 /**** profile (by victor) ****/
 
-.profileSheet{
+.profileSheet {
   height: 40vh;
   box-shadow: 0 0 10px black;
   border-radius: 10px;
   min-width: 650px;
 }
-.profileHeader{
+.profileHeader {
   background-color: rgb(27, 26, 26);
   height: 8vh;
-  border-radius: 10px 10px 0 0 ;
+  border-radius: 10px 10px 0 0;
   padding: 20px;
   position: relative;
   display: flex;
   justify-content: space-between;
 }
 .circleWrapper,
-.profileImage{
+.profileImage {
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -466,19 +466,19 @@ p {
   box-shadow: 0 0 10px #f7f5f4;
 }
 
-.circleWrapper{
+.circleWrapper {
   background-color: #e42816;
   background-color: #353535;
   width: 100px;
   height: 100px;
 
   bottom: -15px;
-  left: 15px
+  left: 15px;
 }
-.profileImage{
+.profileImage {
   width: 85px;
   height: 85px;
-  
+
   background-color: #e42816;
   background-color: #353535;
   background-color: rgb(249, 249, 249);
@@ -487,20 +487,20 @@ p {
   color: rgb(249, 249, 249);
   color: #e42816;
 }
-.profileTitle{
-  font-size:xx-large;
+.profileTitle {
+  font-size: xx-large;
 }
-.profileContent{
+.profileContent {
   margin: 70px 15px;
   display: flex;
   flex-direction: column;
 }
 
-.profileBio{
+.profileBio {
   height: 50px;
 }
 
-.pwdSection{
+.pwdSection {
   display: flex;
   flex-direction: column;
 }
