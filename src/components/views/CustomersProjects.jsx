@@ -3,45 +3,46 @@ import React from "react";
 import { useSelector } from "react-redux";
 import Search from "./Search";
 import ProjectCard from "./projectCard/ProjectCard";
+import { Projects } from "../../ajax/Projects";
 
 const CustomersProjects = () => {
   const projects = useSelector((state) => state.druid.projects);
   const isLoading = useSelector((state) => state.druid.isLoading);
   const user = useSelector((state) => state.druid.user);
-  const search = useSelector(state => state.druid.search);
-  const searchBy = useSelector(state => state.druid.searchBy);
+  const search = useSelector((state) => state.druid.search);
+  const searchBy = useSelector((state) => state.druid.searchBy);
 
   const filteredProjectsHandler = () => {
     switch (searchBy) {
       case "customer":
-        return projects.filter(proj => {
+        return projects.filter((proj) => {
           return proj.customer.toLowerCase().includes(search.toLowerCase());
         });
 
       case "developer":
-        return projects.filter(proj => {
-          if(search){
-            for (let dev of proj.developers){
-              if(dev.includes(search.toLowerCase()))
-                return proj;
+        return projects.filter((proj) => {
+          if (search) {
+            for (let dev of proj.developers) {
+              if (dev.includes(search.toLowerCase())) return proj;
             }
-            
-          }else{
+          } else {
             return proj;
           }
-          
         });
 
-      case "project" || "": 
-        return projects.filter(proj => {
+      case "project" || "":
+        return projects.filter((proj) => {
           return proj.name.toLowerCase().includes(search.toLowerCase());
         });
 
       case "engine":
         let projArr = [];
-        for (let proj of projects){
-          for (let serv of proj.services){
-            if (serv.engine.toLowerCase().includes(search.toLowerCase()) && !projArr.includes(proj)){
+        for (let proj of projects) {
+          for (let serv of proj.services) {
+            if (
+              serv.engine.toLowerCase().includes(search.toLowerCase()) &&
+              !projArr.includes(proj)
+            ) {
               projArr.push(proj);
             }
           }
@@ -51,7 +52,7 @@ const CustomersProjects = () => {
       default:
         return projects;
     }
-  }
+  };
 
   const access = () => {
     if (user.userType === "customer") {
@@ -71,7 +72,7 @@ const CustomersProjects = () => {
     }
 
     return filteredProjectsHandler().map((project, i) => (
-      <ProjectCard project={project} index={i + 1} key={i} full={false}/>
+      <ProjectCard project={project} index={i + 1} key={i} full={false} />
     ));
   };
 
@@ -85,7 +86,7 @@ const CustomersProjects = () => {
         <Search />
       </div>
       <h2 className="projectsH2">Projects</h2>
-
+      <Projects />
       <div className="cardsArea">{access()}</div>
     </div>
   );

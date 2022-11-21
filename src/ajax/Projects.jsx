@@ -5,13 +5,10 @@ import { Link } from "react-router-dom";
 
 const emitter = new events.EventEmitter();
 
-// component to show a list of nodes
-export class NodeList extends React.Component {
+export class Projects extends React.Component {
   constructor() {
     super();
-    this.state = {
-      nodes: [],
-    };
+    this.state = { projects: [] };
     this.refresh = this.refresh.bind(this);
   }
 
@@ -31,12 +28,12 @@ export class NodeList extends React.Component {
     // AJAX fetch server/node/rest?_format=json and setState with the response data
     try {
       const axios = await ajax(); // wait for an initialized axios object
-      const response = await axios.get("/node/rest"); // wait for the POST AJAX request to complete
-      //console.log(response.data);
+      const response = await axios.get("/node/project"); // wait for the POST AJAX request to complete
+      console.log(response.data);
       if (response.data) {
         // setState will trigger repaint
         //console.log(response.data);
-        this.setState({ nodes: response.data });
+        this.setState({ projects: response.data });
       }
     } catch (e) {
       alert(e);
@@ -44,17 +41,6 @@ export class NodeList extends React.Component {
   }
 
   render() {
-    const deleteNode = async (nid) => {
-      try {
-        const axios = await ajax(); // wait for an initialized axios object
-        const response = await axios.delete(`/node/${nid}`); // wait for the DELETE AJAX request to complete
-        console.log("Node deleted", response);
-        emitter.emit("NODE_UPDATED");
-      } catch (e) {
-        alert(e);
-      }
-    };
-
     return (
       <table>
         <thead>
@@ -65,20 +51,20 @@ export class NodeList extends React.Component {
           </tr>
         </thead>
         <tbody>
-          {this.state.nodes.map((node, index) => {
+          {this.state.projects.map((project, index) => {
             // iterate over the nodes array and map them to "li" elements
             return (
               <tr key={index}>
                 <td>
                   <p
-                    href={node}
+                    href={project}
                     style={{
                       color: "white",
                       marginRigth: "50px",
                       textAlign: "center",
                     }}
                   >
-                    {node.uuid[0].value}
+                    {project.uuid[0].value}
                   </p>
                 </td>
                 <td
@@ -88,10 +74,10 @@ export class NodeList extends React.Component {
                     textAlign: "center",
                   }}
                 >
-                  {node.nid[0].value}
+                  {project.nid[0].value}
                 </td>
                 <td>
-                  <Link to={`${node.uuid[0].value}`} state={node}>
+                  <Link to={`${project.uuid[0].value}`} state={project}>
                     <button className="infoButton">See More</button>
                   </Link>
                 </td>
