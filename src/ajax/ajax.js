@@ -25,7 +25,7 @@ export default async () => {
       const response = await axios.get(tokenURL, {
         withCredentials: true, // required to send auth cookie
       });
-      console.log(response);
+      //console.log(response);
       const csrfToken = response.data;
       singleton = axios.create({
         baseURL: config.drupal_url, // every request is relative to this URL
@@ -36,7 +36,7 @@ export default async () => {
         }, // include this header in every request
         params: { _format: "json" }, // add these query params to every request
       });
-      console.log("Created new axios instance", singleton);
+      //console.log("Created new axios instance", singleton);
     } catch (error) {
       console.error(error);
     }

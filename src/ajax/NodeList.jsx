@@ -1,6 +1,7 @@
 import React from "react";
 import events from "events";
 import ajax from "./ajax";
+import { Link } from "react-router-dom";
 
 const emitter = new events.EventEmitter();
 
@@ -31,10 +32,10 @@ export class NodeList extends React.Component {
     try {
       const axios = await ajax(); // wait for an initialized axios object
       const response = await axios.get("/node/rest"); // wait for the POST AJAX request to complete
-      console.log(response.data);
+      //console.log(response.data);
       if (response.data) {
         // setState will trigger repaint
-        console.log(response.data);
+        //console.log(response.data);
         this.setState({ nodes: response.data });
       }
     } catch (e) {
@@ -58,24 +59,26 @@ export class NodeList extends React.Component {
       <table>
         <thead>
           <tr>
-            <td>Title</td>
+            <td>guid</td>
             <td>Content ID</td>
-            <td>Action</td>
+            <td></td>
           </tr>
         </thead>
         <tbody>
           {this.state.nodes.map((node, index) => {
             // iterate over the nodes array and map them to "li" elements
+            {/* console.log(node) */}
             return (
               <tr key={index}>
                 <td>
-                  <a href={node} 
+                  <p href={node} 
                   style ={{
                     color:"white",
                     marginRigth:"50px",
                     textAlign: "center",
+                    
                   }}
-                  >{node.title[0].value}</a>
+                  >{node.uuid[0].value}</p>
                 </td>
                 <td
                 style ={{
@@ -85,9 +88,11 @@ export class NodeList extends React.Component {
                 }}
                 >{node.nid[0].value}</td>
                 <td>
-                  <button onClick={(e) => deleteNode(node.nid[0].value)} className="delButton">
-                    See More
-                  </button>
+                  <Link to={`${node.uuid[0].value}`} state={node}>
+                    <button className="infoButton">
+                      See More
+                    </button>
+                  </Link>
                 </td>
               </tr>
             );

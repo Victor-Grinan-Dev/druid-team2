@@ -15,7 +15,6 @@ import {
 } from "./features/druidSlice";
 import druidService from "./services/druid";
 
-
 //components
 import Layout from "./pages/Layout";
 import ProjectInfo from "./components/views/ProjectInfo";
@@ -26,6 +25,7 @@ import Home from "./components/Home";
 import Users from "./components/views/Users";
 import Profile from "./components/views/Profile";
 import Invoices from "./components/views/Invoices";
+import InvoiceSingle from "./components/views/InvoiceSingle";
 
 function App() {
   const dispatch = useDispatch();
@@ -74,6 +74,7 @@ function App() {
         <Route path="users" element={<Users />} />
         <Route path="profile" element={<Profile />} />
         <Route path="invoices" element={<Invoices />} />
+        <Route path="invoices/:uuid" element={<InvoiceSingle />} />
       </>
     );
   };
