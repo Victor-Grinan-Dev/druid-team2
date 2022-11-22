@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setProject, addProject } from "../../features/druidSlice";
 
 //classes
-import { Project } from "../../classes/project";
+import { SevProject } from "../../classes/sevProject";
 import { Service } from "../../classes/service";
 
 //components
@@ -29,7 +29,7 @@ const AddProject = () => {
   const [customers, setCustomers] = useState([]);
 
   useEffect(() => {
-    dispatch(setProject(new Project("name", "customer")));
+    dispatch(setProject(new SevProject("name", "customer")));
     getDefaultValues().then((res) => {
       const temp = res;
       setDefaultValues(temp);
@@ -80,7 +80,7 @@ const AddProject = () => {
       project.customer &&
       (project.name !== "name" || project.customer !== "customer")
     ) {
-      const newProject = new Project(project.name, project.customer);
+      const newProject = new SevProject(project.name, project.customer);
 
       //newProject.code = genId();
 
@@ -203,10 +203,13 @@ const AddProject = () => {
             </div>
           </div>
           <div>
-            <button className="addRowButton" onClick={addRow}>
-              Add row
-            </button>
-            <button className="resetButton">Reset</button>
+              {/* 
+               <button className="addRowButton" onClick={addRow}>
+                Add row
+              </button>
+              <button className="resetButton">Reset</button>
+              */}
+            
           </div>
         </div>
         <input

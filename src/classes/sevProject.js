@@ -1,6 +1,7 @@
 import { genId } from "../functions/genId";
 
 export class SevProject{
+    uuid
     closedDate  = undefined;
     customerContact = undefined;
     startDate = undefined;

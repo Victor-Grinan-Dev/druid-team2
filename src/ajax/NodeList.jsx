@@ -65,10 +65,9 @@ export class NodeList extends React.Component {
           </tr>
         </thead>
         <tbody>
-          {this.state.nodes.map((node, index) => {
-            // iterate over the nodes array and map them to "li" elements
-            return (
-              <tr key={index}>
+          {this.state.nodes.map((node, index) => (
+            
+            node.type[0].target_id === "druid" &&<tr key={index}>
                 <td>
                   <p
                     href={node}
@@ -96,8 +95,8 @@ export class NodeList extends React.Component {
                   </Link>
                 </td>
               </tr>
-            );
-          })}
+            
+          ))}
         </tbody>
       </table>
     );
