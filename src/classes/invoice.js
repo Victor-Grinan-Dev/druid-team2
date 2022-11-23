@@ -1,4 +1,4 @@
-export class Invoice{ 
+export class Invoice { 
     status = "lähetetty";
 
     entryDate = undefined; //automatic generated value
@@ -18,7 +18,7 @@ export class Invoice{
 
     totalExcludingTax = undefined; //totalERxcludingTax.amount = undefined; //take away 24% from totalIncludingTax
 
-    totalTax = undefined; //totalTax.amount = undefined; //amount taken totalExcludingTax
+    totalTax = undefined; //amount taken totalExcludingTax
 
     workingHoursTotalExcludingTax = undefined; //workingHoursTotalExcludingTax.amnount
 
