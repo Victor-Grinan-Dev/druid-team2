@@ -21,6 +21,7 @@ import {
 
 //functions
 import { capitalStart } from "../../functions/capitalStart";
+import { NodeForm } from "../../ajax/NodeForm";
 
 const AddProject = () => {
   const dispatch = useDispatch();
@@ -216,6 +217,7 @@ const AddProject = () => {
           onClick={createProject}
         />
       </form>
+      <NodeForm />
     </div>
   );
 };

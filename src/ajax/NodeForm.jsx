@@ -1,17 +1,17 @@
 import events from "events";
-import ajax from "./ajax";
+import axios from "axios";
 
 const emitter = new events.EventEmitter();
 
 export const NodeForm = () => {
   const data = {};
-  // note the 'async' keyword, it allows us to call 'await' later
+  // const currentUser =
   const handleSubmit = async (e) => {
     e.preventDefault();
     const node = {
       type: [
         {
-          target_id: "article",
+          target_id: "project",
           target_type: "node_type",
         },
       ],
@@ -27,14 +27,24 @@ export const NodeForm = () => {
         },
       ],
     };
-    try {
-      const axios = await ajax(); // wait for an initialized axios object
-      const response = await axios.post("/node/rest", node); // wait for the POST AJAX request to complete
-      console.log("Node created: ", response.data);
-      emitter.emit("NODE_UPDATED");
-    } catch (e) {
-      alert(e);
-    }
+    // try {
+    //   await axios.post(
+    //     "https://dev-ali-super-good.pantheonsite.io/node/project",
+    //     node,
+    //     {
+    //       withCredentials: true,
+    //       headers: {
+    //         "X-CSRF-Token": currentUser.csrf_token,
+    //       },
+    //       // "3YX_2uy__CvTfDND1TbKJ0zXOZz3DR6V9OdylKHYU3s"
+    //       params: { _format: "json" },
+    //     }
+    //   );
+    //   // console.log("Node created: ", data);
+    //   emitter.emit("NODE_UPDATED");
+    // } catch (e) {
+    //   alert(e);
+    // }
   };
   const handleChange = (e, propName) => {
     data[propName] = e.target.value;
