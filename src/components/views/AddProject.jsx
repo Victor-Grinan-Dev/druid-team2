@@ -10,6 +10,7 @@ import { Service } from "../../classes/service";
 
 //components
 import ProjectServiceRow from "./ProjectServiceRow";
+import { NodeForm } from "../../ajax/NodeForm";
 
 //service
 import {
@@ -107,7 +108,15 @@ const AddProject = () => {
   return (
     <div className="addProject">
       <h3>Create new project</h3>
-      <form className="addProjectForm">
+      <NodeForm/>
+    </div>
+  );
+};
+
+export default AddProject;
+
+/*
+<form className="addProjectForm">
         <div className="addProjectInputs">
           <div className="essentials">
             <div className="input-section">
@@ -208,19 +217,15 @@ const AddProject = () => {
                 Add row
               </button>
               <button className="resetButton">Reset</button>
-              */}
+              
             
-          </div>
-        </div>
-        <input
-          type="submit"
-          value="Create project"
-          className="createProjectButton"
-          onClick={createProject}
-        />
-      </form>
-    </div>
-  );
-};
-
-export default AddProject;
+              </div>
+              </div>
+              <input
+                type="submit"
+                value="Create project"
+                className="createProjectButton"
+                onClick={createProject}
+              />
+            </form>
+*/
