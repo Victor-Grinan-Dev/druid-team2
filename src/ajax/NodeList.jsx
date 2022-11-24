@@ -65,38 +65,39 @@ export class NodeList extends React.Component {
           </tr>
         </thead>
         <tbody>
-          {this.state.nodes.map((node, index) => (
-            
-            node.type[0].target_id === "druid" &&<tr key={index}>
-                <td>
-                  <p
-                    href={node}
+          {this.state.nodes.map(
+            (node, index) =>
+              node.type[0].target_id === "invoices" && (
+                <tr key={index}>
+                  <td>
+                    <p
+                      href={node}
+                      style={{
+                        color: "white",
+                        marginRigth: "50px",
+                        textAlign: "center",
+                      }}
+                    >
+                      {node.uuid[0].value}
+                    </p>
+                  </td>
+                  <td
                     style={{
                       color: "white",
                       marginRigth: "50px",
                       textAlign: "center",
                     }}
                   >
-                    {node.uuid[0].value}
-                  </p>
-                </td>
-                <td
-                  style={{
-                    color: "white",
-                    marginRigth: "50px",
-                    textAlign: "center",
-                  }}
-                >
-                  {node.nid[0].value}
-                </td>
-                <td>
-                  <Link to={`${node.uuid[0].value}`} state={node}>
-                    <button className="infoButton">See More</button>
-                  </Link>
-                </td>
-              </tr>
-            
-          ))}
+                    {node.nid[0].value}
+                  </td>
+                  <td>
+                    <Link to={`${node.uuid[0].value}`} state={node}>
+                      <button className="infoButton">See More</button>
+                    </Link>
+                  </td>
+                </tr>
+              )
+          )}
         </tbody>
       </table>
     );
