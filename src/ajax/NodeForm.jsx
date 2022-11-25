@@ -1,11 +1,12 @@
 import events from "events";
 import axios from "axios";
+import { useSelector } from "react-redux";
 
 const emitter = new events.EventEmitter();
 
 export const NodeForm = () => {
   const data = {};
-  // const currentUser =
+  const currentUser = useSelector(state=>state.druid.user)
   const handleSubmit = async (e) => {
     e.preventDefault();
     const node = {
@@ -27,24 +28,24 @@ export const NodeForm = () => {
         },
       ],
     };
-    // try {
-    //   await axios.post(
-    //     "https://dev-ali-super-good.pantheonsite.io/node/project",
-    //     node,
-    //     {
-    //       withCredentials: true,
-    //       headers: {
-    //         "X-CSRF-Token": currentUser.csrf_token,
-    //       },
-    //       // "3YX_2uy__CvTfDND1TbKJ0zXOZz3DR6V9OdylKHYU3s"
-    //       params: { _format: "json" },
-    //     }
-    //   );
-    //   // console.log("Node created: ", data);
-    //   emitter.emit("NODE_UPDATED");
-    // } catch (e) {
-    //   alert(e);
-    // }
+    try {
+      await axios.post(
+        "https://dev-ali-super-good.pantheonsite.io/node/project",
+        node,
+        {
+          withCredentials: true,
+          headers: {
+            "X-CSRF-Token": currentUser.token,
+          },
+          // "3YX_2uy__CvTfDND1TbKJ0zXOZz3DR6V9OdylKHYU3s"
+          params: { _format: "json" },
+        }
+      );
+      // console.log("Node created: ", node);
+      emitter.emit("NODE_UPDATED");
+    } catch (e) {
+      alert(e);
+    }
   };
   const handleChange = (e, propName) => {
     data[propName] = e.target.value;

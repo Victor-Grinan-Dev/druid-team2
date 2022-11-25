@@ -18,7 +18,7 @@ const Home = () => {
   };
   return (
     <div className="home">
-      {!isLogged && <Login />}
+      {!isLogged && <Login imI={amIloggedIn}/>}
 
       {isLogged && (
         <div>
