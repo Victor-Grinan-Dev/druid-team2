@@ -31,6 +31,34 @@ export const NodeForm = () => {
           format: "plain_text",
         },
       ],
+
+      field_customer:[
+        {
+          value: "look at me!",
+        },
+      ],
+      /*
+      field_customer_contact:[
+        {
+          value: "look at me!",
+        },
+      ],
+      field_enddate:[
+        {
+          value: "look at me!",
+        },
+      ],
+      field_services:[
+        {
+          value: "look at me!",
+        },
+      ],
+      field_user:[
+        {
+          value: "look at me!",
+        },
+      ],
+       */
     };
     try 
     {

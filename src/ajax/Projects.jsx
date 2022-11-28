@@ -2,6 +2,7 @@ import React from "react";
 import events from "events";
 import ajax from "./ajax";
 import { Link } from "react-router-dom";
+import { capitalStart } from "../functions/capitalStart";
 
 const emitter = new events.EventEmitter();
 
@@ -45,16 +46,27 @@ export class Projects extends React.Component {
       <table>
         <thead>
           <tr>
-            <td>guid</td>
+            
             <td>Content ID</td>
+            <td>Project Name:</td>
             <td></td>
           </tr>
         </thead>
         <tbody>
           {this.state.projects.map((project, index) => {
             // iterate over the nodes array and map them to "li" elements
+            console.log(project)
             return (
               <tr key={index}>
+                                <td
+                  style={{
+                    color: "white",
+                    marginRigth: "50px",
+                    textAlign: "center",
+                  }}
+                > 
+                {project.nid[0].value}
+                </td>
                 <td>
                   <p
                     href={project}
@@ -64,20 +76,12 @@ export class Projects extends React.Component {
                       textAlign: "center",
                     }}
                   >
-                    {project.uuid[0].value}
+                    {capitalStart(project.title[0].value)}
                   </p>
                 </td>
-                <td
-                  style={{
-                    color: "white",
-                    marginRigth: "50px",
-                    textAlign: "center",
-                  }}
-                >
-                  {project.nid[0].value}
-                </td>
+
                 <td>
-                  <Link to={`${project.uuid[0].value}`} state={project}>
+                  <Link to={`${project.title[0].value}`} state={project}>
                     <button className="infoButton">See More</button>
                   </Link>
                 </td>

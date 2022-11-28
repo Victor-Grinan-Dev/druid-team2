@@ -11,6 +11,7 @@ import { Service } from "../../classes/service";
 //components
 import ProjectServiceRow from "./ProjectServiceRow";
 import { NodeForm } from "../../ajax/NodeForm";
+import AddProjectView from "./AddProjectView";
 
 //service
 import {
@@ -22,6 +23,7 @@ import {
 
 //functions
 import { capitalStart } from "../../functions/capitalStart";
+
 
 const AddProject = () => {
   const dispatch = useDispatch();
@@ -108,6 +110,8 @@ const AddProject = () => {
   return (
     <div className="addProject">
       <h3>Create new project</h3>
+      {/* <AddProjectView /> */}
+      
       <NodeForm/>
     </div>
   );
