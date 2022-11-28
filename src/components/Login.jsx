@@ -12,7 +12,7 @@ import { setIsLogged, setUser } from "../features/druidSlice";
 
 // const LOGIN_URL = "http://localhost:8010/database"; //auth
 
-const Login = () => {
+const Login = ({imI}) => {
   const dispatch = useDispatch();
   //const isLogged = (state => state.druid.isLogged);
 
@@ -111,6 +111,7 @@ const Login = () => {
           </div>
 
           <button className="loginButton">Log in</button>
+          <button onClick={imI}>Im i?</button>
         </div>
         <div ref={errRef}>{errMsg}</div>
       </form>

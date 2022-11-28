@@ -1,69 +1,88 @@
-
-import events from 'events';
-import ajax from './ajax';
-import { SevProject } from '../classes/sevProject';
-import { useState } from 'react';
-
-const superTest = new SevProject("supertest", "ali", "eric")
+import events from "events";
+//import axios from "axios";
+import ajax from "./ajax"; 
+import { useSelector } from "react-redux";
+import { Project } from "../classes/project";
 
 const emitter = new events.EventEmitter();
 
-export const NodeForm = ({}) => {//druid=invoices, project, user, customer
-  const [object, setObj] = useState(superTest)
-    
-    const handleSubmit = async (e) => {
-      e.preventDefault()
-      const node = {     
-        type: [{
+export const NodeForm = () => {
+  const data = {};
+  const currentUser = useSelector(state=>state.druid.user)
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+  
+    const newProj = new Project()
+    const node = {
+      type: [
+        {
           target_id: "project",
-          target_type: 'node_type',
-        }],
-        title: [{
-          value: superTest.name,
-        }],
-        body: [{
-          value: "hello", //stringify?
-          format: 'plain_text',
-        }],
-        field_customer:[{
-          value: superTest.customer, //stringify?
-          format: 'plain_text',
-        }],
-        field_projects:[{
-          value: superTest, //stringify?
-          format: 'plain_text',
-        }],
-      };
-
-      try {
+          target_type: "node_type",
+        },
+      ],
+      title: [
+        {
+          value: data.title,
+        },
+      ],
+      body: [
+        {
+          value: data.body,
+          format: "plain_text",
+        },
+      ],
+    };
+    try 
+    {
         const axios = await ajax() 
-        const response = await axios.post('/node/', node) 
+        const response = await axios.post('/node', node) 
         console.log('Node created: ', response.data)
         emitter.emit('NODE_UPDATED')
       } catch (e) {
         alert(e)
       }
+  
+/*
+    {
+      await axios.post(
+        "https://dev-ali-super-good.pantheonsite.io/node/",
+        node,
+        {
+          withCredentials: true,
+          headers: {
+            "X-CSRF-Token": currentUser.token,
+          },
+          
+          params: { _format: "json" },
+        }
+      );
+      // console.log("Node created: ", node);
+      emitter.emit("NODE_UPDATED");
+    } catch (e) {
+      alert(e);
     }
-    const handleChange = (e) => {
-      setObj({...object, [e.target.name]: e.target.value})
-      
-    }
-    return (
-        <div className="create-node-form">
-          <h4>Create Node Form</h4>
-          <form onSubmit={handleSubmit}>
-            <label>Name</label>
-            <br />
-            <input type="text" name="name" onChange={handleChange}></input>
-            <br />
-            <label>Body</label>
-            <br />
-            {/*
-            <textarea onChange={e => handleChange(e, 'body')}></textarea>
-            */}
-            <br />
-            <button type="submit">Submit</button>
-          </form>
-        </div>
-      )
-}
+
+*/
+    
+  };
+  const handleChange = (e, propName) => {
+    data[propName] = e.target.value;
+  };
+  return (
+    <div className="create-node-form">
+      <h4>Create Node Form</h4>
+      <form onSubmit={handleSubmit}>
+        <label>Title</label>
+        <br />
+        <input type="text" onChange={(e) => handleChange(e, "title")}></input>
+        <br />
+        <label>Body</label>
+        <br />
+        <textarea onChange={(e) => handleChange(e, "body")}></textarea>
+        <br />
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  );
+};
+

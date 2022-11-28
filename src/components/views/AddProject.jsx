@@ -22,6 +22,7 @@ import {
 
 //functions
 import { capitalStart } from "../../functions/capitalStart";
+import { NodeForm } from "../../ajax/NodeForm";
 
 const AddProject = () => {
   const dispatch = useDispatch();
@@ -212,20 +213,24 @@ export default AddProject;
             </div>
           </div>
           <div>
-              {/* 
-               <button className="addRowButton" onClick={addRow}>
-                Add row
-              </button>
-              <button className="resetButton">Reset</button>
-              
-            
-              </div>
-              </div>
-              <input
-                type="submit"
-                value="Create project"
-                className="createProjectButton"
-                onClick={createProject}
-              />
-            </form>
-*/
+
+            <button className="addRowButton" onClick={addRow}>
+              Add row
+            </button>
+            <button className="resetButton">Reset</button>
+          </div>
+        </div>
+        <input
+          type="submit"
+          value="Create project"
+          className="createProjectButton"
+          onClick={createProject}
+        />
+      </form>
+      <NodeForm />
+    </div>
+  );
+};
+
+export default AddProject;
+
