@@ -2,7 +2,7 @@ import events from "events";
 //import axios from "axios";
 import ajax from "./ajax"; 
 import { useSelector } from "react-redux";
-import { Project } from "../classes/project";
+import { SevProject } from "../classes/sevProject";
 
 const emitter = new events.EventEmitter();
 
@@ -12,7 +12,7 @@ export const NodeForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
   
-    const newProj = new Project()
+    const newProj = new SevProject()
     const node = {
       type: [
         {
