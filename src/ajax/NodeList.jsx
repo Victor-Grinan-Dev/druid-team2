@@ -48,7 +48,7 @@ export class NodeList extends React.Component {
       try {
         const axios = await ajax(); // wait for an initialized axios object
         const response = await axios.delete(`/node/${nid}`); // wait for the DELETE AJAX request to complete
-        console.log("Node deleted", response);
+        //console.log("Node deleted", response);
         emitter.emit("NODE_UPDATED");
       } catch (e) {
         alert(e);
@@ -56,6 +56,7 @@ export class NodeList extends React.Component {
     };
 
     return (
+
       <table>
         <thead>
           <tr>
@@ -65,41 +66,42 @@ export class NodeList extends React.Component {
           </tr>
         </thead>
         <tbody>
-          {this.state.nodes.map((node, index) => {
-            // iterate over the nodes array and map them to "li" elements
-            return (
-              <tr key={index}>
-                <td>
-                  <p
-                    href={node}
+          {this.state.nodes.map(
+            (node, index) =>
+              node.type[0].target_id === "invoices" && (
+                <tr key={index}>
+                  <td>
+                    <p
+                      href={node}
+                      style={{
+                        color: "white",
+                        marginRigth: "50px",
+                        textAlign: "center",
+                      }}
+                    >
+                      {node.uuid[0].value}
+                    </p>
+                  </td>
+                  <td
                     style={{
                       color: "white",
                       marginRigth: "50px",
                       textAlign: "center",
                     }}
                   >
-                    {node.uuid[0].value}
-                  </p>
-                </td>
-                <td
-                  style={{
-                    color: "white",
-                    marginRigth: "50px",
-                    textAlign: "center",
-                  }}
-                >
-                  {node.nid[0].value}
-                </td>
-                <td>
-                  <Link to={`${node.uuid[0].value}`} state={node}>
-                    <button className="infoButton">See More</button>
-                  </Link>
-                </td>
-              </tr>
-            );
-          })}
+                    {node.nid[0].value}
+                  </td>
+                  <td>
+                    <Link to={`${node.uuid[0].value}`} state={node}>
+                      <button className="infoButton">See More</button>
+                    </Link>
+                  </td>
+                </tr>
+              )
+          )}
         </tbody>
       </table>
+
     );
   }
 }

@@ -30,13 +30,13 @@ const Navbar = () => {
         )}
         {user.userType === "pm" && (
           <li className="projectsLink">
-            <Link to="/adduser">Add User</Link>
+            <Link to="/users">Users</Link>
           </li>
         )}
 
         {user.userType === "pm" && (
           <li className="projectsLink">
-            <Link to="/users">Users</Link>
+            <Link to="/adduser">Add User</Link>
           </li>
         )}
 

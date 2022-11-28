@@ -5,11 +5,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { setProject, addProject } from "../../features/druidSlice";
 
 //classes
-import { Project } from "../../classes/project";
+import { SevProject } from "../../classes/sevProject";
 import { Service } from "../../classes/service";
 
 //components
 import ProjectServiceRow from "./ProjectServiceRow";
+import { NodeForm } from "../../ajax/NodeForm";
 
 //service
 import {
@@ -30,7 +31,7 @@ const AddProject = () => {
   const [customers, setCustomers] = useState([]);
 
   useEffect(() => {
-    dispatch(setProject(new Project("name", "customer")));
+    dispatch(setProject(new SevProject("name", "customer")));
     getDefaultValues().then((res) => {
       const temp = res;
       setDefaultValues(temp);
@@ -81,7 +82,7 @@ const AddProject = () => {
       project.customer &&
       (project.name !== "name" || project.customer !== "customer")
     ) {
-      const newProject = new Project(project.name, project.customer);
+      const newProject = new SevProject(project.name, project.customer);
 
       //newProject.code = genId();
 
@@ -108,7 +109,15 @@ const AddProject = () => {
   return (
     <div className="addProject">
       <h3>Create new project</h3>
-      <form className="addProjectForm">
+      <NodeForm/>
+    </div>
+  );
+};
+
+export default AddProject;
+
+/*
+<form className="addProjectForm">
         <div className="addProjectInputs">
           <div className="essentials">
             <div className="input-section">
@@ -204,6 +213,7 @@ const AddProject = () => {
             </div>
           </div>
           <div>
+
             <button className="addRowButton" onClick={addRow}>
               Add row
             </button>
@@ -223,3 +233,4 @@ const AddProject = () => {
 };
 
 export default AddProject;
+

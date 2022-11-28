@@ -7,12 +7,8 @@ export class Invoice{
     
     constructor( guid, name, createdBy){
         this.guid = guid;
-        this.name = name;
-        this.createdBy = createdBy;
-        this.setCreatedTime();
+        this.referenceNumber = referenceNumber;
+        this.customer = customer;
+        this.project = project;
     }
-    setCreatedTime(){
-        this.createdDateTime = new Date();
-    }
-};
-
+}
