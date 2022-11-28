@@ -1,6 +1,8 @@
 import events from "events";
-import axios from "axios";
+//import axios from "axios";
+import ajax from "./ajax"; 
 import { useSelector } from "react-redux";
+import { Project } from "../classes/project";
 
 const emitter = new events.EventEmitter();
 
@@ -9,6 +11,8 @@ export const NodeForm = () => {
   const currentUser = useSelector(state=>state.druid.user)
   const handleSubmit = async (e) => {
     e.preventDefault();
+  
+    const newProj = new Project()
     const node = {
       type: [
         {
@@ -28,16 +32,27 @@ export const NodeForm = () => {
         },
       ],
     };
-    try {
+    try 
+    {
+        const axios = await ajax() 
+        const response = await axios.post('/node', node) 
+        console.log('Node created: ', response.data)
+        emitter.emit('NODE_UPDATED')
+      } catch (e) {
+        alert(e)
+      }
+  
+/*
+    {
       await axios.post(
-        "https://dev-ali-super-good.pantheonsite.io/node/project",
+        "https://dev-ali-super-good.pantheonsite.io/node/",
         node,
         {
           withCredentials: true,
           headers: {
             "X-CSRF-Token": currentUser.token,
           },
-          // "3YX_2uy__CvTfDND1TbKJ0zXOZz3DR6V9OdylKHYU3s"
+          
           params: { _format: "json" },
         }
       );
@@ -46,6 +61,8 @@ export const NodeForm = () => {
     } catch (e) {
       alert(e);
     }
+*/
+    
   };
   const handleChange = (e, propName) => {
     data[propName] = e.target.value;

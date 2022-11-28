@@ -1,5 +1,6 @@
+import { genId } from "../functions/genId";
+
 export class User {
-  id = undefined;
   email = undefined;
   company = undefined;
   initials = undefined;
@@ -7,16 +8,17 @@ export class User {
   bio = undefined;
 
   constructor(
-    token,
+    //token, 
     username,
-    userType,
+    userType, //role (user, developer, pm cant create pms)
     firstName = undefined,
     lastName = undefined
   ) {
-    this.token = token;
+    //this.token = token;
     this.username = username;
     this.userType = userType;
     this.firstName = firstName;
     this.lastName = lastName;
+    this.id = genId(24);
   }
 }

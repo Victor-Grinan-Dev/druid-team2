@@ -1,4 +1,4 @@
-export class Invoice{ //OOP
+export class Invoice{ 
     
     isActive = false;
     isSent = false;

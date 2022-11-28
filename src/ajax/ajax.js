@@ -1,4 +1,5 @@
 import axios from "axios";
+import Cookies from "js-cookie";
 import config from "./config";
 
 /*
@@ -26,7 +27,11 @@ export default async () => {
         withCredentials: true, // required to send auth cookie
       });
       //console.log(response);
+      console.log(response.data)
+      //stupid idea
+      
       const csrfToken = response.data;
+      //Cookies.set("druidLog", csrfToken);
       singleton = axios.create({
         baseURL: config.drupal_url, // every request is relative to this URL
         withCredentials: true, // include auth cookie in every request
