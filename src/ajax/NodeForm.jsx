@@ -31,18 +31,52 @@ export const NodeForm = () => {
           format: "plain_text",
         },
       ],
+      status:[
+        {
+          value:false,
+        }
+      ]
+      /*
+            field_customer:[
+        {
+          value: data.field_customer,
+          format: "plain_text",
+        },
+      ],
+      */
+      /*
+      field_customer_contact:[
+        {
+          value: "look at me!",
+        },
+      ],
+      field_enddate:[
+        {
+          value: "look at me!",
+        },
+      ],
+      field_services:[
+        {
+          value: "look at me!",
+        },
+      ],
+      field_user:[
+        {
+          value: "look at me!",
+        },
+      ],
+       */
     };
-    try 
-    {
-        const axios = await ajax() 
-        const response = await axios.post('/node', node) 
-        console.log('Node created: ', response.data)
-        emitter.emit('NODE_UPDATED')
-      } catch (e) {
-        alert(e)
-      }
-  
-/*
+    try {
+      const axios = await ajax();
+      const response = await axios.post("/node", node);
+      console.log("Node created: ", response.data);
+      emitter.emit("NODE_UPDATED");
+    } catch (e) {
+      alert(e);
+    }
+
+    /*
     {
       await axios.post(
         "https://dev-ali-super-good.pantheonsite.io/node/",
@@ -76,6 +110,10 @@ export const NodeForm = () => {
         <br />
         <input type="text" onChange={(e) => handleChange(e, "title")}></input>
         <br />
+        {/* <label>field_customer</label>
+        <br />
+        <input type="text" onChange={(e) => handleChange(e, "field_customer")}></input>
+        <br /> */}
         <label>Body</label>
         <br />
         <textarea onChange={(e) => handleChange(e, "body")}></textarea>
