@@ -48,7 +48,7 @@ export class NodeList extends React.Component {
       try {
         const axios = await ajax(); // wait for an initialized axios object
         const response = await axios.delete(`/node/${nid}`); // wait for the DELETE AJAX request to complete
-        //console.log("Node deleted", response);
+        console.log("Node deleted", response);
         emitter.emit("NODE_UPDATED");
       } catch (e) {
         alert(e);
