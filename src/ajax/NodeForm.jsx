@@ -67,17 +67,16 @@ export const NodeForm = () => {
       ],
        */
     };
-    try 
-    {
-        const axios = await ajax() 
-        const response = await axios.post('/node', node) 
-        console.log('Node created: ', response.data)
-        emitter.emit('NODE_UPDATED')
-      } catch (e) {
-        alert(e)
-      }
-  
-/*
+    try {
+      const axios = await ajax();
+      const response = await axios.post("/node", node);
+      console.log("Node created: ", response.data);
+      emitter.emit("NODE_UPDATED");
+    } catch (e) {
+      alert(e);
+    }
+
+    /*
     {
       await axios.post(
         "https://dev-ali-super-good.pantheonsite.io/node/",
