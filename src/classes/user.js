@@ -6,19 +6,17 @@ export class User {
   initials = undefined;
   pwd = undefined;
   bio = undefined;
+  firstName = undefined;
+  lastName = undefined;
 
   constructor(
-    //token, 
+    token, 
     username,
     userType, //role (user, developer, pm cant create pms)
-    firstName = undefined,
-    lastName = undefined
   ) {
-    //this.token = token;
+    this.token = token;
     this.username = username;
     this.userType = userType;
-    this.firstName = firstName;
-    this.lastName = lastName;
     this.id = genId(24);
   }
 }
