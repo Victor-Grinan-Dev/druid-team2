@@ -3,10 +3,12 @@ import events from "events";
 import ajax from "./ajax";
 import { Link } from "react-router-dom";
 import { capitalStart } from "../functions/capitalStart";
+import ProjectCard from "../components/views/projectCard/ProjectCard";
 
 const emitter = new events.EventEmitter();
 
 export class Projects extends React.Component {
+
   constructor() {
     super();
     this.state = { projects: [] };
@@ -43,53 +45,15 @@ export class Projects extends React.Component {
 
   render() {
     return (
-      <table>
-        <thead>
-          <tr>
-            
-            <td>Content ID</td>
-            <td>Project Name:</td>
-            <td></td>
-          </tr>
-        </thead>
-        <tbody>
+<>
           {this.state.projects.map((project, index) => {
             // iterate over the nodes array and map them to "li" elements
             console.log(project)
             return (
-              <tr key={index}>
-                                <td
-                  style={{
-                    color: "white",
-                    marginRigth: "50px",
-                    textAlign: "center",
-                  }}
-                > 
-                {project.nid[0].value}
-                </td>
-                <td>
-                  <p
-                    href={project}
-                    style={{
-                      color: "white",
-                      marginRigth: "50px",
-                      textAlign: "center",
-                    }}
-                  >
-                    {capitalStart(project.title[0].value)}
-                  </p>
-                </td>
-
-                <td>
-                  <Link to={`${project.title[0].value}`} state={project}>
-                    <button className="infoButton">See More</button>
-                  </Link>
-                </td>
-              </tr>
+              <ProjectCard key={index} nid={project.nid[0].value} project={project} />
             );
           })}
-        </tbody>
-      </table>
+</>
     );
   }
 }

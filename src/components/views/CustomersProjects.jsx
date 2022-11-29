@@ -86,8 +86,7 @@ const CustomersProjects = () => {
         <Search />
       </div>
       <h2 className="projectsH2">Projects</h2>
-      <Projects />
-      <div className="cardsArea">{access()}</div>
+      <div className="cardsArea"><Projects />{/* acces() */}</div>
     </div>
   );
 };

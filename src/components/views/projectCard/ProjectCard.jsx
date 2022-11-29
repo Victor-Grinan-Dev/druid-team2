@@ -4,8 +4,8 @@ import style from './projectCard.module.css';
 import { Link } from "react-router-dom";
 import { capitalStart } from "../../../functions/capitalStart";
 import { useSelector } from 'react-redux';
-
-const ProjectCard = ({ project, index, full=false }) => {
+ 
+const ProjectCard = ({ project, nid, full=false }) => {
     const user = useSelector(state => state.druid.user);
     if(full){
         //singlePage:
@@ -14,9 +14,10 @@ const ProjectCard = ({ project, index, full=false }) => {
                 <div className={style.boxFull}>
                     
                     <div className={style.contentFull}>
-                        <h2>{project.id < 10 ?`0${project.id}`: project.id }</h2>
-                        <h3>"{capitalStart(project.name)}"</h3>
+                        <h2>{nid < 10 ?`0${nid}`: nid }</h2>
+                        <h3>"{capitalStart(project.title[0].value)}"</h3>
                         <div className="dataArea"></div>
+                        {/*
                         <p>Custormer: {project.customer}</p>
                         <p>Main engine: {project.services[0].engine} {project.services[0].version}</p>
                         <p >Developers:</p>
@@ -25,11 +26,15 @@ const ProjectCard = ({ project, index, full=false }) => {
                                 <p key={i}>{capitalStart(dev)}</p>
                             )) : <p>No developers assigned</p>
                         }
-                        {project.developers ? console.log(project.name, project.developers) : null}
+                        */}
+
                     </div>
                     <h3>extra Info?</h3>
                     <div className={style.extraInfo}>
                         
+{/*
+                        {project.developers ? console.log(project.name, project.developers) : null}
+
                         <div className={style.infoPiece}>
                             <p>closedDate:</p>
                         </div>
@@ -54,6 +59,7 @@ const ProjectCard = ({ project, index, full=false }) => {
                         <div className={style.infoPiece}>
                             <p>projectOwner:</p>
                         </div>
+*/}
                     </div>
                     {user.userType === "pm" && <button className='infoButton'>Edit</button>}
                 </div>           
@@ -66,19 +72,23 @@ const ProjectCard = ({ project, index, full=false }) => {
         <div className={style.box}>
             
             <div className={style.content}>
-                <h2>{index < 10 ? `0${index}`: index }</h2>
-                <h3>"{capitalStart(project.name)}"</h3>
+                <h2>{nid < 10 ? `0${nid}`: nid }</h2>
+                <h3>"{capitalStart(project.title[0].value)}"</h3>
                 <div className="dataArea"></div>
-                <p>Custormer: {project.customer}</p>
+                
+                {/*
+                <p>Custormer: {project.field_customer[0].value}</p>
                 <p>Main engine: {project.services[0].engine} {project.services[0].version}</p>
-                <p >Developers:</p>
+                                <p >Developers:</p>
                 {project.developers ?
                     project.developers.map((dev,i) => (
                         <p key={i}>{capitalStart(dev)}</p>
                     )) : <p>No developers assigned</p>
                 }
+                */}
+
                 {/* project.developers ? console.log(project.name, project.developers) : null */}
-                <Link to={`/projectinfo/${project.name}`} state={project}> <button className='infoButton'>More Info</button></Link>
+                <Link to={`/projectinfo/${project.title[0].value}`} state={project}> <button className='infoButton'>More Info</button></Link>
             </div>
         </div>           
     </div>
