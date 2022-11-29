@@ -31,12 +31,19 @@ export const NodeForm = () => {
           format: "plain_text",
         },
       ],
-
-      field_customer:[
+      status:[
         {
-          value: "look at me!",
+          value:false,
+        }
+      ]
+      /*
+            field_customer:[
+        {
+          value: data.field_customer,
+          format: "plain_text",
         },
       ],
+      */
       /*
       field_customer_contact:[
         {
@@ -104,6 +111,10 @@ export const NodeForm = () => {
         <br />
         <input type="text" onChange={(e) => handleChange(e, "title")}></input>
         <br />
+        {/* <label>field_customer</label>
+        <br />
+        <input type="text" onChange={(e) => handleChange(e, "field_customer")}></input>
+        <br /> */}
         <label>Body</label>
         <br />
         <textarea onChange={(e) => handleChange(e, "body")}></textarea>

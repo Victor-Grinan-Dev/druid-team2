@@ -23,18 +23,18 @@ const Navbar = () => {
             <Link to="/customersprojects">Projects</Link>
           </li>
         )}
-        {user.userType === "pm" && (
+        {user.username && (
           <li className="projectsLink">
             <Link to="/addproject">Add Project</Link>
           </li>
         )}
-        {user.userType === "pm" && (
+        {user.username && (
           <li className="projectsLink">
             <Link to="/users">Users</Link>
           </li>
         )}
 
-        {user.userType === "pm" && (
+        {user.username && (
           <li className="projectsLink">
             <Link to="/adduser">Add User</Link>
           </li>
