@@ -31,38 +31,38 @@ function App() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.druid.user);
 
-  useEffect(() => {
-    // where druid is coming from?
-    if (localStorage.getItem("druid") && sessionStorage.getItem("druidLog")) {
-      const userStr = localStorage.getItem("druid");
-      const userObj = JSON.parse(userStr);
-      const auth = sessionStorage.getItem("druidLog");
-      if (userObj.token === auth) {
-        dispatch(setIsLogged(true));
-        dispatch(setUser(userObj));
-      }
-    }
-    druidService.getDatabase().then((res) => {
-      const projects = res.projects;
-      const users = res.users;
-      const config = res.config;
-      dispatch(setProjects(projects));
-      dispatch(setUsers(users));
-      dispatch(setConfig(config));
-    });
-    //   if (Cookies.get("druidLog")) {
-    //     const cookie = Cookies.get("druidLog");
-    //     for (let user of users) {
-    //       if (user.id === cookie) {
-    //         dispatch(setUser(user));
-    //         dispatch(setIsLogged(true));
-    //       }
-    //     }
-    //   }
-    // });
+  // useEffect(() => {
+  // where druid is coming from?
+  // if (sessionStorage.getItem("druidLog")) {
+  // const userStr = localStorage.getItem("druid");
+  // const userObj = JSON.parse(userStr);
+  // const auth = sessionStorage.getItem("druidLog");
+  // if (userObj.token === auth) {
+  //   dispatch(setIsLogged(true));
+  //   dispatch(setUser(userObj));
+  // }
+  // }
+  // druidService.getDatabase().then((res) => {
+  //   const projects = res.projects;
+  //   const users = res.users;
+  //   const config = res.config;
+  //   dispatch(setProjects(projects));
+  //   dispatch(setUsers(users));
+  //   dispatch(setConfig(config));
+  // });
+  //   if (Cookies.get("druidLog")) {
+  //     const cookie = Cookies.get("druidLog");
+  //     for (let user of users) {
+  //       if (user.id === cookie) {
+  //         dispatch(setUser(user));
+  //         dispatch(setIsLogged(true));
+  //       }
+  //     }
+  //   }
+  // });
 
-    dispatch(isLoading(false));
-  }, [dispatch]);
+  //   dispatch(isLoading(false));
+  // }, [dispatch]);
 
   const views = () => {
     return (
