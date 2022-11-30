@@ -1,5 +1,4 @@
 import axios from "axios";
-import Cookies from "js-cookie";
 import config from "./config";
 
 /*
@@ -28,9 +27,12 @@ export default async () => {
       });
       //console.log(response);
       console.log(response.data)
+
       //stupid idea
       
+ 
       const csrfToken = response.data;
+      console.log(response.data)
       //Cookies.set("druidLog", csrfToken);
       singleton = axios.create({
         baseURL: config.drupal_url, // every request is relative to this URL

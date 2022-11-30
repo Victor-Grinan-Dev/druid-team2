@@ -32,11 +32,11 @@ function App() {
   const user = useSelector((state) => state.druid.user);
 
   useEffect(() => {
-    if (localStorage.getItem("druid") && Cookies.get("druidLog")) {
+    if (localStorage.getItem("druid") && sessionStorage.getItem("druidLog")) {
       const userStr = localStorage.getItem("druid");
       const userObj = JSON.parse(userStr);
-      const cookies = Cookies.get("druidLog");
-      if (userObj.token === cookies) {
+      const auth = sessionStorage.getItem("druidLog");
+      if (userObj.token === auth) {
         dispatch(setIsLogged(true));
         dispatch(setUser(userObj));
       }

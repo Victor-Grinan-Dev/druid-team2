@@ -9,7 +9,7 @@ const Navbar = () => {
   const dispatch = useDispatch();
 
   const logout = () => {
-    Cookies.remove("druidLog", { path: "/" });
+    //Cookies.remove("druidLog", { path: "/" });
     dispatch(setUser({}));
     dispatch(setIsLogged(false));
     localStorage.removeItem("druid");

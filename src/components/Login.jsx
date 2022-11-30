@@ -1,13 +1,13 @@
 import axios from "axios";
-import Cookies from "js-cookie";
-import React, { useRef, useEffect, useState } from "react";
+//import Cookies from "js-cookie";
+import React, { useRef, useEffect, useContext, useState } from "react";
 import { useDispatch } from "react-redux";
 import logo from "../assets/images/logo.jpg";
 import config from "../ajax/config";
 import { User } from "../classes/user";
 
 //Auth:
-//import AuthContext from "../context/AuthProvider";
+import AuthContext from "../context/AuthProvider";
 import { setIsLogged, setUser } from "../features/druidSlice";
 
 // const LOGIN_URL = "http://localhost:8010/database"; //auth
@@ -22,11 +22,7 @@ const Login = ({imI}) => {
 
   const [pwd, setPwd] = useState("");
   const [user, setUsername] = useState("");
-  //const { setAuth } = useContext(AuthContext);
-
-  useEffect(() => {
-    //userRef.current.focus();
-  }, []);
+  const { setAuth } = useContext(AuthContext);
 
   useEffect(() => {
     setErrMsg("");
@@ -54,13 +50,18 @@ const Login = ({imI}) => {
           pass: pwd,
         })
         .then((res) => {
-          Cookies.set("druidLog", res.data.csrf_token);
+          //Cookies.set("druidLog", res.data.csrf_token);
+          
+          sessionStorage.setItem("druidLog", res.data.csrf_token)
           const testUser = new User(
             res.data.csrf_token,
             res.data.current_user.name,
             "pm"
           );
-          localStorage.setItem("druid", JSON.stringify(testUser));
+
+          setAuth(true)
+
+          //localStorage.setItem("druid", JSON.stringify(testUser));
           dispatch(setIsLogged(true));
           dispatch(setUser(testUser));
           console.log(res);
