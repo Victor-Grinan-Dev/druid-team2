@@ -1,4 +1,4 @@
-import axios from "axios";
+// import axios from "axios";
 //import Cookies from "js-cookie";
 import React, { useRef, useEffect, useContext, useState } from "react";
 import { useDispatch } from "react-redux";
@@ -9,10 +9,11 @@ import { User } from "../classes/user";
 //Auth:
 import AuthContext from "../context/AuthProvider";
 import { setIsLogged, setUser } from "../features/druidSlice";
+import ajax from "../ajax/ajax";
 
 // const LOGIN_URL = "http://localhost:8010/database"; //auth
 
-const Login = ({imI}) => {
+const Login = ({ imI }) => {
   const dispatch = useDispatch();
   //const isLogged = (state => state.druid.isLogged);
 
@@ -44,26 +45,28 @@ const Login = ({imI}) => {
       //   }
       // });
 
-      await axios
+      const axios = await ajax();
+
+      axios
         .post(`${config.drupal_url}/user/login?_format=json`, {
           name: user,
           pass: pwd,
         })
         .then((res) => {
-          //Cookies.set("druidLog", res.data.csrf_token);
-          
-          sessionStorage.setItem("druidLog", res.data.csrf_token)
-          const testUser = new User(
-            res.data.csrf_token,
-            res.data.current_user.name,
-            "pm"
-          );
+          // Cookies.set("druidLog", res.data.csrf_token);
+          sessionStorage.setItem("druidLog", JSON.stringify(res.data));
+          // sessionStorage.setItem("loggedIn", "true"); WE NEED THIS SOMEWHERE
 
-          setAuth(true)
+          // const testUser = new User(
+          //   res.data.csrf_token,
+          //   res.data.current_user.name,
+          //   "pm"
+          // );
 
+          setAuth(true);
           //localStorage.setItem("druid", JSON.stringify(testUser));
           dispatch(setIsLogged(true));
-          dispatch(setUser(testUser));
+          dispatch(setUser(res.data));
           console.log(res);
         });
     } catch (err) {

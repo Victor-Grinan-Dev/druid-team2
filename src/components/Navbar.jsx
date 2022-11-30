@@ -1,58 +1,73 @@
-import Cookies from "js-cookie";
+// import Cookies from "js-cookie";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import ajax from "../ajax/ajax";
 import { setIsLogged, setUser } from "../features/druidSlice";
 
 const Navbar = () => {
   const user = useSelector((state) => state.druid.user);
   const dispatch = useDispatch();
 
-  const logout = () => {
+  const logout = async () => {
+    const axios = await ajax();
+    try {
+      await axios
+        .post(`/user/logout?token=${user?.logout_token}`)
+        .then((res) => console.log("response", res));
+      dispatch(setUser({}));
+      dispatch(setIsLogged(false));
+      window.sessionStorage.removeItem("druidLog");
+    } catch (err) {
+      console.log(`Logout failed. Error: ${err}`);
+      dispatch(setUser({}));
+      dispatch(setIsLogged(false));
+      window.sessionStorage.removeItem("druidLog");
+    }
     //Cookies.remove("druidLog", { path: "/" });
-    dispatch(setUser({}));
-    dispatch(setIsLogged(false));
-    localStorage.removeItem("druid");
+    // dispatch(setUser({}));
+    // dispatch(setIsLogged(false));
+    // localStorage.removeItem("druid");
   };
 
   return (
     <nav>
       <ul>
-        {user.username && (
+        {user.current_user && (
           <li className="projectsLink">
             <Link to="/customersprojects">Projects</Link>
           </li>
         )}
-        {user.username && (
+        {user.current_user && (
           <li className="projectsLink">
             <Link to="/addproject">Add Project</Link>
           </li>
         )}
-        {user.username && (
+        {user.current_user && (
           <li className="projectsLink">
             <Link to="/users">Users</Link>
           </li>
         )}
 
-        {user.username && (
+        {user.current_user && (
           <li className="projectsLink">
             <Link to="/adduser">Add User</Link>
           </li>
         )}
 
-        {user.username && (
+        {user.current_user && (
           <li className="projectsLink">
             <Link to="/profile">Profile</Link>
           </li>
         )}
 
-        {user.username && (
+        {user.current_user && (
           <li className="projectsLink">
             <Link to="/invoices">Invoices</Link>
           </li>
         )}
 
-        {user.username && (
+        {user.current_user && (
           <li className="projectsLink">
             <Link to="/" onClick={logout}>
               Logout

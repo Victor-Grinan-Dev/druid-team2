@@ -32,6 +32,7 @@ function App() {
   const user = useSelector((state) => state.druid.user);
 
   useEffect(() => {
+    // where druid is coming from?
     if (localStorage.getItem("druid") && sessionStorage.getItem("druidLog")) {
       const userStr = localStorage.getItem("druid");
       const userObj = JSON.parse(userStr);
@@ -86,7 +87,6 @@ function App() {
           {user.username && views()}
         </Route>
       </Routes>
-
     </BrowserRouter>
   );
 }
