@@ -7,12 +7,11 @@ import axios from "axios";
 
 const Home = () => {
   const isLogged = useSelector((state) => state.druid.isLogged);
-  const currentUser = useSelector(state=>state.druid.user)
+  const currentUser = useSelector((state) => state.druid.user);
   const amIloggedIn = async () => {
     try {
       const axios = await ajax();
-      const response = await axios.get("user/login_status?"
-    );
+      const response = await axios.get("user/login_status?");
       console.log("current user token:", currentUser.token);
       console.log(response);
     } catch (err) {
@@ -20,7 +19,7 @@ const Home = () => {
       console.log(err);
     }
   };
-/*
+  /*
 try {
       //const axios = await ajax();
 
@@ -43,7 +42,7 @@ try {
 */
   return (
     <div className="home">
-      {!isLogged && <Login imI={amIloggedIn}/>}
+      {!isLogged && <Login imI={amIloggedIn} />}
 
       {isLogged && (
         <div>
