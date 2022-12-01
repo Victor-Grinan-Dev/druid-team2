@@ -46,7 +46,6 @@ const Login = ({ imI }) => {
       // });
 
       const axios = await ajax();
-
       axios
         .post(`${config.drupal_url}/user/login?_format=json`, {
           name: user,

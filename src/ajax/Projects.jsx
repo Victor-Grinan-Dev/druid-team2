@@ -8,7 +8,6 @@ import ProjectCard from "../components/views/projectCard/ProjectCard";
 const emitter = new events.EventEmitter();
 
 export class Projects extends React.Component {
-
   constructor() {
     super();
     this.state = { projects: [] };
@@ -31,7 +30,7 @@ export class Projects extends React.Component {
     // AJAX fetch server/node/rest?_format=json and setState with the response data
     try {
       const axios = await ajax(); // wait for an initialized axios object
-      const response = await axios.get("/node/project"); // wait for the POST AJAX request to complete
+      const response = await axios.get("/node/osproject"); // wait for the POST AJAX request to complete
       console.log(response.data);
       if (response.data) {
         // setState will trigger repaint
@@ -45,15 +44,19 @@ export class Projects extends React.Component {
 
   render() {
     return (
-<>
-          {this.state.projects.map((project, index) => {
-            // iterate over the nodes array and map them to "li" elements
-            console.log(project)
-            return (
-              <ProjectCard key={index} nid={project.nid[0].value} project={project} />
-            );
-          })}
-</>
+      <>
+        {this.state.projects.map((project, index) => {
+          // iterate over the nodes array and map them to "li" elements
+          console.log(project);
+          return (
+            <ProjectCard
+              key={index}
+              nid={project.nid[0].value}
+              project={project}
+            />
+          );
+        })}
+      </>
     );
   }
 }

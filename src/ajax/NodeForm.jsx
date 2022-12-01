@@ -1,6 +1,6 @@
 import events from "events";
 //import axios from "axios";
-import ajax from "./ajax"; 
+import ajax from "./ajax";
 import { useSelector } from "react-redux";
 import { SevProject } from "../classes/sevProject";
 
@@ -8,11 +8,11 @@ const emitter = new events.EventEmitter();
 
 export const NodeForm = () => {
   const data = {};
-  const currentUser = useSelector(state=>state.druid.user)
+  const currentUser = useSelector((state) => state.druid.user);
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
-    const newProj = new SevProject()
+
+    const newProj = new SevProject();
     const node = {
       type: [
         {
@@ -31,11 +31,11 @@ export const NodeForm = () => {
           format: "plain_text",
         },
       ],
-      status:[
+      status: [
         {
-          value:false,
-        }
-      ]
+          value: false,
+        },
+      ],
       /*
             field_customer:[
         {
@@ -97,7 +97,6 @@ export const NodeForm = () => {
     }
 
 */
-    
   };
   const handleChange = (e, propName) => {
     data[propName] = e.target.value;
@@ -123,4 +122,3 @@ export const NodeForm = () => {
     </div>
   );
 };
-

@@ -76,9 +76,9 @@ const CustomersProjects = () => {
     ));
   };
 
-  if (isLoading) {
-    return <p>... Loading data ...</p>;
-  }
+  // if (isLoading) {
+  //   return <p>... Loading data ...</p>;
+  // }
 
   return (
     <div className="customersProjects">
@@ -86,7 +86,10 @@ const CustomersProjects = () => {
         <Search />
       </div>
       <h2 className="projectsH2">Projects</h2>
-      <div className="cardsArea"><Projects />{/* acces() */}</div>
+      <div className="cardsArea">
+        <Projects />
+        {/* acces() */}
+      </div>
     </div>
   );
 };
