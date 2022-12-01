@@ -83,7 +83,7 @@ function App() {
       <Routes>
         <Route path="/*" element={<Layout />}>
           <Route index element={<Home />} />
-          {user.username && views()}
+          {user.current_user && views()}
         </Route>
       </Routes>
 

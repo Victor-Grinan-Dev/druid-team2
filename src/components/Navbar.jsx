@@ -18,41 +18,41 @@ const Navbar = () => {
   return (
     <nav>
       <ul>
-        {user.username && (
+        {user.current_user && (
           <li className="projectsLink">
             <Link to="/customersprojects">Projects</Link>
           </li>
         )}
-        {user.username && (
+        {user.current_user && (
           <li className="projectsLink">
             <Link to="/addproject">Add Project</Link>
           </li>
         )}
-        {user.username && (
+        {user.current_user && (
           <li className="projectsLink">
             <Link to="/users">Users</Link>
           </li>
         )}
 
-        {user.username && (
+        {user.current_user && (
           <li className="projectsLink">
             <Link to="/adduser">Add User</Link>
           </li>
         )}
 
-        {user.username && (
+        {user.current_user && (
           <li className="projectsLink">
             <Link to="/profile">Profile</Link>
           </li>
         )}
 
-        {user.username && (
+        {user.current_user && (
           <li className="projectsLink">
             <Link to="/invoices">Invoices</Link>
           </li>
         )}
 
-        {user.username && (
+        {user.current_user && (
           <li className="projectsLink">
             <Link to="/" onClick={logout}>
               Logout

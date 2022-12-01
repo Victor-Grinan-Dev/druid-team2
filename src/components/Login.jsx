@@ -51,8 +51,8 @@ const Login = ({imI}) => {
         })
         .then((res) => {
           //Cookies.set("druidLog", res.data.csrf_token);
-          
-          sessionStorage.setItem("druidLog", res.data.csrf_token)
+    
+          sessionStorage.setItem("druidLog", JSON.stringify(res.data));
           const testUser = new User(
             res.data.csrf_token,
             res.data.current_user.name,
@@ -63,7 +63,7 @@ const Login = ({imI}) => {
 
           //localStorage.setItem("druid", JSON.stringify(testUser));
           dispatch(setIsLogged(true));
-          dispatch(setUser(testUser));
+          dispatch(setUser(res.data));
           console.log(res);
         });
     } catch (err) {
