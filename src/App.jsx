@@ -31,9 +31,14 @@ function App() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.druid.user);
 
-  // useEffect(() => {
+   useEffect(() => {
+    if (sessionStorage.getItem("druidLog")) {
+      dispatch(setIsLogged(true));
+      dispatch(setUser(JSON.parse(sessionStorage.getItem("druidLog"))));
+    }
+   },[]);
   // where druid is coming from?
-  // if (sessionStorage.getItem("druidLog")) {
+  
   // const userStr = localStorage.getItem("druid");
   // const userObj = JSON.parse(userStr);
   // const auth = sessionStorage.getItem("druidLog");
@@ -59,10 +64,10 @@ function App() {
   //       }
   //     }
   //   }
-  // });
+
 
   //   dispatch(isLoading(false));
-  // }, [dispatch]);
+  
 
   const views = () => {
     return (
@@ -84,6 +89,7 @@ function App() {
       <Routes>
         <Route path="/*" element={<Layout />}>
           <Route index element={<Home />} />
+          <Route path="customersprojects" element={<CustomersProjects />} />
           {user.username && views()}
         </Route>
       </Routes>

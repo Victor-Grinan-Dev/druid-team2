@@ -76,9 +76,11 @@ const CustomersProjects = () => {
     ));
   };
 
+/*
   if (isLoading) {
     return <p>... Loading data ...</p>;
   }
+*/
 
   return (
     <div className="customersProjects">
