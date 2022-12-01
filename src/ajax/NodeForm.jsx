@@ -11,7 +11,6 @@ export const NodeForm = () => {
   const currentUser = useSelector(state=>state.druid.user)
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Hello")
     const newProj = new SevProject()
     const node = {
       type: [
