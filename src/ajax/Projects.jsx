@@ -31,7 +31,7 @@ export class Projects extends React.Component {
     // AJAX fetch server/node/rest?_format=json and setState with the response data
     try {
       const axios = await ajax(); // wait for an initialized axios object
-      const response = await axios.get("/node/project"); // wait for the POST AJAX request to complete
+      const response = await axios.get("/node/osproject"); // wait for the POST AJAX request to complete
       console.log(response.data);
       if (response.data) {
         // setState will trigger repaint
