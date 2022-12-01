@@ -89,8 +89,7 @@ function App() {
       <Routes>
         <Route path="/*" element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path="customersprojects" element={<CustomersProjects />} />
-          {user.username && views()}
+          {user.current_user && views()}
         </Route>
       </Routes>
     </BrowserRouter>
