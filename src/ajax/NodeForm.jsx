@@ -1,12 +1,14 @@
 import events from "events";
-//import axios from "axios";
 import ajax from "./ajax";
 import { useSelector } from "react-redux";
+import { setUser } from "../features/druidSlice";
 import { SevProject } from "../classes/sevProject";
+// import { useState } from "react";
 
 const emitter = new events.EventEmitter();
 
 export const NodeForm = () => {
+  // const [userInput, setUserInput] = useState({});
   const data = {};
   const currentUser = useSelector((state) => state.druid.user);
   const handleSubmit = async (e) => {
@@ -30,41 +32,12 @@ export const NodeForm = () => {
           format: "plain_text",
         },
       ],
-      status: [
-        {
-          value: false,
-        },
-      ],
-      /*
-            field_customer:[
-        {
-          value: data.field_customer,
-          format: "plain_text",
-        },
-      ],
-      */
-      /*
-      field_customer_contact:[
-        {
-          value: "look at me!",
-        },
-      ],
-      field_enddate:[
-        {
-          value: "look at me!",
-        },
-      ],
-      field_services:[
-        {
-          value: "look at me!",
-        },
-      ],
-      field_user:[
-        {
-          value: "look at me!",
-        },
-      ],
-       */
+      // field_customer: [
+      //   {
+      //     target_id: 120,
+      //     target_type: "entity_reference", // not necessarily needed
+      //   },
+      // ],
     };
     try {
       const axios = await ajax();
@@ -74,7 +47,6 @@ export const NodeForm = () => {
     } catch (e) {
       alert(e);
     }
-
     /*
     {
       await axios.post(
@@ -85,7 +57,6 @@ export const NodeForm = () => {
           headers: {
             "X-CSRF-Token": currentUser.token,
           },
-          
           params: { _format: "json" },
         }
       );
@@ -100,15 +71,23 @@ export const NodeForm = () => {
   const handleChange = (e, propName) => {
     data[propName] = e.target.value;
   };
+
+  // const handleChange = (e) => {
+  //   let { value, name } = e.target;
+  //   setUser({
+  //     ...currentUser,
+  //     [name]: value,
+  //   });
+  // };
+
   return (
     <div className="create-node-form">
-      <h4>Create Node Form</h4>
       <form onSubmit={handleSubmit}>
         <label>Title</label>
         <br />
         <input type="text" onChange={(e) => handleChange(e, "title")}></input>
         <br />
-        {/* <label>field_customer</label>
+        {/* <label>Customer</label>
         <br />
         <input type="text" onChange={(e) => handleChange(e, "field_customer")}></input>
         <br /> */}
