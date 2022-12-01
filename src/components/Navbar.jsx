@@ -24,7 +24,6 @@ const Navbar = () => {
       dispatch(setIsLogged(false));
       window.sessionStorage.removeItem("druidLog");
     }
-    // TESTING branch sefsdfsd
     //Cookies.remove("druidLog", { path: "/" });
     // dispatch(setUser({}));
     // dispatch(setIsLogged(false));
