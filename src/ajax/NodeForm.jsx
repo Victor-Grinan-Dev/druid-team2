@@ -32,12 +32,13 @@ export const NodeForm = () => {
           format: "plain_text",
         },
       ],
-      // field_customer: [
-      //   {
-      //     target_id: 120,
-      //     target_type: "entity_reference", // not necessarily needed
-      //   },
-      // ],
+      field_customer: [
+        {
+          value: data.field_customer,
+          // target_id: 120,
+          // target_type: "entity_reference", // not necessarily needed
+        },
+      ],
     };
     try {
       const axios = await ajax();
@@ -72,14 +73,6 @@ export const NodeForm = () => {
     data[propName] = e.target.value;
   };
 
-  // const handleChange = (e) => {
-  //   let { value, name } = e.target;
-  //   setUser({
-  //     ...currentUser,
-  //     [name]: value,
-  //   });
-  // };
-
   return (
     <div className="create-node-form">
       <form onSubmit={handleSubmit}>
@@ -87,10 +80,13 @@ export const NodeForm = () => {
         <br />
         <input type="text" onChange={(e) => handleChange(e, "title")}></input>
         <br />
-        {/* <label>Customer</label>
+        <label>Customer</label>
         <br />
-        <input type="text" onChange={(e) => handleChange(e, "field_customer")}></input>
-        <br /> */}
+        <input
+          type="text"
+          onChange={(e) => handleChange(e, "field_customer")}
+        ></input>
+        <br />
         <label>Body</label>
         <br />
         <textarea onChange={(e) => handleChange(e, "body")}></textarea>

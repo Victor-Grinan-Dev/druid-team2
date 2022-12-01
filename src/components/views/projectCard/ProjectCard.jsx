@@ -1,23 +1,22 @@
-import React from 'react';
-import style from './projectCard.module.css';
+import React from "react";
+import style from "./projectCard.module.css";
 
 import { Link } from "react-router-dom";
 import { capitalStart } from "../../../functions/capitalStart";
-import { useSelector } from 'react-redux';
- 
-const ProjectCard = ({ project, nid, full=false }) => {
-    const user = useSelector(state => state.druid.user);
-    if(full){
-        //singlePage:
-        return(
-            <div className={style.cardFull}>  
-                <div className={style.boxFull}>
-                    
-                    <div className={style.contentFull}>
-                        <h2>{nid < 10 ?`0${nid}`: nid }</h2>
-                        <h3>"{capitalStart(project.title[0].value)}"</h3>
-                        <div className="dataArea"></div>
-                        {/*
+import { useSelector } from "react-redux";
+
+const ProjectCard = ({ project, nid, full = false }) => {
+  const user = useSelector((state) => state.druid.user);
+  if (full) {
+    //singlePage:
+    return (
+      <div className={style.cardFull}>
+        <div className={style.boxFull}>
+          <div className={style.contentFull}>
+            <h2>{nid < 10 ? `0${nid}` : nid}</h2>
+            <h3>"{capitalStart(project.title[0].value)}"</h3>
+            <div className="dataArea"></div>
+            {/*
                         <p>Custormer: {project.customer}</p>
                         <p>Main engine: {project.services[0].engine} {project.services[0].version}</p>
                         <p >Developers:</p>
@@ -27,12 +26,10 @@ const ProjectCard = ({ project, nid, full=false }) => {
                             )) : <p>No developers assigned</p>
                         }
                         */}
-
-                    </div>
-                    <h3>extra Info?</h3>
-                    <div className={style.extraInfo}>
-                        
-{/*
+          </div>
+          <h3>Extra info</h3>
+          <div className={style.extraInfo}>
+            {/*
                         {project.developers ? console.log(project.name, project.developers) : null}
 
                         <div className={style.infoPiece}>
@@ -60,23 +57,24 @@ const ProjectCard = ({ project, nid, full=false }) => {
                             <p>projectOwner:</p>
                         </div>
 */}
-                    </div>
-                    {user.userType === "pm" && <button className='infoButton'>Edit</button>}
-                </div>           
-            </div>
-        )
-    }
-    //card browser
+          </div>
+          {user.userType === "pm" && (
+            <button className="infoButton">Edit</button>
+          )}
+        </div>
+      </div>
+    );
+  }
+  //card browser
   return (
-    <div className={style.card}>  
-        <div className={style.box}>
-            
-            <div className={style.content}>
-                <h2>{nid < 10 ? `0${nid}`: nid }</h2>
-                <h3>"{capitalStart(project.title[0].value)}"</h3>
-                <div className="dataArea"></div>
-                
-                {/*
+    <div className={style.card}>
+      <div className={style.box}>
+        <div className={style.content}>
+          <h2>{nid < 10 ? `0${nid}` : nid}</h2>
+          <h3>"{capitalStart(project.title[0].value)}"</h3>
+          <div className="dataArea"></div>
+
+          {/*
                 <p>Custormer: {project.field_customer[0].value}</p>
                 <p>Main engine: {project.services[0].engine} {project.services[0].version}</p>
                                 <p >Developers:</p>
@@ -87,12 +85,15 @@ const ProjectCard = ({ project, nid, full=false }) => {
                 }
                 */}
 
-                {/* project.developers ? console.log(project.name, project.developers) : null */}
-                <Link to={`/projectinfo/${project.title[0].value}`} state={project}> <button className='infoButton'>More Info</button></Link>
-            </div>
-        </div>           
+          {/* project.developers ? console.log(project.name, project.developers) : null */}
+          <Link to={`/projectinfo/${project.title[0].value}`} state={project}>
+            {" "}
+            <button className="infoButton">More Info</button>
+          </Link>
+        </div>
+      </div>
     </div>
-  )
-}
+  );
+};
 
 export default ProjectCard;
