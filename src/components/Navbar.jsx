@@ -33,7 +33,7 @@ const Navbar = () => {
   return (
     <nav>
       <ul>
-        {user.current_user && (
+        { user.current_user && (
           <li className="projectsLink">
             <Link to="/customersprojects">Projects</Link>
           </li>

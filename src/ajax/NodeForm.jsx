@@ -12,7 +12,6 @@ export const NodeForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const newProj = new SevProject();
     const node = {
       type: [
         {

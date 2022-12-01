@@ -76,9 +76,13 @@ const CustomersProjects = () => {
     ));
   };
 
-  // if (isLoading) {
-  //   return <p>... Loading data ...</p>;
-  // }
+  /*
+  if (isLoading) {
+    return <p>... Loading data ...</p>;
+  }
+*/
+
+  // testing
 
   return (
     <div className="customersProjects">
