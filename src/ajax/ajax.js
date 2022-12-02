@@ -40,7 +40,9 @@ export default async () => {
           "X-CSRF-Token": csrfToken,
           "Access-Control-Allow-Credentials": true,
         }, // include this header in every request
+
         "Content-Type": "application/json",
+
         params: { _format: "json" }, // add these query params to every request
       });
       console.log("Created new axios instance", singleton);
