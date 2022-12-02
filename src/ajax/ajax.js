@@ -26,13 +26,12 @@ export default async () => {
         withCredentials: true, // required to send auth cookie
       });
       //console.log(response);
-      console.log(response.data)
+      console.log(response.data);
 
       //stupid idea
-      
- 
+
       const csrfToken = response.data;
-      console.log(response.data)
+      console.log(response.data);
       //Cookies.set("druidLog", csrfToken);
       singleton = axios.create({
         baseURL: config.drupal_url, // every request is relative to this URL
@@ -41,7 +40,9 @@ export default async () => {
           "X-CSRF-Token": csrfToken,
           "Access-Control-Allow-Credentials": true,
         }, // include this header in every request
-        "Content-Type":"application",
+
+        "Content-Type": "application/json",
+
         params: { _format: "json" }, // add these query params to every request
       });
       console.log("Created new axios instance", singleton);

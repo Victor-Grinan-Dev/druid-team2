@@ -8,7 +8,7 @@ import { capitalStart } from '../../functions/capitalStart';
 const Profile = ({profile = null}) => {
   const dispatch = useDispatch();
   const user = useSelector(state => state.druid.user);
-  const userProfile = profile ? profile : user;
+  //const user = profile || user;
   const editUser = useSelector(state => state.druid.editUser);
 
   const [isEditing, setIsEditing] = useState(false);
@@ -93,12 +93,12 @@ const Profile = ({profile = null}) => {
             
           <div className="circleWrapper">
             <div className="profileImage">
-                <h1>{capitalStart(userProfile.username[0])}</h1>
+                <h1>{capitalStart(user.current_user.name)}</h1>
             </div>
           </div>
 
           <div className="profileTitle">
-          {capitalStart(userProfile.username)}
+          {capitalStart(user.current_user.name)}
           </div>
 
           {
@@ -164,12 +164,19 @@ const Profile = ({profile = null}) => {
           </div> : 
 
             <div className="profileContent">
-              <p>Access level: {capitalStart(userProfile.userType)}</p> 
-              <p>Company: {userProfile.company ? userProfile : "Druid"}</p>
-              <p>Email: {userProfile.email}</p>
+              <p>User Type:</p> 
+               { user.current_user.roles ? user.current_user.roles.map((role,i)=>(
+                <p key={i}> - {capitalStart(role.split("_").join(" "))}</p>
+              )) : <p> - Authenticated</p> }
+              {
+                /*
+                <p>Company: {user.company ? user : "Druid"}</p>
+              <p>Email: {user.email}</p>
+                */
+              }
 
               {
-               userProfile.bio ? <p> {userProfile.bio}</p> : "Write a short Bio..."
+               user.bio ? <p> {user.bio}</p> : "Write a short Bio..."
               }
 
             </div>

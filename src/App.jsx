@@ -31,37 +31,43 @@ function App() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.druid.user);
 
-  useEffect(() => {
-    if (localStorage.getItem("druid") && sessionStorage.getItem("druidLog")) {
-      const userStr = localStorage.getItem("druid");
-      const userObj = JSON.parse(userStr);
-      const auth = sessionStorage.getItem("druidLog");
-      if (userObj.token === auth) {
-        dispatch(setIsLogged(true));
-        dispatch(setUser(userObj));
-      }
+   useEffect(() => {
+    if (sessionStorage.getItem("druidLog")) {
+      dispatch(setIsLogged(true));
+      dispatch(setUser(JSON.parse(sessionStorage.getItem("druidLog"))));
     }
-    druidService.getDatabase().then((res) => {
-      const projects = res.projects;
-      const users = res.users;
-      const config = res.config;
-      dispatch(setProjects(projects));
-      dispatch(setUsers(users));
-      dispatch(setConfig(config));
-    });
-    //   if (Cookies.get("druidLog")) {
-    //     const cookie = Cookies.get("druidLog");
-    //     for (let user of users) {
-    //       if (user.id === cookie) {
-    //         dispatch(setUser(user));
-    //         dispatch(setIsLogged(true));
-    //       }
-    //     }
-    //   }
-    // });
+   },[]);
+  // where druid is coming from?
+  
+  // const userStr = localStorage.getItem("druid");
+  // const userObj = JSON.parse(userStr);
+  // const auth = sessionStorage.getItem("druidLog");
+  // if (userObj.token === auth) {
+  //   dispatch(setIsLogged(true));
+  //   dispatch(setUser(userObj));
+  // }
+  // }
+  // druidService.getDatabase().then((res) => {
+  //   const projects = res.projects;
+  //   const users = res.users;
+  //   const config = res.config;
+  //   dispatch(setProjects(projects));
+  //   dispatch(setUsers(users));
+  //   dispatch(setConfig(config));
+  // });
+  //   if (Cookies.get("druidLog")) {
+  //     const cookie = Cookies.get("druidLog");
+  //     for (let user of users) {
+  //       if (user.id === cookie) {
+  //         dispatch(setUser(user));
+  //         dispatch(setIsLogged(true));
+  //       }
+  //     }
+  //   }
 
-    dispatch(isLoading(false));
-  }, [dispatch]);
+
+  //   dispatch(isLoading(false));
+  
 
   const views = () => {
     return (
@@ -83,10 +89,9 @@ function App() {
       <Routes>
         <Route path="/*" element={<Layout />}>
           <Route index element={<Home />} />
-          {user.username && views()}
+          {user.current_user && views()}
         </Route>
       </Routes>
-
     </BrowserRouter>
   );
 }
