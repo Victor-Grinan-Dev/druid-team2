@@ -14,11 +14,11 @@ import config from "./config";
  * rely on the promise to call their own callback on successful resolution of the promise
  * or an error handler if the promise gets rejected.
  */
-let singleton = null; // a singleton instance of axios that the default init function returns
+//let singleton = null; // a singleton instance of axios that the default init function returns
 
 // note the 'async' keyword, it allows us to call 'await' later
 // eslint-disable-next-line
-export default async () => {
+const singleton = async () => {
   if (!singleton) {
     const tokenURL = config.drupal_url + "/session/token";
     try {
@@ -52,3 +52,5 @@ export default async () => {
   }
   return singleton;
 };
+
+export default singleton;
