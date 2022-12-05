@@ -29,7 +29,12 @@ export const NodeForm = () => {
       body: [
         {
           value: data.body,
-          format: "plain_text"
+          format: "plain_text",
+        },
+      ],
+      field_customer: [
+        {
+          target_id: 120,
         },
       ],
     };
@@ -43,14 +48,6 @@ export const NodeForm = () => {
       alert(e);
     }
     /*
-          
-      field_customer: [
-        {
-          value: "hello", //data.field_customer
-          //target_id: 120,
-          target_type: "entity_reference", // not necessarily needed
-        },
-      ],
 
     {
       await axios.post(
@@ -85,15 +82,13 @@ export const NodeForm = () => {
         <br />
         <label>Customer</label>
         <br />
-        {
-          /*
+        {/*
           <input
           type="text"
           onChange={(e) => handleChange(e, "field_customer")}
         ></input>
         <br />
-          */
-        }
+          */}
         <label>Body</label>
         <br />
         <textarea onChange={(e) => handleChange(e, "body")}></textarea>
