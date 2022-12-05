@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { setCreateUser } from "../../features/druidSlice";
-import { postUser } from "../../services/druid";
+//import { postUser } from "../../services/druid";
 
 const AddUser = () => {
   const dispatch = useDispatch();
@@ -14,11 +14,11 @@ const AddUser = () => {
   const createUser = (e) => {
     e.preventDefault();
 
-    if (newUser.userType && newUser.username && newUser.email) {
-      postUser(newUser);
-    } else {
-      console.log("missing data");
-    }
+    //if (newUser.userType && newUser.username && newUser.email) {
+    //  postUser(newUser);
+    //} else {
+    //  console.log("missing data");
+    //}
   };
 
   return (

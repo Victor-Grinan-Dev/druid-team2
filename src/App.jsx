@@ -13,7 +13,7 @@ import {
   setUser,
   setUsers,
 } from "./features/druidSlice";
-import druidService from "./services/druid";
+//import druidService from "./services/druid";
 
 //components
 import Layout from "./pages/Layout";
