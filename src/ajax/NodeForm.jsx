@@ -35,6 +35,7 @@ export const NodeForm = () => {
       field_customer: [
         {
           target_id: 120,
+          //value:"hello"
         },
       ],
     };
