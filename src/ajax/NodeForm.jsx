@@ -7,14 +7,14 @@ import { SevProject } from "../classes/sevProject";
 
 const emitter = new events.EventEmitter();
 
-export const NodeForm = () => {
+export const NodeForm = ({endPoint = "/node", nodeData = null}) => {
   // const [userInput, setUserInput] = useState({});
   const data = {};
   const currentUser = useSelector((state) => state.druid.user);
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const node = {
+    const node = nodeData || {
       type: [
         {
           target_id: "project",
@@ -42,7 +42,7 @@ export const NodeForm = () => {
     // testing
     try {
       const axios = await ajax();
-      const response = await axios.post("/node", node);
+      const response = await axios.post(endPoint, node);
       console.log("Node created: ", response.data);
       emitter.emit("NODE_UPDATED");
     } catch (e) {

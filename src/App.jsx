@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import { useEffect } from "react";
-import Cookies from "js-cookie";
+//import Cookies from "js-cookie";
 
 //redux
 import { useDispatch, useSelector } from "react-redux";
@@ -26,6 +26,8 @@ import Users from "./components/views/Users";
 import Profile from "./components/views/Profile";
 import Invoices from "./components/views/Invoices";
 import InvoiceSingle from "./components/views/InvoiceSingle";
+import { Customers } from "./ajax/Customers";
+import { People } from "./ajax/People";
 
 function App() {
   const dispatch = useDispatch();
@@ -81,6 +83,9 @@ function App() {
         <Route path="profile" element={<Profile />} />
         <Route path="invoices" element={<Invoices />} />
         <Route path="invoices/:uuid" element={<InvoiceSingle />} />
+        <Route path="customers" element={<Customers />} />
+        <Route path="people" element={<People />} />
+        {/* <Route path="customers/:uuid" element={<Customers />} /> */}
       </>
     );
   };

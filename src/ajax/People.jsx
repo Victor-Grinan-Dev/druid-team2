@@ -2,13 +2,13 @@ import React from "react";
 import events from "events";
 import ajax from "./ajax";
 import ProjectCard from "../components/views/projectCard/ProjectCard";
-import { CustomerForm } from "./CustomerForm";
 
 const emitter = new events.EventEmitter();
-export class Customers extends React.Component {
+
+export class People extends React.Component {
   constructor() {
     super();
-    this.state = { customers: [] };
+    this.state = { person: [] };
     this.refresh = this.refresh.bind(this);
   }
 
@@ -28,10 +28,11 @@ export class Customers extends React.Component {
     try {
 
       const axios = await ajax();
-      const response = await axios.get("/node/customers");
+      const response = await axios.get("/admin/people/users");
 
       if (response.data) {
-        this.setState({ customers: response.data });
+        this.setState({ person: response.data });
+        //console.log(response.data)
       }
     } catch (e) {
       alert(e);
@@ -39,22 +40,18 @@ export class Customers extends React.Component {
   }
 
   render() {
-    return (
-      <div>
-          <ul>
-              <>
-                {this.state.customers.map((customer, index) => {
-                  //console.log(customer)
-                  return (
-                  <li key={index}>{customer.title[0].value}</li>
-                  );
-                })}
-              </>
-            </ul>
-
-            <CustomerForm />
-      </div>
+        return (
+        <ul>
+        {
+            this.state.person.map((p, index) => {
+                return (
             
+                    <li key={index}>{p.name[0].value}</li>
+                );
+        })
+        }
+      </ul>
     );
+    
   }
 }
