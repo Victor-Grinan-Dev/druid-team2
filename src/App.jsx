@@ -1,17 +1,12 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import { useEffect } from "react";
-import Cookies from "js-cookie";
 
 //redux
 import { useDispatch, useSelector } from "react-redux";
 import {
-  isLoading,
-  setConfig,
   setIsLogged,
-  setProjects,
-  setUser,
-  setUsers,
+  setUser
 } from "./features/druidSlice";
 //import druidService from "./services/druid";
 
@@ -36,6 +31,7 @@ function App() {
       dispatch(setIsLogged(true));
       dispatch(setUser(JSON.parse(sessionStorage.getItem("druidLog"))));
     }
+    // eslint-disable-next-line
    },[]);
   // where druid is coming from?
   

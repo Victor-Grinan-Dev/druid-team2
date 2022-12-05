@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import logo from "../assets/images/logo.jpg";
 import Login from "./Login";
 import ajax from "../ajax/ajax";
-import axios from "axios";
+//import axios from "axios";
 
 const Home = () => {
   const isLogged = useSelector((state) => state.druid.isLogged);

@@ -1,8 +1,8 @@
 import events from "events";
 import ajax from "./ajax";
-import { useSelector } from "react-redux";
-import { setUser } from "../features/druidSlice";
-import { SevProject } from "../classes/sevProject";
+//import { useSelector } from "react-redux";
+//import { setUser } from "../features/druidSlice";
+//import { SevProject } from "../classes/sevProject";
 // import { useState } from "react";
 
 const emitter = new events.EventEmitter();
@@ -10,7 +10,7 @@ const emitter = new events.EventEmitter();
 export const NodeForm = () => {
   // const [userInput, setUserInput] = useState({});
   const data = {};
-  const currentUser = useSelector((state) => state.druid.user);
+  //const currentUser = useSelector((state) => state.druid.user);
   const handleSubmit = async (e) => {
     e.preventDefault();
 

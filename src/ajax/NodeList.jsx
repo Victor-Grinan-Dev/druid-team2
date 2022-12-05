@@ -44,6 +44,7 @@ export class NodeList extends React.Component {
   }
 
   render() {
+    /*
     const deleteNode = async (nid) => {
       try {
         const axios = await ajax(); // wait for an initialized axios object
@@ -54,6 +55,7 @@ export class NodeList extends React.Component {
         alert(e);
       }
     };
+    */
 
     return (
 

@@ -1,4 +1,4 @@
-import { genId } from "../functions/genId";
+//import { genId } from "../functions/genId";
 
 export class SevProject {
   endDate = undefined; //when project is terminated
