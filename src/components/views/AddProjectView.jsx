@@ -1,7 +1,7 @@
 import React from "react";
 import events from "events";
 //import axios from "axios";
-import ajax from "../../ajax/ajax";
+import {ajax} from "../../ajax/ajax";
 import { Project } from "../../classes/project";
 
 const emitter = new events.EventEmitter();

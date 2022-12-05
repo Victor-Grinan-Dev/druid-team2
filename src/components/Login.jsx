@@ -9,7 +9,7 @@ import { User } from "../classes/user";
 //Auth:
 import AuthContext from "../context/AuthProvider";
 import { setIsLogged, setUser } from "../features/druidSlice";
-import ajax from "../ajax/ajax";
+import {ajax} from "../ajax/ajax";
 
 // const LOGIN_URL = "http://localhost:8010/database"; //auth
 

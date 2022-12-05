@@ -18,7 +18,8 @@ import config from "./config";
 
 // note the 'async' keyword, it allows us to call 'await' later
 // eslint-disable-next-line
-const singleton = async () => {
+const  singleton = null;
+export const ajax = async () => {
   if (!singleton) {
     const tokenURL = config.drupal_url + "/session/token";
     try {
@@ -53,4 +54,4 @@ const singleton = async () => {
   return singleton;
 };
 
-export default singleton;
+ 

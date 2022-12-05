@@ -2,7 +2,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import ajax from "../ajax/ajax";
+import {ajax} from "../ajax/ajax";
 import { setIsLogged, setUser } from "../features/druidSlice";
 
 const Navbar = () => {
