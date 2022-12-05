@@ -1,5 +1,5 @@
 import axios from "axios";
-import config from "./config";
+import {config} from "./config";
 
 /*
  * Wrapper for axios AJAX library.
@@ -18,7 +18,7 @@ import config from "./config";
 
 // note the 'async' keyword, it allows us to call 'await' later
 // eslint-disable-next-line
-const  singleton = null;
+let  singleton = null;
 export const ajax = async () => {
   if (!singleton) {
     const tokenURL = config.drupal_url + "/session/token";

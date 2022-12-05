@@ -3,7 +3,7 @@
 import React, { useRef, useEffect, useContext, useState } from "react";
 import { useDispatch } from "react-redux";
 import logo from "../assets/images/logo.jpg";
-import config from "../ajax/config";
+import {config} from "../ajax/config";
 import { User } from "../classes/user";
 
 //Auth:
