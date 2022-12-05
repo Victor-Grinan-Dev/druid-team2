@@ -14,12 +14,14 @@ import { NodeForm } from "../../ajax/NodeForm";
 import AddProjectView from "./AddProjectView";
 
 //service
+/*
 import {
   getCustomers,
   getDefaultValues,
   getDevelopers,
   postProject,
 } from "../../services/druid";
+ */
 
 //functions
 import { capitalStart } from "../../functions/capitalStart";
@@ -27,31 +29,31 @@ import { capitalStart } from "../../functions/capitalStart";
 
 const AddProject = () => {
   const dispatch = useDispatch();
-  const [defaultValues, setDefaultValues] = useState({});
-  const [developers, setDevelopers] = useState([]);
-  const [customers, setCustomers] = useState([]);
+  //const [defaultValues, setDefaultValues] = useState({});
+  //const [developers, setDevelopers] = useState([]);
+  //const [customers, setCustomers] = useState([]);
 
   useEffect(() => {
-    dispatch(setProject(new SevProject("name", "customer")));
-    getDefaultValues().then((res) => {
-      const temp = res;
-      setDefaultValues(temp);
-    });
+    //dispatch(setProject(new SevProject("name", "customer")));
+    //getDefaultValues().then((res) => {
+      //const temp = res;
+      //setDefaultValues(temp);
+    //});
 
-    getDevelopers().then((res) => {
-      const temp = res;
-      setDevelopers(temp);
-    });
+    //getDevelopers().then((res) => {
+      //const temp = res;
+      //setDevelopers(temp);
+    //});
 
-    getCustomers().then((res) => {
-      const unique = [];
-      for (let item of res) {
-        if (!unique.includes(item.company)) {
-          unique.push(item.company);
-        }
-      }
-      setCustomers(unique);
-    });
+    //getCustomers().then((res) => {
+      //const unique = [];
+      //for (let item of res) {
+        //if (!unique.includes(item.company)) {
+          //unique.push(item.company);
+        //}
+      //}
+      //setCustomers(unique);
+    //});
   }, [dispatch]);
 
   const config = useSelector((state) => state.druid.config);
@@ -91,7 +93,7 @@ const AddProject = () => {
         newProject[attr] = project[attr];
       }
       dispatch(addProject(newProject));
-      postProject(newProject);
+      //postProject(newProject);
     } else {
       console.log("missing info in the project");
     }

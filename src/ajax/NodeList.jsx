@@ -31,8 +31,8 @@ export class NodeList extends React.Component {
     // AJAX fetch server/node/rest?_format=json and setState with the response data
     try {
       const axios = await ajax(); // wait for an initialized axios object
-      const response = await axios.get("/node/rest"); // wait for the POST AJAX request to complete
-      //console.log(response.data);
+      const response = await axios.get("/node/invoices"); // wait for the POST AJAX request to complete
+      console.log(response.data);
       if (response.data) {
         // setState will trigger repaint
         //console.log(response.data);
@@ -89,7 +89,7 @@ export class NodeList extends React.Component {
                       textAlign: "center",
                     }}
                   >
-                    {node.nid[0].value}
+                    {/* node.nid[0].value */}
                   </td>
                   <td>
                     <Link to={`${node.uuid[0].value}`} state={node}>

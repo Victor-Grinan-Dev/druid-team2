@@ -26,12 +26,12 @@ export default async () => {
         withCredentials: true, // required to send auth cookie
       });
       //console.log(response);
-      console.log(response.data);
+      //console.log(response.data);
 
       //stupid idea
 
       const csrfToken = response.data;
-      console.log(response.data);
+      //console.log(response.data);
       //Cookies.set("druidLog", csrfToken);
       singleton = axios.create({
         baseURL: config.drupal_url, // every request is relative to this URL
