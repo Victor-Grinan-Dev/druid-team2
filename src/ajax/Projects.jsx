@@ -42,7 +42,6 @@ export class Projects extends React.Component {
     return (
       <>
         {this.state.projects.map((project, index) => {
-          console.log(project)
           return (
             <ProjectCard
               key={index}
