@@ -2,8 +2,13 @@ import React from "react";
 import events from "events";
 import ajax from "./ajax";
 import ProjectCard from "../components/views/projectCard/ProjectCard";
+import { UserForm } from "./UserForm";
 
 const emitter = new events.EventEmitter();
+
+//dont use ajax
+//entity/user
+
 
 export class People extends React.Component {
   constructor() {
@@ -26,13 +31,11 @@ export class People extends React.Component {
 
   async refresh() {
     try {
-
       const axios = await ajax();
       const response = await axios.get("/admin/people/users");
-
       if (response.data) {
         this.setState({ person: response.data });
-        //console.log(response.data)
+        console.log(response.data)
       }
     } catch (e) {
       alert(e);
@@ -41,16 +44,24 @@ export class People extends React.Component {
 
   render() {
         return (
+       
+        <div>
+        <div>
         <ul>
         {
-            this.state.person.map((p, index) => {
-                return (
-            
-                    <li key={index}>{p.name[0].value}</li>
-                );
+          this.state.person.map((p, index) => {
+            return (
+            <li key={index}>{p.name[0].value}</li>
+          );
         })
         }
       </ul>
+        </div>
+      <div>
+      <UserForm/>
+      </div>
+        </div>
+       
     );
     
   }
