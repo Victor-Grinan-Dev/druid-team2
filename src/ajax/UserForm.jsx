@@ -16,10 +16,9 @@ export const UserForm = () => {
         "mail": { "value": data.mail },
         "pass": { "value": data.pass },
         "status": { "value": true },
-        "roles": {"value": 'developer'},//'customer_user'
-       
+        "roles": {"value": data.roles},//'customer_user' 'developer'
       };
-    //console.log(node);
+   console.log(node);
     try {
       const axios = await ajax();
       const response = await axios.post("/entity/user", node);
@@ -49,9 +48,13 @@ export const UserForm = () => {
         <br />
         <input type="text" onChange={(e) => handleChange(e, "pass")}></input>
         <br />
-        <label>Confirm Password</label>
+        <label>Role</label>
         <br />
-        <input type="text" onChange={()=>console.log("Hello")}></input>
+        <select onChange={(e) => handleChange(e, "roles")} >
+          <option value="" hidden>Choose...</option>
+          <option value="developer" >Developer</option>
+          <option value="customer_user" >User</option>
+        </select>
         <br />
         <button type="submit">Submit</button>
       </form>
