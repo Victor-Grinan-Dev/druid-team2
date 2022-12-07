@@ -16,8 +16,10 @@ export const UserForm = () => {
         "mail": { "value": data.mail },
         "pass": { "value": data.pass },
         "status": { "value": true },
+        "roles": {"value": 'developer'},//'customer_user'
+       
       };
-    console.log(node);
+    //console.log(node);
     try {
       const axios = await ajax();
       const response = await axios.post("/entity/user", node);

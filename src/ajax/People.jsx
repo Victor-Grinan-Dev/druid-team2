@@ -6,10 +6,6 @@ import { UserForm } from "./UserForm";
 
 const emitter = new events.EventEmitter();
 
-//dont use ajax
-//entity/user
-
-
 export class People extends React.Component {
   constructor() {
     super();
