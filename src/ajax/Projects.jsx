@@ -2,6 +2,7 @@ import React from "react";
 import events from "events";
 import ajax from "./ajax";
 import ProjectCard from "../components/views/projectCard/ProjectCard";
+import { ProjectForm } from "./ProjectForm";
 
 const emitter = new events.EventEmitter();
 
@@ -29,9 +30,10 @@ export class Projects extends React.Component {
 
       const axios = await ajax();
       const response = await axios.get("/node/osproject");
-
+      console.log(response.data)
       if (response.data) {
         this.setState({ projects: response.data });
+        
       }
     } catch (e) {
       alert(e);
@@ -41,15 +43,17 @@ export class Projects extends React.Component {
   render() {
     return (
       <>
-        {this.state.projects.map((project, index) => {
-          return (
-            <ProjectCard
-              key={index}
-              nid={project.nid[0].value}
-              project={project}
-            />
-          );
-        })}
+        <ProjectForm />
+          {this.state.projects.map((project, index) => {
+            return (
+              <ProjectCard
+                key={index}
+                nid={project.nid[0].value}
+                project={project}
+              />
+            );
+          })}
+          
       </>
     );
   }

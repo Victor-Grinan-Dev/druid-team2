@@ -1,74 +1,71 @@
 import events from "events";
+import { useState, useEffect } from "react";
 import ajax from "./ajax";
-import { useSelector } from "react-redux";
-import { setUser } from "../features/druidSlice";
-import { SevProject } from "../classes/sevProject";
-// import { useState } from "react";
 
 const emitter = new events.EventEmitter();
 
-export const NodeForm = ({endPoint = "/node", nodeData = null}) => {
-  // const [userInput, setUserInput] = useState({});
+export const ProjectForm = () => {
+    const [customers, setCustomers] = useState()
   const data = {};
-  const currentUser = useSelector((state) => state.druid.user);
+
+    useEffect(() => {
+        getCustomers()
+    }, []);
+
+  const getCustomers = async () => {
+    try {
+
+      const axios = await ajax();
+      const response = await axios.get("/node/customers");
+        console.log(response.data)
+      if (response.data) {
+        setCustomers(response.data)
+
+      }
+    } catch (e) {
+      alert(e);
+    }
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const node = nodeData || {
-      type: [
-        {
-          target_id: "project",
-          target_type: "node_type",
-        },
-      ],
-      title: [
-        {
-          value: data.title,
-        },
-      ],
-      body: [
-        {
-          value: data.body,
-          format: "plain_text",
-        },
-      ],
-      field_customer: [
-        {
-          target_id: 120,
-          //value:"hello"
-        },
-      ],
-    };
+    
+    const node = {
+        type: [
+          {
+            target_id: "project",
+            target_type: "node_type",
+          },
+        ],
+        title: [
+          {
+            value: data.title,
+          },
+        ],
+        body: [
+          {
+            value: "hello",
+            format: "plain_text",
+          },
+        ],
+        field_customer: [
+          {
+            target_id: data.customerId,
+          },
+        ],
+        
+      };
     // testing
+    console.log(node)
     try {
       const axios = await ajax();
-      const response = await axios.post(endPoint, node);
+      const response = await axios.post('/node', node);
       console.log("Node created: ", response.data);
       emitter.emit("NODE_UPDATED");
     } catch (e) {
       alert(e);
     }
-    /*
 
-    {
-      await axios.post(
-        "https://dev-ali-super-good.pantheonsite.io/node/",
-        node,
-        {
-          withCredentials: true,
-          headers: {
-            "X-CSRF-Token": currentUser.token,
-          },
-          params: { _format: "json" },
-        }
-      );
-      // console.log("Node created: ", node);
-      emitter.emit("NODE_UPDATED");
-    } catch (e) {
-      alert(e);
-    }
-
-*/
   };
   const handleChange = (e, propName) => {
     data[propName] = e.target.value;
@@ -81,19 +78,14 @@ export const NodeForm = ({endPoint = "/node", nodeData = null}) => {
         <br />
         <input type="text" onChange={(e) => handleChange(e, "title")}></input>
         <br />
-        <label>Customer</label>
-        <br />
-        {/*
-          <input
-          type="text"
-          onChange={(e) => handleChange(e, "field_customer")}
-        ></input>
-        <br />
-          */}
-        <label>Body</label>
-        <br />
-        <textarea onChange={(e) => handleChange(e, "body")}></textarea>
-        <br />
+        <select onChange={(e) => handleChange(e, "customerId")}>
+            <option value="" hiden>Choose...</option>
+            { customers &&
+                customers.map((c, i) => (
+                    <option key={i} value={c.nid[0].value} >{c.title[0].value} {c.nid[0].value}</option>
+                ))
+            }
+        </select>
         <button type="submit">Submit</button>
       </form>
     </div>
