@@ -5,11 +5,13 @@ import ajax from "./ajax";
 const emitter = new events.EventEmitter();
 
 export const ProjectForm = () => {
-    const [customers, setCustomers] = useState()
+    const [customers, setCustomers] = useState();
+    const [developers, setDevelopers] = useState();
   const data = {};
 
     useEffect(() => {
-        getCustomers()
+        getCustomers();
+        getDevelopers();
     }, []);
 
   const getCustomers = async () => {
@@ -17,16 +19,36 @@ export const ProjectForm = () => {
 
       const axios = await ajax();
       const response = await axios.get("/node/customers");
-        console.log(response.data)
+        //console.log(response.data)
       if (response.data) {
         setCustomers(response.data)
-
       }
     } catch (e) {
       alert(e);
     }
   }
 
+  const getDevelopers = async () => {
+    try {
+        const axios = await ajax();
+        const response = await axios.get("/admin/people/users"); // /admin/people/users /user/{user}:
+        console.log("people:",response.data)
+        setDevelopers(response.data.filter(dev => {
+            return dev.roles[0]?.target_id === "developer";
+        }))
+        /*
+                if (response.data) {
+            const filterDevelopers = response.data.filter(u => {
+                return u.roles[0].value;
+            })
+          setDevelopers(filterDevelopers);
+          
+        }
+        */
+      } catch (e) {
+        alert(e);
+      }
+  }
   const handleSubmit = async (e) => {
     e.preventDefault();
     
@@ -53,6 +75,11 @@ export const ProjectForm = () => {
             target_id: data.customerId,
           },
         ],
+        field_customer_contact: [
+            {
+                target_id: data.conctact,
+            },
+        ],
         
       };
     // testing
@@ -65,7 +92,6 @@ export const ProjectForm = () => {
     } catch (e) {
       alert(e);
     }
-
   };
   const handleChange = (e, propName) => {
     data[propName] = e.target.value;
@@ -78,6 +104,8 @@ export const ProjectForm = () => {
         <br />
         <input type="text" onChange={(e) => handleChange(e, "title")}></input>
         <br />
+        <label>Customer</label>
+        <br />
         <select onChange={(e) => handleChange(e, "customerId")}>
             <option value="" hidden>Choose...</option>
             { customers &&
@@ -86,7 +114,27 @@ export const ProjectForm = () => {
                 ))
             }
         </select>
-        <button type="submit">Submit</button>
+        <br />
+        
+        {/*
+        
+        <label>developers</label>
+        <br />
+            <select onChange={(e) => handleChange(e, "developers")}>
+                <option value="" hidden>Choose...</option>
+                {
+                    developers && 
+                    developers.map((d, i) => (
+                        <option key={i} value={d.uid[0].value} >{d.name[0].value}, {d.uid[0].value}</option>
+                    ))
+                }
+            </select>
+            <button>add developer</button>
+        */}
+            <div>
+            <button type="submit">Submit</button>
+            </div>
+        
       </form>
     </div>
   );
