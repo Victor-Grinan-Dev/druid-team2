@@ -79,7 +79,7 @@ export const ProjectForm = () => {
         <input type="text" onChange={(e) => handleChange(e, "title")}></input>
         <br />
         <select onChange={(e) => handleChange(e, "customerId")}>
-            <option value="" hiden>Choose...</option>
+            <option value="" hidden>Choose...</option>
             { customers &&
                 customers.map((c, i) => (
                     <option key={i} value={c.nid[0].value} >{c.title[0].value} {c.nid[0].value}</option>
