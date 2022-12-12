@@ -7,11 +7,12 @@ const emitter = new events.EventEmitter();
 export const ProjectForm = () => {
     const [customers, setCustomers] = useState();
     const [developers, setDevelopers] = useState();
+    const [users, setUsers] = useState();
   const data = {};
 
     useEffect(() => {
         getCustomers();
-        getDevelopers();
+        getUsers();
     }, []);
 
   const getCustomers = async () => {
@@ -27,6 +28,22 @@ export const ProjectForm = () => {
       alert(e);
     }
   }
+  const getUsers = async () => {
+    try {
+
+      const axios = await ajax();
+      const response = await axios.get("/admin/people/users");
+        //console.log(response.data)
+      if (response.data) {
+        
+        setUsers(response.data)
+      }
+    } catch (e) {
+      alert(e);
+    }
+  }
+/*
+  
 
   const getDevelopers = async () => {
     try {
@@ -44,11 +61,12 @@ export const ProjectForm = () => {
           setDevelopers(filterDevelopers);
           
         }
-        */
+        
       } catch (e) {
         alert(e);
       }
   }
+*/
   const handleSubmit = async (e) => {
     e.preventDefault();
     
@@ -65,27 +83,18 @@ export const ProjectForm = () => {
           },
           
         ],
-        field_customer: [
+        field_customers: [
           {
             target_id: data.customerId,
           },
         ],
-        
-/*        body: [
+        field_customer_conctact: [
           {
-            value: "hello",
-            format: "plain_text",
-          },
-        ],
-
-        field_customer_contact: [
-            {
-                target_id: 3,
-            },
-        ],
-*/
-        
+            target_id: data.customer_userId
+          }
+        ]
       };
+      
     // testing
     console.log(node)
     try {
@@ -119,6 +128,19 @@ export const ProjectForm = () => {
             }
         </select>
         <br />
+       
+         <label>Customer Conctact</label>
+        <br />
+        <select onChange={(e) => handleChange(e, "customer_userId")}>
+            <option value="" hidden>Choose...</option>
+            { users &&
+                users.map((c, i) => (
+                    <option key={i} value={c.uid[0].value} >{c.name[0].value} {c.uid[0].value}</option>
+                ))
+            }
+        </select>
+        <br />
+        
         
         {/*
         
