@@ -67,7 +67,7 @@ export const ProjectForm = () => {
         ],
         field_customer: [
           {
-            target_id: 120,
+            target_id: data.customerId,
           },
         ],
         
