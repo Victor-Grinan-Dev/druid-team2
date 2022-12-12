@@ -131,6 +131,12 @@ nav ul li a:hover {
   text-shadow: 0 0 0.5px #e42816;
 }
 
+nav ul li a:active {
+  box-shadow: inset 0 0 6px white;
+  text-shadow: 0 0 0.5px #e42816;
+  background-color: chartreuse;
+}
+
 /* Home */
 
 .home {
@@ -167,10 +173,10 @@ nav ul li a:hover {
 
 /* AddProject */
 
-.addProject {
+/* .addProject {
   text-align: center;
   position: relative;
-}
+} */
 
 .addProject h3 {
   color: #fa2d1d;
@@ -178,7 +184,29 @@ nav ul li a:hover {
   margin: 0 0 1.7rem 0;
 }
 
-.addProjectInputs {
+.createProjectForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.createProjectLabels {
+  display: inline-block;
+  width: 8rem;
+  text-align: left;
+  font-size: 1.1rem;
+  margin: 0.8rem 0;
+}
+
+.createProjectInputs {
+  display: inline-block;
+  width: 13rem;
+  height: 1.8rem;
+  text-align: left;
+  font-size: 1rem;
+  padding: 0.2rem;
+}
+
+/* .addProjectInputs {
   display: flex;
   flex-direction: column;
 }
@@ -230,7 +258,7 @@ nav ul li a:hover {
 .addRowButton:hover {
   box-shadow: inset 0 0 6px white;
   text-shadow: 0 0 1px #e42816;
-}
+} */
 
 .createProjectButton {
   background-color: #e42816;
