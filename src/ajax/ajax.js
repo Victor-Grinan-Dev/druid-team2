@@ -45,7 +45,7 @@ export default async () => {
 
         params: { _format: "json" }, // add these query params to every request
       });
-      console.log("Created new axios instance", singleton);
+      //console.log("Created new axios instance", singleton);
     } catch (error) {
       console.error(error);
     }

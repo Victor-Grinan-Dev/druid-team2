@@ -3,7 +3,7 @@ import ajax from "./ajax";
 import { useSelector } from "react-redux";
 import { setUser } from "../features/druidSlice";
 import { SevProject } from "../classes/sevProject";
-// import { useState } from "react";
+import axios from "axios";
 
 const emitter = new events.EventEmitter();
 
@@ -28,29 +28,19 @@ export const NodeForm = ({ endPoint = "/node", nodeData = null }) => {
       ],
       body: [
         {
-          value: data.body,
+          value: "vittu",
           format: "plain_text",
         },
       ],
       field_customer: [
         {
-          target_id: 120,
+          target_id: data.field_customer,
           //value:"hello"
         },
       ],
     };
     // testing
     try {
-      const axios = await ajax();
-      const response = await axios.post(endPoint, node);
-      console.log("Node created: ", response.data);
-      emitter.emit("NODE_UPDATED");
-    } catch (e) {
-      alert(e);
-    }
-    /*
-
-    {
       await axios.post(
         "https://dev-ali-super-good.pantheonsite.io/node/",
         node,
@@ -67,6 +57,16 @@ export const NodeForm = ({ endPoint = "/node", nodeData = null }) => {
     } catch (e) {
       alert(e);
     }
+    /*
+{
+      const axios = await ajax();
+      const response = await axios.post(endPoint, node);
+      console.log("Node created: ", response.data);
+      emitter.emit("NODE_UPDATED");
+    } catch (e) {
+      alert(e);
+    }
+    
 
 */
   };

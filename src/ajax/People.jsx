@@ -31,7 +31,7 @@ export class People extends React.Component {
       const response = await axios.get("/admin/people/users");
       if (response.data) {
         this.setState({ person: response.data });
-        console.log(response.data)
+        console.log("users:", response.data)
       }
     } catch (e) {
       alert(e);

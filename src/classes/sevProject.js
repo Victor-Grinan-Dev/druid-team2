@@ -8,9 +8,9 @@ export class SevProject {
   projectStatus = "Käynnissä"; //projectStatus "Käynnissä"
   services = []; //added by us
 
-  constructor(name, customer, projectOwner) {
+  constructor(name, company, projectOwner) {
     this.name = name;
-    this.customer = customer;
+    this.company = company;
     this.projectOwner = projectOwner;
   }
 }
