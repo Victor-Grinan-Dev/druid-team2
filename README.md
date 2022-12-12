@@ -1,4 +1,4 @@
-# druid team 2
+# Druid team 2
 
 This app was created as part of React22K Sull-Stack developer course from Helsinki Busisness College (HBC) https://www.bc.fi
 
@@ -44,3 +44,8 @@ git clone ssh://codeserver.dev.ba2b4afc-5e59-4cf1-9fde-b352fda931f0@codeserver.d
     - REST UI Provides a user interface to manage REST resources.
     - RESTful Web Services Exposes entities and other resources as RESTful web API
     - Serialization Provides a service for (de)serializing data to/from formats such as JSON and XML.
+
+## Documentation:
+
+- creating entity refferences fields in users:
+  https://www.drupal.org/docs/contributed-modules/entity-reference-views-select/step-by-step-guide

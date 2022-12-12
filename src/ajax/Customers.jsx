@@ -29,7 +29,7 @@ export class Customers extends React.Component {
 
       const axios = await ajax();
       const response = await axios.get("/node/customers");
-
+      console.log("customers:", response.data);
       if (response.data) {
         this.setState({ customers: response.data });
       }

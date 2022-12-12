@@ -27,13 +27,11 @@ export class Projects extends React.Component {
 
   async refresh() {
     try {
-
       const axios = await ajax();
       const response = await axios.get("/node/osproject");
-      console.log(response.data)
+      console.log("projects:", response.data)
       if (response.data) {
         this.setState({ projects: response.data });
-        
       }
     } catch (e) {
       alert(e);
