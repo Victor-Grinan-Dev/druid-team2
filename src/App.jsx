@@ -27,7 +27,6 @@ import Profile from "./components/views/Profile";
 import Invoices from "./components/views/Invoices";
 import InvoiceSingle from "./components/views/InvoiceSingle";
 import { Customers } from "./ajax/Customers";
-import { People } from "./ajax/People";
 
 function App() {
   const dispatch = useDispatch();
@@ -84,7 +83,6 @@ function App() {
         <Route path="invoices" element={<Invoices />} />
         <Route path="invoices/:uuid" element={<InvoiceSingle />} />
         <Route path="customers" element={<Customers />} />
-        <Route path="people" element={<People />} />
         {/* <Route path="customers/:uuid" element={<Customers />} /> */}
       </>
     );
