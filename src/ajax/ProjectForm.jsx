@@ -63,23 +63,27 @@ export const ProjectForm = () => {
           {
             value: data.title,
           },
+          
         ],
-        body: [
+        field_customer: [
+          {
+            target_id: 120,
+          },
+        ],
+        
+/*        body: [
           {
             value: "hello",
             format: "plain_text",
           },
         ],
-        field_customer: [
-          {
-            target_id: data.customerId,
-          },
-        ],
+
         field_customer_contact: [
             {
-                target_id: data.conctact,
+                target_id: 3,
             },
         ],
+*/
         
       };
     // testing
