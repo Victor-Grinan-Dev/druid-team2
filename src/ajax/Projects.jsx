@@ -41,7 +41,7 @@ export class Projects extends React.Component {
   render() {
     return (
       <>
-        <ProjectForm />
+       
           {this.state.projects.map((project, index) => {
             return (
               <ProjectCard

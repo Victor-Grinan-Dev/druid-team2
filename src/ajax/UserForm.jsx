@@ -36,21 +36,21 @@ export const UserForm = () => {
   return (
     <div className="create-node-form">
       <form onSubmit={handleSubmit}>
-        <label>Name</label>
+        <label className="createUserLabels">Name</label>
         <br />
-        <input type="text" onChange={(e) => handleChange(e, "name")}></input>
+        <input type="text" onChange={(e) => handleChange(e, "name")} className="createUserInputs"></input>
         <br />
         <label>Email</label>
         <br />
-        <input type="text" onChange={(e) => handleChange(e, "mail")}></input>
+        <input type="text" onChange={(e) => handleChange(e, "mail")} className="createUserLabels" />
         <br />
         <label>Password</label>
         <br />
-        <input type="text" onChange={(e) => handleChange(e, "pass")}></input>
+        <input type="text" onChange={(e) => handleChange(e, "pass")} className="createUserLabels"/>
         <br />
         <label>Role</label>
         <br />
-        <select onChange={(e) => handleChange(e, "roles")} >
+        <select onChange={(e) => handleChange(e, "roles")} className="createUserInputs">
           <option value="" hidden>Choose...</option>
           <option value="developer" >Developer</option>
           <option value="customer_user" >User</option>

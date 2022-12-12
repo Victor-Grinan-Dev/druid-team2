@@ -53,11 +53,6 @@ const Navbar = () => {
             <Link to="/users">Users</Link>
           </li>
         )}
-        {user.current_user && (
-          <li className="projectsLink">
-            <Link to="/people">People</Link>
-          </li>
-        )}
 
         {user.current_user && (
           <li className="projectsLink">

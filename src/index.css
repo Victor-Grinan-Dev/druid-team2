@@ -191,7 +191,7 @@ nav ul li a:active {
 
 .createProjectLabels {
   display: inline-block;
-  width: 8rem;
+  width: 100%;
   text-align: left;
   font-size: 1.1rem;
   margin: 0.8rem 0;
