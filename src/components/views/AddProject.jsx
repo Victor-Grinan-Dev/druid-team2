@@ -74,7 +74,14 @@ const AddProject = () => {
           {
             target_id: data.customer_userId
           }
-        ]
+        ],
+        field_services: [
+          {
+            engine:{
+              drupal:9
+            }
+          }
+        ],
       };
       
  
@@ -124,7 +131,7 @@ const AddProject = () => {
             }
         </select>
     
-        
+        <textarea onChange={(e) => handleChange(e, "services")}/>
         
         {/*
         
