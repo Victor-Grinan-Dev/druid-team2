@@ -131,6 +131,12 @@ nav ul li a:hover {
   text-shadow: 0 0 0.5px #e42816;
 }
 
+nav ul li a:active {
+  box-shadow: inset 0 0 6px white;
+  text-shadow: 0 0 0.5px #e42816;
+  background-color: chartreuse;
+}
+
 /* Home */
 
 .home {
