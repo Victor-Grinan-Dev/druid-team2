@@ -7,7 +7,7 @@ import axios from "axios";
 
 const emitter = new events.EventEmitter();
 
-export const NodeForm = ({endPoint = "/node", nodeData = null}) => {
+export const NodeForm = ({ endPoint = "/node", nodeData = null }) => {
   // const [userInput, setUserInput] = useState({});
   const data = {};
   const currentUser = useSelector((state) => state.druid.user);
@@ -75,24 +75,29 @@ export const NodeForm = ({endPoint = "/node", nodeData = null}) => {
   };
 
   return (
-    <div className="create-node-form">
-      <form onSubmit={handleSubmit}>
-        <label>Title</label>
-        <br />
-        <input type="text" onChange={(e) => handleChange(e, "title")}></input>
-        <br />
-        <label>Customer</label>
-        <br />
+    <div>
+      <form className="createProjectForm" onSubmit={handleSubmit}>
+        <div>
+          <label className="createProjectLabels">Project name</label>
           <input
-          type="text"
-          onChange={(e) => handleChange(e, "field_customer")}
-        ></input>
-        <br />
-        <label>Body</label>
-        <br />
-        <textarea onChange={(e) => handleChange(e, "body")}></textarea>
-        <br />
-        <button type="submit">Submit</button>
+            className="createProjectInputs"
+            type="text"
+            onChange={(e) => handleChange(e, "title")}
+          />
+        </div>
+        <div>
+          <label className="createProjectLabels">Customer</label>
+          <select
+            className="createProjectInputs"
+            name="customerSelect"
+            id="customerSelect"
+          >
+            <option value="customer">Customer</option>
+          </select>
+        </div>
+        <button type="submit" className="createProjectButton">
+          Create project
+        </button>
       </form>
     </div>
   );
