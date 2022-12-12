@@ -5,7 +5,7 @@ import events from "events";
 import ajax from "../../ajax/ajax";
 
 //functions
-import { capitalStart } from "../../functions/capitalStart";
+//import { capitalStart } from "../../functions/capitalStart";
 
 const emitter = new events.EventEmitter();
 const AddProject = () => {

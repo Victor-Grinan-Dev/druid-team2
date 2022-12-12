@@ -1,7 +1,6 @@
 import React from "react";
 import events from "events";
 import ajax from "./ajax";
-import ProjectCard from "../components/views/projectCard/ProjectCard";
 import { UserForm } from "./UserForm";
 
 const emitter = new events.EventEmitter();
