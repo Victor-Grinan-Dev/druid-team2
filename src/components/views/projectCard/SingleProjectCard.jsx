@@ -40,10 +40,6 @@ const SingleProjectCard = () => {
 
     const data = location.state;
 
-    const changeData = (e) => {
-        data[e.target.name] = e.target.value;
-    };
-
     const getData = () => {
         ajaxGet("/admin/people/users").then(response => { 
             const data = response.filter(u=>{
@@ -61,15 +57,6 @@ const SingleProjectCard = () => {
         });
     };
 
-    const postData = async (e) => {
-        e.preventDefault();
-
-        console.log(data)
-
-        ajaxPost(`/node/${nid}`, data).then(res=> {
-            console.log(res);
-        })
-    };
     return (
     <div >
         <div >
@@ -93,8 +80,6 @@ const SingleProjectCard = () => {
                   </div>
                 ))
               }
-
-           
           </div>
         </div>
       </div>

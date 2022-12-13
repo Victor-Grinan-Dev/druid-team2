@@ -18,6 +18,7 @@ import Profile from "./components/views/Profile";
 import Invoices from "./components/views/Invoices";
 import InvoiceSingle from "./components/views/InvoiceSingle";
 import { Customers } from "./components/views/Customers";
+import SingleProjectCard from "./components/views/projectCard/SingleProjectCard";
 
 function App() {
   const dispatch = useDispatch();
@@ -34,7 +35,7 @@ function App() {
     return (
       <>
         <Route path="customersprojects" element={<CustomersProjects />} />
-        <Route path="projectinfo/:name" element={<ProjectInfo />} />
+        <Route path="projectinfo/:name" element={<SingleProjectCard />} />
         <Route path="users" element={<Users />} />
         <Route path="profile" element={<Profile />} />
         <Route path="invoices" element={<Invoices />} />
