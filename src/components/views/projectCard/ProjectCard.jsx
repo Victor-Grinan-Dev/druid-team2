@@ -31,9 +31,7 @@ const changeData = (e) => {
 };
 
 const ProjectCard = ({ project, nid, full = false }) => {
-  const user = useSelector((state) => state.druid.user);
 
-  
   if (full) {
     //singlePage:
     return (
@@ -56,21 +54,24 @@ const ProjectCard = ({ project, nid, full = false }) => {
           </div>
           <h3>Extra info</h3>
           <div className={style.extraInfo}>
-          <form onSubmit={()=>console.log(data)} >
-      {
-        servicesKey.map((s,i) => (
-          <div key={i} style={{
-              display:"flex",
-              justifyContent:"space-between"
-            }}>
-              <label> {capitalStart(s.split("_")[1])}: </label>
-              <input type="text"  name={s} onChange={changeData}/>
-          </div>
-          
-        ))
-      }
-      <button>submit</button>
-    </form>
+            <form onSubmit={()=>console.log(data)} >
+              <input type="text" />
+              {/*
+              
+                servicesKey.map((s,i) => (
+                  <div key={i} style={{
+                      display:"flex",
+                      justifyContent:"space-between"
+                    }}>
+                      <label> {capitalStart(s.split("_")[1])}: </label>
+                      <input type="text" name={s} onChange={changeData}/>
+                  </div>
+                  
+                ))
+              */
+              }
+              <button className="infoButton" >Update Services</button>
+            </form>
             {/*
                         {project.developers ? console.log(project.name, project.developers) : null}
 
@@ -100,8 +101,7 @@ const ProjectCard = ({ project, nid, full = false }) => {
                         </div>
 */}
           </div>
-            <button >new</button>
-            <button className="infoButton" >Add Service</button>
+            
           
         </div>
       </div>

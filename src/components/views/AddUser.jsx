@@ -4,36 +4,64 @@ import { setCreateUser } from "../../features/druidSlice";
 
 import events from "events";
 import ajax from "../../ajax/ajax";
+import { useEffect } from "react";
+import { useState } from "react";
+import { ajaxGet } from "../../ajax/services";
+import axios from "axios";
 
+const baseurl = "https://dev-ali-super-good.pantheonsite.io";
 const emitter = new events.EventEmitter();
 //import { UserForm } from "./UserForm";
 
 const AddUser = () => {
+  const [expand, setExpand] = useState(false)
+  const [customers, setCustomers] = useState();
+  const [data, setData] = useState({status: [{ value: true }]})
 
-  const data = {};
+  const token = JSON.parse(sessionStorage.getItem("druidLog")).current_user.crf_token;
+  useEffect(() => {
+    getCustomers();
+  }, []);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const node = {
-        "name": { "value": data.name },
-        "mail": { "value": data.mail },
-        "pass": { "value": data.pass },
-        "status": { "value": true },
-        "roles": {"value": data.roles},//'customer_user' 'developer'
-      };
-   console.log(node);
-    try {
-      const axios = await ajax();
-      const response = await axios.post("/entity/user", node);
-      console.log("Node created: ", response.data);
-      emitter.emit("NODE_UPDATED");
-    } catch (e) {
-      alert(e);
+      console.log(data);
+
+        try {
+          const axios = await ajax();
+          const response = await axios.post("/entity/user", data);
+          console.log("Node created: ", response.data);
+          emitter.emit("NODE_UPDATED");
+        } catch (e) {
+          alert(e);
+        }
+
+   setData({status: [{ value: true }]});
+  };
+
+  const handleChange = (e, propName) => {
+    if(propName === "field_company" || propName === "roles"){
+      setData({...data, [propName]:[{ "target_id": e.target.value}]});
+    }else{
+      setData({...data, [propName]:[{ "value": e.target.value}]});
+    }
+    
+    if(propName === 'roles'){
+      if(e.target.value === "customer_user"){
+        setExpand(true);
+      }else{
+        setExpand(false);
+      }
     }
   };
-  const handleChange = (e, propName) => {
-    data[propName] = e.target.value;
-  };
+  
+  const getCustomers = () => {
+    ajaxGet('/node/customers').then(res => {
+      setCustomers(res)
+    })
+  }
+
   return (
     <div>
       <h3 className="addUserH3">Create new user</h3>
@@ -64,29 +92,32 @@ const AddUser = () => {
               User type:{" "}
             </label>
             <select onChange={(e) => handleChange(e, "roles")} className="createUserInputs">
-          <option value="" hidden>Choose...</option>
-          <option value="developer" >Developer</option>
-          <option value="customer_user" >Customer user</option>
+              <option value="" hidden>Choose...</option>
+              <option value="developer" >Developer</option>
+              <option value="customer_user" >Customer user</option>
         </select>
           </div>
 
-          {/*
-          data.roles === "customer_user" && (
+          {
+            expand && 
+
             <div>
               <label htmlFor="company" className="createUserLabels">
-                {" "}
-                Company:{" "}
+   
+                Company:
               </label>
-              <input
-                type="text"
-                name="company"
-                id="company"
-                className="createUserInputs"
-                onChange={handleChange(e, "company")}
-              />
+              <select onChange={(e) => handleChange(e, "field_company")} className="createUserInputs">
+              <option value="" hidden>Choose...</option>
+                {
+                  customers && customers.map((c, i) => (
+                    //console.log(c),
+                    <option key={i} value={parseInt(c.nid[0].value, 10)}>{c.title[0].value} - {c.nid[0].value}</option>
+                  ))
+                }
+        </select>
             </div>
-          )
-          */}
+            
+          }
           <input
             type="submit"
             value="Create user"

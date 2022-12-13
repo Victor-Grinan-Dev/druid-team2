@@ -22,13 +22,13 @@ const Users = () => {
     const [users, setUsers] = useState();
 
     useEffect(() => {
-      refresh()
+      getUsers()
     }, []);
     const searchInputHandler = (e) => {
        dispatch(setSearch(e.target.value))
     }
 
-    const refresh = async () => {
+    const getUsers = async () => {
       try {
         const axios = await ajax();
         const response = await axios.get("/admin/people/users");
