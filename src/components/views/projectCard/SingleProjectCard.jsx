@@ -10,8 +10,6 @@ const servicesKey = [
     "field_cdn",
     "field_ci_cd",
     "field_cms",
-    "field_customer_conctact",
-    "field_customers",
     "field_database",
     "field_deps",
     "field_docker",
@@ -28,6 +26,7 @@ const SingleProjectCard = () => {
     const location = useLocation();
     const [customerContact, setCustomerContact] = useState();
     const [customer, setCustomer] = useState();
+    const [expand, setExpand ] = useState(false);
     const nid = location.state.nid[0].value;
     const projectName = location.state.title[0].value;
     const customerContactNumber = location.state.field_customer_conctact[0].target_id;
@@ -79,23 +78,23 @@ const SingleProjectCard = () => {
             <div>Customer: {customer}</div>
             <div>Customer contact: {customerContact}</div>
           </div>
-          <h3>Extra info</h3>
           <div >
-            <form onSubmit={postData} > 
+            <button onClick={()=>setExpand(!expand)} className="infoButton">{expand ?  "Less info": "More info"}</button>
               {
+                expand &&
                 servicesKey.map((s,i) => (
                   <div key={i} style={{
                       display:"flex",
-                      justifyContent:"space-between"
+                      justifyContent:"space-between",
+
                     }}>
                       <label> {capitalStart(s.split("_")[1])}: </label>
-                      <input type="text" name={s} onChange={changeData}/>
+                      <p>{data[s][0]?.value}</p>
                   </div>
                 ))
               }
-              <button  >Update Services</button>
-            </form>
-            
+
+           
           </div>
         </div>
       </div>

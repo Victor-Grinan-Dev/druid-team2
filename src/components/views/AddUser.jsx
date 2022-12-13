@@ -7,27 +7,21 @@ import ajax from "../../ajax/ajax";
 import { useEffect } from "react";
 import { useState } from "react";
 import { ajaxGet } from "../../ajax/services";
-import axios from "axios";
 
-const baseurl = "https://dev-ali-super-good.pantheonsite.io";
 const emitter = new events.EventEmitter();
-//import { UserForm } from "./UserForm";
 
 const AddUser = () => {
-  const [expand, setExpand] = useState(false)
+  const [expand, setExpand] = useState(false);
   const [customers, setCustomers] = useState();
-  const [data, setData] = useState({status: [{ value: true }]})
+  const [data, setData] = useState({status: [{ value: true }]});
 
-  const token = JSON.parse(sessionStorage.getItem("druidLog")).current_user.crf_token;
   useEffect(() => {
     getCustomers();
   }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
       console.log(data);
-
         try {
           const axios = await ajax();
           const response = await axios.post("/entity/user", data);
@@ -36,8 +30,7 @@ const AddUser = () => {
         } catch (e) {
           alert(e);
         }
-
-   setData({status: [{ value: true }]});
+    setData({status: [{ value: true }]});
   };
 
   const handleChange = (e, propName) => {
@@ -110,7 +103,7 @@ const AddUser = () => {
               <option value="" hidden>Choose...</option>
                 {
                   customers && customers.map((c, i) => (
-                    //console.log(c),
+        
                     <option key={i} value={parseInt(c.nid[0].value, 10)}>{c.title[0].value} - {c.nid[0].value}</option>
                   ))
                 }

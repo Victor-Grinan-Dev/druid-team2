@@ -13,18 +13,23 @@ const emitter = new events.EventEmitter();
 const AddProject = () => {
   
   const [customers, setCustomers] = useState();
-  const [developers, setDevelopers] = useState();
+  //const [developers, setDevelopers] = useState();
   const [users, setUsers] = useState();
   const [expand, setExpand] = useState(false)
-  const data = {};
+  const [data, setData] = useState({
+    type: [
+      {
+        target_id: "project",
+        target_type: "node_type",
+      },
+    ],
+  })
 
   const servicesKey = [
     "field_hosting",
     "field_cdn",
     "field_ci_cd",
     "field_cms",
-    "field_customer_conctact",
-    "field_customers",
     "field_database",
     "field_deps",
     "field_docker",
@@ -58,12 +63,13 @@ const AddProject = () => {
         setUsers(response)
       }
     });
-
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+    console.log(data);
+    ajaxPost('/node', data)
+    /*
     const node = {
         type: [
           {
@@ -93,52 +99,66 @@ const AddProject = () => {
           }
         ]
       };
+    */
       
- 
-    console.log(node)
+    
+    /*
     try {
       const axios = await ajax();
-      const response = await axios.post('/node', node);
+      const response = await axios.post('/node', data);
       console.log("Node created: ", response.data);
       emitter.emit("NODE_UPDATED");
     } catch (e) {
       alert(e);
     }
+    */
   };
 
   const handleChange = (e, propName) => {
-    data[propName] = e.target.value;
+    if(propName === "field_customers" || propName === "field_customer_conctact"){
+      setData({...data, [propName]:[{target_id: e.target.value}]});
+    }else{
+      setData({...data, [propName]:[{value: e.target.value}]});
+    }
+    
   };
   
   return (
-    <div className="addProject">
+    <div className="addProject centerText">
       <h3>Create new project</h3>
       <form onSubmit={handleSubmit} className="createProjectForm">
+        <div className="flexCenter">
         <label className="createProjectLabels">Project name</label>
    
         <input type="text" onChange={(e) => handleChange(e, "title")} className="createProjectInputs"></input>
+        </div>
+        
    
+        <div className="flexCenter">
         <label className="createProjectLabels">Customer</label>
  
-        <select onChange={(e) => handleChange(e, "customerId")} className="createProjectInputs">
-            <option value="" hidden>Choose...</option>
-            { customers &&
-                customers.map((c, i) => (
-                    <option key={i} value={c.nid[0].value} >{c.title[0].value} {c.nid[0].value}</option>
-                ))
-            }
-        </select>
+          <select onChange={(e) => handleChange(e, "customerId")} className="createProjectInputs">
+              <option value="" hidden>Choose...</option>
+              { customers &&
+                  customers.map((c, i) => (
+                      <option key={i} value={c.nid[0].value} >{c.title[0].value} {c.nid[0].value}</option>
+                  ))
+              }
+          </select>
+        </div>
     
-         <label className="createProjectLabels">Customer contact</label>
-       
-        <select onChange={(e) => handleChange(e, "customer_userId")} className="createProjectInputs">
-            <option value="" hidden>Choose...</option>
-            { users &&
-                users.map((u, i) => (
-                    <option key={i} value={u.uid[0].value} >{u.name[0].value} {u.uid[0].value}</option>
-                ))
-            }
-        </select>
+        <div className="flexCenter">
+            <label className="createProjectLabels">Customer contact</label>
+          
+          <select onChange={(e) => handleChange(e, "customer_userId")} className="createProjectInputs">
+              <option value="" hidden>Choose...</option>
+              { users &&
+                  users.map((u, i) => (
+                      <option key={i} value={u.uid[0].value} >{u.name[0].value} {u.uid[0].value}</option>
+                  ))
+              }
+          </select>
+        </div>
         
         {/*
         
@@ -155,12 +175,11 @@ const AddProject = () => {
             </select>
             <button>add developer</button>
         */}
-            <p onClick={()=> setExpand(!expand) } className="createProjectButton">{expand ? "Hide services" : "Add services"} </p>
+            <p onClick={()=> setExpand(!expand) } className="createProjectButton centerText">{expand ? "Hide services" : "Add services"} </p>
             {expand && <div style={{
               display:"flex",
               flexWrap:"wrap",
               justifyContent:"between"
-
             }}>
             {  
             servicesKey.map((s,i) => (
@@ -171,7 +190,7 @@ const AddProject = () => {
                   margin:"1%"
                 }}>
                   <label> {capitalStart(s ==="field_ci_cd" ? s.split("_")[1] :s.split("_")[1])}: </label>
-                  <input type="text" onChange={(e) => handleChange(e, "field_engine")} />
+                  <input type="text" onChange={(e) => handleChange(e, s)} />
               </div>
             ))
             }

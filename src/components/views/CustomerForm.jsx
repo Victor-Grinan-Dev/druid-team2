@@ -1,5 +1,5 @@
 import events from "events";
-import ajax from "./ajax";
+import ajax from "../../ajax/ajax";
 
 const emitter = new events.EventEmitter();
 

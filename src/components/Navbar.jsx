@@ -68,12 +68,6 @@ const Navbar = () => {
 
         {user.current_user && (
           <li className="projectsLink">
-            <Link to="/invoices">Invoices</Link>
-          </li>
-        )}
-
-        {user.current_user && (
-          <li className="projectsLink">
             <Link to="/" onClick={logout}>
               Logout
             </Link>
