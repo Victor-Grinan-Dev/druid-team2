@@ -2,6 +2,7 @@ import React from "react";
 import events from "events";
 import ajax from "../../ajax/ajax";
 import { CustomerForm } from "./CustomerForm";
+import CustomerCard from "./CustomerCard";
 
 const emitter = new events.EventEmitter();
 export class Customers extends React.Component {
@@ -39,21 +40,14 @@ export class Customers extends React.Component {
 
   render() {
     return (
-      <div>
-          <ul>
-              <>
-                {this.state.customers.map((customer, index) => {
-                  //console.log(customer)
-                  return (
-                  <li key={index}>{customer.title[0].value}</li>
-                  );
-                })}
-              </>
-            </ul>
-
-            <CustomerForm />
-      </div>
-            
+      <div className="addProject centerText">
+        <CustomerForm />
+          {this.state.customers.map((customer, index) => {
+            return (
+              <CustomerCard key={index} data={customer.title[0].value}/>
+            );
+          })}
+      </div>     
     );
   }
 }
