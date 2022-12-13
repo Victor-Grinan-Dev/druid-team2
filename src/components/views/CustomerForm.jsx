@@ -30,7 +30,6 @@ export const CustomerForm = () => {
     } catch (e) {
       alert(e);
     }
-
   };
 
   const handleChange = (e, propName) => {
@@ -39,16 +38,14 @@ export const CustomerForm = () => {
 
   return (
     <div className="create-node-form">
-      <br />
+      <h3>Create new customer</h3>
       <form onSubmit={handleSubmit}>
-        <label>Company Name:</label>
-        <br />
-        <input type="text" onChange={(e) => handleChange(e, "companyName")} ></input>
-        <br />
-
-        <br />
-        
-        <button type="submit">Submit</button>
+        <input type="text" onChange={(e) => handleChange(e, "companyName")} className="createProjectInputs" placeholder="New customer..."/>
+        <div>
+          <button type="submit" className="infoButton" style={{
+            margin:"20px"
+          }}>Add</button>
+        </div>
       </form>
     </div>
   );

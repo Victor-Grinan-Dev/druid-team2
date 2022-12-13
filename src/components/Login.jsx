@@ -1,21 +1,15 @@
-// import axios from "axios";
-//import Cookies from "js-cookie";
 import React, { useRef, useEffect, useContext, useState } from "react";
 import { useDispatch } from "react-redux";
 import logo from "../assets/images/logo.jpg";
 import config from "../ajax/config";
-import { User } from "../classes/user";
 
 //Auth:
 import AuthContext from "../context/AuthProvider";
 import { setIsLogged, setUser } from "../features/druidSlice";
 import ajax from "../ajax/ajax";
 
-// const LOGIN_URL = "http://localhost:8010/database"; //auth
-
 const Login = ({ imI }) => {
   const dispatch = useDispatch();
-  //const isLogged = (state => state.druid.isLogged);
 
   const [errMsg, setErrMsg] = useState("");
   const userRef = useRef();
@@ -33,18 +27,6 @@ const Login = ({ imI }) => {
     e.preventDefault();
 
     try {
-      // const response = await axios.get(LOGIN_URL);
-      // const arr = response.data.users;
-
-      // arr.forEach((element) => {
-      //   if (
-      //     element.username.toLowerCase() === user.toLowerCase() &&
-      //     element.pwd === pwd
-      //   )  else {
-      //     setErrMsg("Wrong Email or Password!");
-      //   }
-      // });
-
       const axios = await ajax();
       axios
         .post(`${config.drupal_url}/user/login?_format=json`, {
@@ -52,18 +34,8 @@ const Login = ({ imI }) => {
           pass: pwd,
         })
         .then((res) => {
-          // Cookies.set("druidLog", res.data.csrf_token);
           sessionStorage.setItem("druidLog", JSON.stringify(res.data));
-          // sessionStorage.setItem("loggedIn", "true"); WE NEED THIS SOMEWHERE
-
-          // const testUser = new User(
-          //   res.data.csrf_token,
-          //   res.data.current_user.name,
-          //   "pm"
-          // );
-
           setAuth(true);
-          //localStorage.setItem("druid", JSON.stringify(testUser));
           dispatch(setIsLogged(true));
           dispatch(setUser(res.data));
           console.log(res);
@@ -114,7 +86,6 @@ const Login = ({ imI }) => {
           </div>
 
           <button className="loginButton">Log in</button>
-          <button onClick={imI}>Im i?</button>
         </div>
         <div ref={errRef}>{errMsg}</div>
       </form>
