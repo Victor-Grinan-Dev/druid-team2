@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import Search from "./Search";
 import ProjectCard from "./projectCard/ProjectCard";
 //import { Projects } from "../../ajax/Projects";
+import { ajaxGet } from "../../ajax/services";
 
 const emitter = new events.EventEmitter();
 
@@ -23,6 +24,11 @@ const CustomersProjects = () => {
   }, []);
 
    const getProjects = async () => {
+    ajaxGet("/node/osproject2").then(res => {
+      console.log(res);
+      setProjects(res);
+    });
+/*
     try {
       const axios = await ajax();
       const response = await axios.get("/node/osproject2");
@@ -33,6 +39,7 @@ const CustomersProjects = () => {
     } catch (e) {
       alert(e);
     }
+*/
   }
 /*
   const filteredProjectsHandler = () => {

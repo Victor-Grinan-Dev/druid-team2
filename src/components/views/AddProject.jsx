@@ -3,6 +3,8 @@ import events from "events";
 
 //ajax
 import ajax from "../../ajax/ajax";
+import { ajaxPost, ajaxGet } from "../../ajax/services";
+import { capitalStart } from "../../functions/capitalStart";
 
 //functions
 //import { capitalStart } from "../../functions/capitalStart";
@@ -13,7 +15,27 @@ const AddProject = () => {
   const [customers, setCustomers] = useState();
   const [developers, setDevelopers] = useState();
   const [users, setUsers] = useState();
+  const [expand, setExpand] = useState(false)
   const data = {};
+
+  const servicesKey = [
+    "field_hosting",
+    "field_cdn",
+    "field_ci_cd",
+    "field_cms",
+    "field_customer_conctact",
+    "field_customers",
+    "field_database",
+    "field_deps",
+    "field_docker",
+    "field_engine",
+    "field_framework",
+    "field_infra",
+    "field_language",
+    "field_libraries",
+    "field_mailing",
+    "field_search",
+  ];
 
   useEffect(() => {
     getCustomers();
@@ -21,32 +43,22 @@ const AddProject = () => {
   }, []);
 
   const getCustomers = async () => {
-    try {
-
-      const axios = await ajax();
-      const response = await axios.get("/node/customers");
-        //console.log(response.data)
-      if (response.data) {
-        setCustomers(response.data)
+    ajaxGet("/node/customers").then(response => {
+      console.log(response)
+      if (response) {
+        setCustomers(response)
       }
-    } catch (e) {
-      alert(e);
-    }
+    });
   }
 
   const getUsers = async () => {
-    try {
-
-      const axios = await ajax();
-      const response = await axios.get("/admin/people/users");
-        //console.log(response.data)
-      if (response.data) {
-        
-        setUsers(response.data)
+    ajaxGet("/admin/people/users").then(response => {
+      console.log(response)
+      if (response) {
+        setUsers(response)
       }
-    } catch (e) {
-      alert(e);
-    }
+    });
+
   };
 
   const handleSubmit = async (e) => {
@@ -73,6 +85,11 @@ const AddProject = () => {
         field_customer_conctact: [
           {
             target_id: data.customer_userId
+          }
+        ],
+        field_engine:[
+          {
+            value: data.field_engine,
           }
         ]
       };
@@ -112,7 +129,6 @@ const AddProject = () => {
             }
         </select>
     
-       
          <label className="createProjectLabels">Customer contact</label>
        
         <select onChange={(e) => handleChange(e, "customer_userId")} className="createProjectInputs">
@@ -123,8 +139,6 @@ const AddProject = () => {
                 ))
             }
         </select>
-    
-        
         
         {/*
         
@@ -141,6 +155,29 @@ const AddProject = () => {
             </select>
             <button>add developer</button>
         */}
+            <p onClick={()=> setExpand(!expand) } className="createProjectButton">{expand ? "Hide services" : "Add services"} </p>
+            {expand && <div style={{
+              display:"flex",
+              flexWrap:"wrap",
+              justifyContent:"between"
+
+            }}>
+            {  
+            servicesKey.map((s,i) => (
+              <div key={i} style={{
+                  display:"flex",
+                  justifyContent:"space-between",
+                  width:"45%",
+                  margin:"1%"
+                }}>
+                  <label> {capitalStart(s ==="field_ci_cd" ? s.split("_")[1] :s.split("_")[1])}: </label>
+                  <input type="text" onChange={(e) => handleChange(e, "field_engine")} />
+              </div>
+            ))
+            }
+            </div>}
+          
+        
             <div>
             <button type="submit" className="createProjectButton">Create Project</button>
             </div>
