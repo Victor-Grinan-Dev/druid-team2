@@ -7,13 +7,11 @@ import ProjectCard from "./projectCard/ProjectCard";
 import { ajaxGet } from "../../ajax/services";
 import { setProjects } from "../../features/druidSlice";
 
-const emitter = new events.EventEmitter();
-
 const CustomersProjects = () => {
   const dispatch = useDispatch();
   const projects = useSelector(state => state.druid.projects);
-  const userId = useSelector(state => state.druid.user.current_user.uid)
-
+  const userId = useSelector(state => state.druid.user.current_user.uid);
+  const search = useSelector(state => state.druid.search)
   const admin = useSelector((state) => state.druid.user.current_user?.roles);
 
   useEffect(() => {
@@ -25,7 +23,6 @@ const CustomersProjects = () => {
       dispatch(setProjects(res))
     });
   }
-
 
   return (
     <div className="customersProjects">
@@ -42,6 +39,8 @@ const CustomersProjects = () => {
               p?.field_customer_conctact[0]?.target_id === parseInt(userId, 10) || 
               p?.field_developers[0]?.target_id === parseInt(userId, 10)
               );
+          }).filter(p => {
+            return p.title[0].value.includes(search);
           })
           .map((project, index) => {
 
@@ -54,6 +53,9 @@ const CustomersProjects = () => {
             );
           }) :
           projects
+            .filter(p => {
+              return p.title[0].value.toLowerCase().includes(search);
+            })
             .map((project, index) => {
    
               return (

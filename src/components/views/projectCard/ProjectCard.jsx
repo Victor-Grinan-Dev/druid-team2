@@ -12,7 +12,6 @@ const ProjectCard = ({ project, nid }) => {
     return c.nid[0].value === project.field_customers[0].target_id 
   })[0].title[0].value;
 
-
   //card browser
   return (
     <div className={style.card}>
