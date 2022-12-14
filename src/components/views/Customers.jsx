@@ -26,7 +26,6 @@ export class Customers extends React.Component {
 
   async refresh() {
     try {
-
       const axios = await ajax();
       const response = await axios.get("/node/customers");
       console.log("customers:", response.data);
@@ -42,12 +41,10 @@ export class Customers extends React.Component {
     return (
       <div className="addProject centerText">
         <CustomerForm />
-          {this.state.customers.map((customer, index) => {
-            return (
-              <CustomerCard key={index} data={customer.title[0].value}/>
-            );
-          })}
-      </div>     
+        {this.state.customers.map((customer, index) => {
+          return <CustomerCard key={index} data={customer.title[0].value} />;
+        })}
+      </div>
     );
   }
 }

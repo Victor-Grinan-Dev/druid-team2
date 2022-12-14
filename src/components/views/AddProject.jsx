@@ -143,11 +143,11 @@ const AddProject = () => {
   };
 
   return (
-    <div className="addProject centerText">
-      <h3>Create new project</h3>
+    <div className="centerText">
+      <h3 className="addProjectH3">Create new project</h3>
       <form onSubmit={handleSubmit} className="createProjectForm">
-        <div className="flexCenter">
-          <label className="createProjectLabels">Project name</label>
+        <div>
+          <label className="createProjectLabels">Project name:</label>
 
           <input
             type="text"
@@ -156,8 +156,8 @@ const AddProject = () => {
           ></input>
         </div>
 
-        <div className="flexCenter">
-          <label className="createProjectLabels">Customer</label>
+        <div>
+          <label className="createProjectLabels">Customer:</label>
 
           <select
             onChange={(e) => handleChange(e, "field_customers")}
@@ -175,8 +175,8 @@ const AddProject = () => {
           </select>
         </div>
 
-        <div className="flexCenter">
-          <label className="createProjectLabels">Customer contact</label>
+        <div>
+          <label className="createProjectLabels">Customer contact:</label>
 
           <select
             onChange={(e) => handleChange(e, "field_customer_conctact")}
@@ -203,8 +203,8 @@ const AddProject = () => {
           </select>
         </div>
 
-        <div className="flexCenter">
-          <label className="createProjectLabels">Developer</label>
+        <div>
+          <label className="createProjectLabels">Developer:</label>
 
           <select
             onChange={(e) => handleChange(e, "field_developers")}
@@ -226,28 +226,14 @@ const AddProject = () => {
 
         <p
           onClick={() => setExpand(!expand)}
-          className="createProjectButton centerText"
+          className="addServicesButton centerText"
         >
           {expand ? "Hide services" : "Add services"}{" "}
         </p>
         {expand && (
-          <div
-            style={{
-              display: "flex",
-              flexWrap: "wrap",
-              justifyContent: "between",
-            }}
-          >
+          <div className="addProjectServices">
             {servicesKey.map((s, i) => (
-              <div
-                key={i}
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  width: "45%",
-                  margin: "1%",
-                }}
-              >
+              <div key={i} className="addProjectServicesFields">
                 <label>
                   {" "}
                   {capitalStart(
@@ -260,7 +246,7 @@ const AddProject = () => {
             ))}
           </div>
         )}
-        <div>
+        <div className="createProjectButtonDiv">
           <button type="submit" className="createProjectButton">
             Create Project
           </button>
