@@ -361,7 +361,7 @@ nav ul li a:active {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 370px;
+  width: 30rem;
 }
 
 .infoButton {
