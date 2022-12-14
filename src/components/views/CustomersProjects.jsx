@@ -12,10 +12,11 @@ const emitter = new events.EventEmitter();
 
 const CustomersProjects = () => {
   const dispatch = useDispatch();
-  const projects = useSelector(state => state.druid.projects)
+  const projects = useSelector(state => state.druid.projects);
+  const userId = useSelector(state => state.druid.user.current_user.uid)
   //const projects = useSelector((state) => state.druid.projects);
   //const isLoading = useSelector((state) => state.druid.isLoading);
-  //const user = useSelector((state) => state.druid.user);
+  const admin = useSelector((state) => state.druid.user.current_user?.roles);
   //const search = useSelector((state) => state.druid.search);
   //const searchBy = useSelector((state) => state.druid.searchBy);
 
@@ -27,7 +28,7 @@ const CustomersProjects = () => {
 
    const getProjects = async () => {
     ajaxGet("/node/osproject2").then(res => {
-      console.log(res);
+      console.log(userId)
       dispatch(setProjects(res))
     });
 /*
@@ -128,8 +129,16 @@ const CustomersProjects = () => {
       <h2 className="projectsH2">Projects</h2>
       <div className="cardsArea">
         {
-          projects &&
-          projects.map((project, index) => {
+          projects && !admin ?
+          projects
+          .filter(p=>{console.log(p?.field_customer_conctact[0]?.target_id, userId)
+            return (
+              p?.field_customer_conctact[0]?.target_id === parseInt(userId, 10) || 
+              p?.field_developers[0]?.target_id === parseInt(userId, 10)
+              );
+          })
+          .map((project, index) => {
+            //console.log(project?.field_customer_conctact[0]?.target_id)
             return (
               <ProjectCard
                 key={index}
@@ -137,7 +146,19 @@ const CustomersProjects = () => {
                 project={project}
               />
             );
-          })}
+          }) :
+          projects
+            .map((project, index) => {
+              //console.log(project?.field_customer_conctact[0]?.target_id)
+              return (
+                <ProjectCard
+                  key={index}
+                  nid={project.nid[0].value}
+                  project={project}
+                />
+              );
+            })
+        }
         {/* {
           projects &&
           projects.map((project, index) => {
