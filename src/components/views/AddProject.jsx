@@ -1,20 +1,25 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import events from "events";
 
 //ajax
 import ajax from "../../ajax/ajax";
-import { ajaxPost, ajaxGet } from "../../ajax/services";
 import { capitalStart } from "../../functions/capitalStart";
+import { useSelector } from "react-redux";
 
 //functions
 //import { capitalStart } from "../../functions/capitalStart";
 
 const emitter = new events.EventEmitter();
+
 const AddProject = () => {
-  const [customers, setCustomers] = useState();
-  const [developers, setDevelopers] = useState([]);
-  const [users, setUsers] = useState([]);
-  const [customer_users, setCustomer_users] = useState([]);
+  const customers = useSelector(state => state.druid.customers);
+  const users = useSelector(state => state.druid.users);
+  const developers = users.filter((u) => {
+    return u.roles[0].target_id === "developer";
+  });
+  const customer_users = users.filter((u) => {
+    return u.roles[0].target_id === "customer_user";
+  });
   const [expand, setExpand] = useState(false);
   const [data, setData] = useState({
     type: [
@@ -52,74 +57,10 @@ const AddProject = () => {
     "field_ci_cd",
   ];
 
-  useEffect(() => {
-    getCustomers();
-    getUsers();
-  }, []);
-
-  const getCustomers = async () => {
-    ajaxGet("/node/customers").then((response) => {
-      console.log("customers", response);
-      if (response) {
-        setCustomers(response);
-      }
-    });
-  };
-
-  const getUsers = async () => {
-    ajaxGet("/admin/people/users").then((response) => {
-      console.log("users", response);
-      if (response) {
-        setUsers(response);
-        const cus_users = response.filter((u) => {
-          return u.roles[0].target_id === "customer_user";
-        });
-        console.log("only customers", cus_users);
-        setCustomer_users(cus_users);
-        /*****/
-        const dev_users = response.filter((u) => {
-          return u.roles[0].target_id === "developer";
-        });
-        console.log("only dev", dev_users);
-        setDevelopers(dev_users);
-      }
-    });
-  };
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(data);
-    //ajaxPost('/node', data)
-    /*
-    const node = {
-        type: [
-          {
-            target_id: "project",
-            target_type: "node_type",
-          },
-        ],
-        title: [
-          {
-            value: data.title,
-          },
-          
-        ],
-        field_customers: [
-          {
-            target_id: data.customerId,
-          },
-        ],
-        field_customer_conctact: [
-          {
-            target_id: data.customer_userId
-          }
-        ],
-        field_engine:[
-          {
-            value: data.field_engine,
-          }
-        ]
-      };
-    */
+
     try {
       const axios = await ajax();
       const response = await axios.post("/node", data);

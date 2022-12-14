@@ -2,7 +2,7 @@ import React from "react";
 import Navbar from "./Navbar";
 import image from "../assets/images/druid.jpg";
 import { capitalStart } from "../functions/capitalStart";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import ajax from "../ajax/ajax";
 import { setIsLogged, setUser } from "../features/druidSlice";
@@ -10,7 +10,6 @@ import { useState } from "react";
 
 const Header = () => {
   const user = useSelector(state => state.druid?.user?.current_user?.name)
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [expand, setExpand] = useState(false);
 

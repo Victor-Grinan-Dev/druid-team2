@@ -32,6 +32,7 @@ function App() {
       getCustomers();
       getUsers();
     }    
+    // eslint-disable-next-line
    },[]);
 
    const getCustomers = async () => {

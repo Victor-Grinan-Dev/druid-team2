@@ -94,6 +94,7 @@ export class NodeList extends React.Component {
                   <td>
                     <Link to={`${node.uuid[0].value}`} state={node}>
                       <button className="infoButton">See More</button>
+                      <button onClick={deleteNode}>delete</button>
                     </Link>
                   </td>
                 </tr>

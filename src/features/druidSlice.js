@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { User } from "../classes/user";
 import { getProjects } from "../ajax/services";
 
 export const druidSlice = createSlice({
