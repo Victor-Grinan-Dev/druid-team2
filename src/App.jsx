@@ -4,7 +4,7 @@ import { useEffect } from "react";
 
 //redux
 import { useDispatch, useSelector } from "react-redux";
-import { setIsLogged, setUser } from "./features/druidSlice";
+import { setIsLogged, setProjects, setUser } from "./features/druidSlice";
 
 //components
 import Layout from "./pages/Layout";
@@ -18,6 +18,7 @@ import Invoices from "./components/views/Invoices";
 import InvoiceSingle from "./components/views/InvoiceSingle";
 import { Customers } from "./components/views/Customers";
 import SingleProjectCard from "./components/views/projectCard/SingleProjectCard";
+import { getProjects } from "./ajax/services";
 
 function App() {
   const dispatch = useDispatch();
@@ -26,11 +27,14 @@ function App() {
    useEffect(() => {
     if (sessionStorage.getItem("druidLog")) {
       dispatch(setIsLogged(true));
-      dispatch(setUser(JSON.parse(sessionStorage.getItem("druidLog"))));
-    }
+      dispatch(setUser(JSON.parse(sessionStorage.getItem("druidLog")))); 
+    }    
    },[]);
 
+
+
   const views = () => {
+    console.log("who im I:", user?.current_user?.name, user?.current_user?.roles)
     return (
       <>
         <Route path="customersprojects" element={<CustomersProjects />} />

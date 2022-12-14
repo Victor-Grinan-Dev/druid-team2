@@ -1,23 +1,26 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import events from "events";
-import ajax from "../../ajax/ajax";
 //import ProjectBox from "./ProjectBox";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Search from "./Search";
 import ProjectCard from "./projectCard/ProjectCard";
 //import { Projects } from "../../ajax/Projects";
 import { ajaxGet } from "../../ajax/services";
+import { setProjects } from "../../features/druidSlice";
 
 const emitter = new events.EventEmitter();
 
 const CustomersProjects = () => {
+  const dispatch = useDispatch();
+  const projects = useSelector(state => state.druid.projects);
+  const userId = useSelector(state => state.druid.user.current_user.uid)
   //const projects = useSelector((state) => state.druid.projects);
   //const isLoading = useSelector((state) => state.druid.isLoading);
-  //const user = useSelector((state) => state.druid.user);
+  const admin = useSelector((state) => state.druid.user.current_user?.roles);
   //const search = useSelector((state) => state.druid.search);
   //const searchBy = useSelector((state) => state.druid.searchBy);
 
-  const [projects, setProjects] = useState()
+  //const [projects, setProjects] = useState()
 
   useEffect(() => {
     getProjects();
@@ -25,8 +28,8 @@ const CustomersProjects = () => {
 
    const getProjects = async () => {
     ajaxGet("/node/osproject2").then(res => {
-      console.log(res);
-      setProjects(res);
+      console.log(userId)
+      dispatch(setProjects(res))
     });
 /*
     try {
@@ -126,6 +129,37 @@ const CustomersProjects = () => {
       <h2 className="projectsH2">Projects</h2>
       <div className="cardsArea">
         {
+          projects && !admin ?
+          projects
+          .filter(p=>{console.log(p?.field_customer_conctact[0]?.target_id, userId)
+            return (
+              p?.field_customer_conctact[0]?.target_id === parseInt(userId, 10) || 
+              p?.field_developers[0]?.target_id === parseInt(userId, 10)
+              );
+          })
+          .map((project, index) => {
+            //console.log(project?.field_customer_conctact[0]?.target_id)
+            return (
+              <ProjectCard
+                key={index}
+                nid={project.nid[0].value}
+                project={project}
+              />
+            );
+          }) :
+          projects
+            .map((project, index) => {
+              //console.log(project?.field_customer_conctact[0]?.target_id)
+              return (
+                <ProjectCard
+                  key={index}
+                  nid={project.nid[0].value}
+                  project={project}
+                />
+              );
+            })
+        }
+        {/* {
           projects &&
           projects.map((project, index) => {
             return (
@@ -135,9 +169,7 @@ const CustomersProjects = () => {
                 project={project}
               />
             );
-          })}
-        {/* acces()
-        <Projects /> */}
+          })} */}
       </div>
     </div>
   );
