@@ -38,13 +38,24 @@ export const CustomerForm = () => {
 
   return (
     <div className="create-node-form">
-      <h3>Create new customer</h3>
+      <h3 className="customerH3">Create new customer</h3>
       <form onSubmit={handleSubmit}>
-        <input type="text" onChange={(e) => handleChange(e, "companyName")} className="createProjectInputs" placeholder="New customer..."/>
+        <input
+          type="text"
+          onChange={(e) => handleChange(e, "companyName")}
+          className="createProjectInputs"
+          placeholder="New customer..."
+        />
         <div>
-          <button type="submit" className="infoButton" style={{
-            margin:"20px"
-          }}>Add</button>
+          <button
+            type="submit"
+            className="infoButton"
+            style={{
+              margin: "20px",
+            }}
+          >
+            Add
+          </button>
         </div>
       </form>
     </div>

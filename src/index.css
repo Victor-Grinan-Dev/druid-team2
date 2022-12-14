@@ -189,25 +189,19 @@ nav ul li a:active {
   align-items: center;
 }
 
-.addProject h3 {
+.addProjectH3 {
   color: #fa2d1d;
   font-size: 1.4rem;
   margin: 0 0 1.7rem 0;
-}
-
-.createProjectForm {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  text-align: left;
 }
 
 .createProjectLabels {
   display: inline-block;
-  width: 100%;
+  width: 8rem;
   text-align: left;
   font-size: 1.1rem;
-  margin: 0.8rem 0;
+  margin: 0.8rem 1.5rem 0.8rem 0;
 }
 
 .createProjectInputs {
@@ -219,13 +213,49 @@ nav ul li a:active {
   padding: 0.2rem;
 }
 
+.addProjectServices {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.addProjectServicesFields {
+  display: flex;
+  justify-content: space-between;
+  width: 45%;
+  margin: 1%;
+}
+
+.addServicesButton {
+  background-color: white;
+  color: #e42816;
+  box-shadow: 0 0 4px black inset;
+  font-size: 1rem;
+  padding: 0.7rem;
+  width: 11rem;
+  border-style: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-shadow: 0 0 1px #e42816;
+  margin-top: 1rem;
+}
+
+.addServicesButton:hover {
+  box-shadow: inset 0 0 6px white;
+  text-shadow: 0 0 2px #e42816;
+}
+
+.createProjectButtonDiv {
+  text-align: left;
+}
+
 .createProjectButton {
   background-color: #e42816;
   color: white;
   box-shadow: 0 0 4px black inset;
   font-size: 1rem;
-  padding: 0.5rem;
-  width: 9rem;
+  padding: 0.7rem;
+  width: 11rem;
   border-style: none;
   border-radius: 5px;
   cursor: pointer;
@@ -267,8 +297,8 @@ nav ul li a:active {
   color: white;
   box-shadow: 0 0 4px black inset;
   font-size: 1rem;
-  padding: 0.5rem;
-  width: 9rem;
+  padding: 0.7rem;
+  width: 11rem;
   border-style: none;
   border-radius: 5px;
   cursor: pointer;
@@ -334,6 +364,15 @@ nav ul li a:active {
   width: 370px;
 }
 
+.infoButton {
+  width: 9rem;
+}
+
+.editButton,
+.delButton {
+  width: 8rem;
+}
+
 .editButton,
 .delButton,
 .infoButton {
@@ -348,7 +387,7 @@ nav ul li a:active {
   margin: 0.1rem;
 }
 
-.editButton {
+.infoButton .editButton {
   width: 7rem;
   height: 4rem;
   margin: 1rem;
@@ -357,10 +396,6 @@ nav ul li a:active {
 .editButton:hover {
   box-shadow: inset 0 0 6px white;
   text-shadow: 0 0 2px white;
-}
-
-.infoButton {
-  width: 7rem;
 }
 
 .infoButton:hover {
@@ -387,14 +422,14 @@ nav ul li a:active {
 
 .servicesKeys {
   display: inline-block;
-  width: 10rem;
+  width: 50%;
   text-align: left;
   font-size: 1.1rem;
 }
 
 .servicesValues {
   display: inline-block;
-  width: 13rem;
+  width: 50%;
   height: 1.5rem;
   text-align: left;
   font-size: 1.1rem;
@@ -402,6 +437,15 @@ nav ul li a:active {
 
 .singleExtraInfo {
   margin-top: 2rem;
+}
+
+/* Customer */
+
+.customerH3 {
+  text-align: center;
+  color: #fa2d1d;
+  font-size: 1.4rem;
+  margin: 0 0 1.7rem 0;
 }
 
 /* Footer */
