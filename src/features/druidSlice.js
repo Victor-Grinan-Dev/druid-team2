@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { User } from "../classes/user";
+import { getProjects } from "../ajax/services";
 
 export const druidSlice = createSlice({
     name: 'druid',
@@ -70,6 +71,15 @@ export const druidSlice = createSlice({
     }
 })
 
+export const initializeData = () => {
+    //userType
+    return async (dispatch) => {
+        const response = await getProjects();
+        console.log("init", response);
+        //dispatch(setProjects());
+    }
+}
+
 export const {
     setProjects,
     addProject,
@@ -86,8 +96,9 @@ export const {
     setProject,
     setCreateUser,
     setEditUser,
-
 } = druidSlice.actions;
+
+
 
 export default druidSlice.reducer;
 

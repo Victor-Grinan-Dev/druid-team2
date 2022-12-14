@@ -1,23 +1,25 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import events from "events";
-import ajax from "../../ajax/ajax";
 //import ProjectBox from "./ProjectBox";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Search from "./Search";
 import ProjectCard from "./projectCard/ProjectCard";
 //import { Projects } from "../../ajax/Projects";
 import { ajaxGet } from "../../ajax/services";
+import { setProjects } from "../../features/druidSlice";
 
 const emitter = new events.EventEmitter();
 
 const CustomersProjects = () => {
+  const dispatch = useDispatch();
+  const projects = useSelector(state => state.druid.projects)
   //const projects = useSelector((state) => state.druid.projects);
   //const isLoading = useSelector((state) => state.druid.isLoading);
   //const user = useSelector((state) => state.druid.user);
   //const search = useSelector((state) => state.druid.search);
   //const searchBy = useSelector((state) => state.druid.searchBy);
 
-  const [projects, setProjects] = useState()
+  //const [projects, setProjects] = useState()
 
   useEffect(() => {
     getProjects();
@@ -26,7 +28,7 @@ const CustomersProjects = () => {
    const getProjects = async () => {
     ajaxGet("/node/osproject2").then(res => {
       console.log(res);
-      setProjects(res);
+      dispatch(setProjects(res))
     });
 /*
     try {
@@ -136,8 +138,17 @@ const CustomersProjects = () => {
               />
             );
           })}
-        {/* acces()
-        <Projects /> */}
+        {/* {
+          projects &&
+          projects.map((project, index) => {
+            return (
+              <ProjectCard
+                key={index}
+                nid={project.nid[0].value}
+                project={project}
+              />
+            );
+          })} */}
       </div>
     </div>
   );

@@ -26,3 +26,10 @@ export const ajaxPost = async (endPoint, node) => {
         alert(e);
       }
 }
+
+export const getProjects = async () => {
+  ajaxGet("/node/osproject2").then(res => {
+    console.log("getProjects", res);
+    return res;
+  });
+};

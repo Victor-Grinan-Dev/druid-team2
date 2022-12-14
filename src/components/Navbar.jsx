@@ -35,32 +35,32 @@ const Navbar = () => {
       <ul>
         { user.current_user && (
           <li className="projectsLink">
-            <Link to="/customersprojects">Projects</Link>
+            <Link to="/customersprojects">{user.current_user?.roles ? "Projects" : "My Projects"}</Link>
           </li>
         )}
-        {user.current_user && (
+        {user.current_user?.roles && (
           <li className="projectsLink">
             <Link to="/addproject">Add Project</Link>
           </li>
         )}
-        {user.current_user && (
+        {user.current_user?.roles && (
           <li className="projectsLink">
             <Link to="/customers">Customers</Link>
           </li>
         )}
-        {user.current_user && (
+        {user.current_user?.roles && (
           <li className="projectsLink">
             <Link to="/users">Users</Link>
           </li>
         )}
 
-        {user.current_user && (
+        {user.current_user?.roles && (
           <li className="projectsLink">
             <Link to="/adduser">Add User</Link>
           </li>
         )}
 
-        {user.current_user && (
+        {user.current_user?.roles && false && (
           <li className="projectsLink">
             <Link to="/profile">Profile</Link>
           </li>
