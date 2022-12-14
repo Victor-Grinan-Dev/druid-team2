@@ -1,5 +1,3 @@
-import { useDispatch, useSelector } from "react-redux";
-import { setCreateUser } from "../../features/druidSlice";
 //import { postUser } from "../../services/druid";
 
 import events from "events";
