@@ -1,8 +1,5 @@
 import events from "events";
-import ajax from "./ajax";
 import { useSelector } from "react-redux";
-import { setUser } from "../features/druidSlice";
-import { SevProject } from "../classes/sevProject";
 import axios from "axios";
 
 const emitter = new events.EventEmitter();

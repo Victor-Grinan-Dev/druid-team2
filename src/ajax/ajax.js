@@ -1,6 +1,5 @@
 import axios from "axios";
 import config from "./config";
-
 /*
  * Wrapper for axios AJAX library.
  *
@@ -18,6 +17,7 @@ let singleton = null; // a singleton instance of axios that the default init fun
 
 // note the 'async' keyword, it allows us to call 'await' later
 // eslint-disable-next-line
+
 export default async () => {
   if (!singleton) {
     const tokenURL = config.drupal_url + "/session/token";
@@ -31,6 +31,7 @@ export default async () => {
       //stupid idea
 
       const csrfToken = response.data;
+      console.log(csrfToken)
       //console.log(response.data);
       //Cookies.set("druidLog", csrfToken);
       singleton = axios.create({

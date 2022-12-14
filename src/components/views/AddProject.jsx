@@ -23,6 +23,16 @@ const AddProject = () => {
         target_type: "node_type",
       },
     ],
+    field_customer_conctact:[
+      {
+        target_id:"",
+      }
+    ],
+    field_customers:[
+      {
+        target_id:""
+      }
+    ]
   })
 
   const servicesKey = [
@@ -68,7 +78,7 @@ const AddProject = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(data);
-    ajaxPost('/node', data)
+    //ajaxPost('/node', data)
     /*
     const node = {
         type: [
@@ -100,9 +110,6 @@ const AddProject = () => {
         ]
       };
     */
-      
-    
-    /*
     try {
       const axios = await ajax();
       const response = await axios.post('/node', data);
@@ -111,7 +118,6 @@ const AddProject = () => {
     } catch (e) {
       alert(e);
     }
-    */
   };
 
   const handleChange = (e, propName) => {
@@ -137,7 +143,7 @@ const AddProject = () => {
         <div className="flexCenter">
         <label className="createProjectLabels">Customer</label>
  
-          <select onChange={(e) => handleChange(e, "customerId")} className="createProjectInputs">
+          <select onChange={(e) => handleChange(e, "field_customers")} className="createProjectInputs">
               <option value="" hidden>Choose...</option>
               { customers &&
                   customers.map((c, i) => (
@@ -150,7 +156,7 @@ const AddProject = () => {
         <div className="flexCenter">
             <label className="createProjectLabels">Customer contact</label>
           
-          <select onChange={(e) => handleChange(e, "customer_userId")} className="createProjectInputs">
+          <select onChange={(e) => handleChange(e, "field_customer_conctact")} className="createProjectInputs">
               <option value="" hidden>Choose...</option>
               { users &&
                   users.map((u, i) => (
@@ -161,7 +167,6 @@ const AddProject = () => {
         </div>
         
         {/*
-        
         <label>developers</label>
         <br />
             <select onChange={(e) => handleChange(e, "developers")}>
@@ -195,12 +200,9 @@ const AddProject = () => {
             ))
             }
             </div>}
-          
-        
             <div>
             <button type="submit" className="createProjectButton">Create Project</button>
             </div>
-        
       </form>
     </div>
   );

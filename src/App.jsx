@@ -8,7 +8,6 @@ import { setIsLogged, setUser } from "./features/druidSlice";
 
 //components
 import Layout from "./pages/Layout";
-import ProjectInfo from "./components/views/ProjectInfo";
 import CustomersProjects from "./components/views/CustomersProjects";
 import AddProject from "./components/views/AddProject";
 import AddUser from "./components/views/AddUser";
@@ -23,13 +22,17 @@ import SingleProjectCard from "./components/views/projectCard/SingleProjectCard"
 function App() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.druid.user);
-
+  
    useEffect(() => {
     if (sessionStorage.getItem("druidLog")) {
       dispatch(setIsLogged(true));
       dispatch(setUser(JSON.parse(sessionStorage.getItem("druidLog"))));
     }
    },[]);
+
+   const csrfToken2 = useSelector(state => {
+    console.log("redux", state.druid.user.csrf_token)
+    return state.druid.user.csrf_token})
 
   const views = () => {
     return (
