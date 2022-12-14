@@ -5,43 +5,40 @@ import { getProjects } from "../ajax/services";
 export const druidSlice = createSlice({
     name: 'druid',
     initialState: {
-        projects:[],
+        //user
         user:{},
         isLogged:false,
+
+        //data
+        projects:[],
+        customers:[],
         users:[],
-        config:{},//...or settings?
 
         //temporal
         isLoading:true,
         search:"",
         searchBy:"",
-        project: {},
-        createUser: new User(" ", " "),
-        editUser:{},
     }, 
     
     reducers:{
-        setProjects(state, action){
-            state.projects = action.payload;
-        },
-        addProject(state, action){
-            state.projects = ([...state.projects, action.payload]);
-        },
         setUser(state, action){
             state.user = action.payload;
         },
         setIsLogged(state, action){
             state.isLogged = action.payload;
         },
+
+        //data
         setUsers(state, action){
             state.users = action.payload;
         },
-        addUser(state, action){
-            state.users = ([...state.users, action.payload]);
+        setProjects(state, action){
+            state.projects = action.payload;
         },
-        setConfig(state, action){
-            state.config = action.payload;
+        setCustomers(state, action){
+            state.customers = action.payload;
         },
+
 
 
         //temporal slices
@@ -54,20 +51,7 @@ export const druidSlice = createSlice({
         setSearchBy(state, action){
             state.searchBy = action.payload;
         },
-        setProject(state, action){
-            state.project = action.payload;
-        },
-        setCreateUser(state, action){
-            const [name, value] = action.payload;
-            state.createUser = {
-                ...state.createUser, 
-                [name] : value
-            };
-        },
 
-        setEditUser(state, action){
-            state.editUser = action.payload;
-        }
     }
 })
 
@@ -81,21 +65,22 @@ export const initializeData = () => {
 }
 
 export const {
-    setProjects,
-    addProject,
+    
+    //user
     setUser,
     setIsLogged,
+    
+    //data
+    setCustomers,
+    setProjects,
     setUsers,
-    addUser,
-    setConfig,
 
     //temporal
     isLoading,
     setSearch,
     setSearchBy,
-    setProject,
-    setCreateUser,
-    setEditUser,
+
+
 } = druidSlice.actions;
 
 
