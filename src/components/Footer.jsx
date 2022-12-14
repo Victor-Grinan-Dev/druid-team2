@@ -7,6 +7,9 @@ const Footer = () => {
       <p>Pasilankatu 2</p>
       <p>00240 Helsinki</p>
       <p>Finland</p>
+      <br />
+      <p className="clientSupport">Client support: </p>
+      <p>+358 20 187 6601 (Mon to Fri 8–17)</p>
     </footer>
   );
 };

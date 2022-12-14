@@ -217,12 +217,13 @@ nav ul li a:active {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  margin-right: 10rem;
 }
 
 .addProjectServicesFields {
   display: flex;
   justify-content: space-between;
-  width: 45%;
+  width: 35%;
   margin: 1%;
 }
 
@@ -458,6 +459,10 @@ nav ul li a:active {
 .footer h2,
 p {
   margin-bottom: 0.5rem;
+}
+
+.clientSupport {
+  font-weight: 550;
 }
 
 /**** profile (by victor) ****/
