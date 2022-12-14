@@ -26,10 +26,12 @@ const SingleProjectCard = () => {
     const location = useLocation();
     const [customerContact, setCustomerContact] = useState();
     const [customer, setCustomer] = useState();
+    const [developer, setDeveloper] = useState();
     const [expand, setExpand ] = useState(false);
     const nid = location.state.nid[0].value;
     const projectName = location.state.title[0].value;
     const customerContactNumber = location.state.field_customer_conctact[0].target_id;
+    const devNumber = location.state.field_developers[0].target_id;
     const customerNID = location.state.field_customers[0].target_id;
     //const data = location.state;
     //console.log(customerNID);
@@ -42,11 +44,14 @@ const SingleProjectCard = () => {
 
     const getData = () => {
         ajaxGet("/admin/people/users").then(response => { 
-            const data = response.filter(u=>{
+            const data1 = response.filter(u=>{
                 return u.uid[0].value === customerContactNumber;
+            }); 
+            setCustomerContact(data1[0].name[0].value);
+            const data2 = response.filter(u=>{
+                return u.uid[0].value === devNumber;
             });
-            //console.log(data[0].name[0].value)
-            setCustomerContact(data[0].name[0].value);
+            setDeveloper(data2[0].name[0].value);
         });
     
         ajaxGet("/node/customers").then(response => { 
@@ -64,6 +69,7 @@ const SingleProjectCard = () => {
             <h3>"{ projectName }"</h3>
             <div>Customer: {customer}</div>
             <div>Customer contact: {customerContact}</div>
+            <div>Developer: {developer}</div>
           </div>
           <div >
             <button onClick={()=>setExpand(!expand)} className="infoButton">{expand ?  "Less info": "More info"}</button>
