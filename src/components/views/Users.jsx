@@ -1,28 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import UserCard from './UserCard';
-import ajax from "../../ajax/ajax";
-import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 
-const Users = () => {
+const Users = () => { 
 
-    const [users, setUsers] = useState();
-
-    useEffect(() => {
-      getUsers()
-    }, []);
-
-    const getUsers = async () => {
-      try {
-        const axios = await ajax();
-        const response = await axios.get("/admin/people/users");
-        if (response.data) {
-          setUsers(response.data);
-          console.log("users:", response.data)
-        }
-      } catch (e) {
-        alert(e);
-      }
-    }
+  const users = useSelector(state => state.druid.users)
+ 
   return (
     <div className="customersProjects">
     <div className="searchProjects">

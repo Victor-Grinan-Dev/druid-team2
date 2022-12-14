@@ -4,7 +4,7 @@ import { useEffect } from "react";
 
 //redux
 import { useDispatch, useSelector } from "react-redux";
-import { setCustomers, setIsLogged, setProjects, setUser } from "./features/druidSlice";
+import { setCustomers, setIsLogged, setUser, setUsers } from "./features/druidSlice";
 
 //ajax
 import ajax from "./ajax/ajax";
@@ -21,7 +21,6 @@ import InvoiceSingle from "./components/views/InvoiceSingle";
 import { Customers } from "./components/views/Customers";
 import SingleProjectCard from "./components/views/projectCard/SingleProjectCard";
 
-
 function App() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.druid.user);
@@ -31,12 +30,12 @@ function App() {
       dispatch(setIsLogged(true));
       dispatch(setUser(JSON.parse(sessionStorage.getItem("druidLog")))); 
       getCustomers();
+      getUsers();
     }    
    },[]);
 
    const getCustomers = async () => {
     try {
-
       const axios = await ajax();
       const response = await axios.get("/node/customers");
       //console.log("customers:", response.data);
@@ -48,6 +47,17 @@ function App() {
     }
   }
 
+  const getUsers = async () => {
+    try {
+      const axios = await ajax();
+      const response = await axios.get("/admin/people/users");
+      if (response.data) {
+        dispatch(setUsers(response.data));
+      }
+    } catch (e) {
+      alert(e);
+    }
+  }
   const views = () => {
     //console.log("who im I:", user?.current_user?.name, user?.current_user?.roles)
     return (
