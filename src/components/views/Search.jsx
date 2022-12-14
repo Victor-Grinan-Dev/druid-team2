@@ -9,7 +9,6 @@ const Search = () => {
   const dispatch = useDispatch();
   const searchBy = useSelector(state =>state.druid.searchBy);
   const search = useSelector(state =>{
-    console.log(state.druid.search);
     return state.druid.search});
   const handleSearch = (e) => {
     dispatch(setSearch(e.target.value))

@@ -20,7 +20,8 @@ const CustomersProjects = () => {
 
    const getProjects = async () => {
     ajaxGet("/node/osproject2").then(res => {
-      dispatch(setProjects(res))
+      dispatch(setProjects(res));
+      console.log("projects", res)
     });
   }
 
