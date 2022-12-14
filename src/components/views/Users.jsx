@@ -3,7 +3,6 @@ import UserCard from './UserCard';
 import { useSelector } from 'react-redux';
 
 const Users = () => { 
-
   const users = useSelector(state => state.druid.users)
  
   return (
