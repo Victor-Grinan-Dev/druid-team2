@@ -13,8 +13,9 @@ const emitter = new events.EventEmitter();
 const AddProject = () => {
   
   const [customers, setCustomers] = useState();
-  //const [developers, setDevelopers] = useState();
-  const [users, setUsers] = useState();
+  //const [developers, setDevelopers] = useState([]);
+  const [users, setUsers] = useState([]);
+  const [customer_users, setCustomer_users] = useState([]);
   const [expand, setExpand] = useState(false)
   const [data, setData] = useState({
     type: [
@@ -59,7 +60,7 @@ const AddProject = () => {
 
   const getCustomers = async () => {
     ajaxGet("/node/customers").then(response => {
-      console.log(response)
+      console.log("customers", response)
       if (response) {
         setCustomers(response)
       }
@@ -68,13 +69,17 @@ const AddProject = () => {
 
   const getUsers = async () => {
     ajaxGet("/admin/people/users").then(response => {
-      console.log(response)
+      console.log("users", response)
       if (response) {
-        setUsers(response)
+        setUsers(response);
+        const cus_users = response.filter(u=>{
+          return u.roles[0].target_id === "customer_user";
+        });
+        console.log("only customers", cus_users)
+        setCustomer_users(cus_users);
       }
     });
   };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(data);
@@ -139,7 +144,6 @@ const AddProject = () => {
         <input type="text" onChange={(e) => handleChange(e, "title")} className="createProjectInputs"></input>
         </div>
         
-   
         <div className="flexCenter">
         <label className="createProjectLabels">Customer</label>
  
@@ -147,7 +151,7 @@ const AddProject = () => {
               <option value="" hidden>Choose...</option>
               { customers &&
                   customers.map((c, i) => (
-                      <option key={i} value={c.nid[0].value} >{c.title[0].value} {c.nid[0].value}</option>
+                      <option key={i} value={c.nid[0].value} >{c.title[0].value}</option>
                   ))
               }
           </select>
@@ -158,10 +162,14 @@ const AddProject = () => {
           
           <select onChange={(e) => handleChange(e, "field_customer_conctact")} className="createProjectInputs">
               <option value="" hidden>Choose...</option>
-              { users &&
-                  users.map((u, i) => (
-                      <option key={i} value={u.uid[0].value} >{u.name[0].value} {u.uid[0].value}</option>
-                  ))
+              { customer_users &&
+                  customer_users
+                  .filter(u => {
+                    return u.field_company[0].target_id === parseInt(data.field_customers[0].target_id, 10);
+                  })
+                  .map((u, i) => {
+                    return <option key={i} value={u.uid[0].value} >{u.name[0].value} </option>
+                  })
               }
           </select>
         </div>
