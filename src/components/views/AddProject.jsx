@@ -132,7 +132,7 @@ const AddProject = () => {
   };
 
   const handleChange = (e, propName) => {
-    if(propName === "field_customers" || propName === "field_customer_conctact"){
+    if(propName === "field_customers" || propName === "field_customer_conctact" || propName === "field_developers"){
       setData({...data, [propName]:[{target_id: e.target.value}]});
     }else{
       setData({...data, [propName]:[{value: e.target.value}]});
@@ -183,7 +183,7 @@ const AddProject = () => {
         <div className="flexCenter">
             <label className="createProjectLabels">Developer</label>
           
-          <select onChange={(e) => handleChange(e, "field_customer_conctact")} className="createProjectInputs">
+          <select onChange={(e) => handleChange(e, "field_developers")} className="createProjectInputs">
               <option value="" hidden>Choose...</option>
               { developers &&
                   developers
