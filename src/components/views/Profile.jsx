@@ -42,6 +42,13 @@ const Profile = ({profile = null}) => {
     setPassMatch(newPwd ? pwdMatch === newPwd : false);
   }, [pwdMatch, newPwd]);
 
+  const changeData = (e) => {
+    if(e.target.value){
+      dispatch(setEditUser({...editUser, [e.target.name]:e.target.value}))
+    }
+  }
+
+  /*
   const verifyHandler = () => {
     let result = false;
       if (pwd === user.pwd){
@@ -64,11 +71,7 @@ const Profile = ({profile = null}) => {
     //save to the database
   }
 
-  const changeData = (e) => {
-    if(e.target.value){
-      dispatch(setEditUser({...editUser, [e.target.name]:e.target.value}))
-    }
-  }
+
 
   const changeDataPwd = () => {
     dispatch(setEditUser({...editUser, "pwd":newPwd}));
@@ -80,11 +83,12 @@ const Profile = ({profile = null}) => {
     setIsChangingPass(false);
     setVerified(false);
   }
-
   const cancelEditPass = () => {
     setIsChangingPass(false);
     setVerified(false);
   }
+  */
+
     
   return (
     <div>
@@ -102,17 +106,21 @@ const Profile = ({profile = null}) => {
           </div>
 
           {
+            /*
             !isEditing && <button className="infoButton"
             onClick={()=> {setIsEditing(true)}}> Edit </button>
+            */
           }
 
           {
+            /*
             isEditing && <div>
               <button className="infoButton"
             onClick={cancelEdit}> Cancel </button>
             <button className="infoButton"
             onClick={saveChanges}> Done </button>
             </div>
+            */
           }
         </div>
         {
@@ -124,22 +132,30 @@ const Profile = ({profile = null}) => {
 
             <input type="text" name='email' className='addProjInput' onChange={changeData} placeholder={editUser.email}/>
             
+            {/* 
             <textarea name="bio" cols="30" rows="10" placeholder={editUser.bio ? editUser.bio : "Add a Bio to your profile..."} className='profileBio' onChange={changeData}></textarea>
+            */}
             <div>
               {
+              /*
               !isChangingPass &&
                 <button onClick={() => {setIsChangingPass(true)}} className="infoButton">change password</button>
+              */
               }
 
-              {isChangingPass && !verified &&
+              {
+                /*
+                isChangingPass && !verified &&
                 <div className='pwdSection'>
                   <input type="password" name='pwd' placeholder="Enter Password..." onChange={passwordHandler}/>
                   <button onClick={verifyHandler} className="infoButton" name="verify">verify</button>
                   <button onClick={cancelEditPass} className="infoButton">cancel</button>
                 </div>
+                */
               }
               
-
+              {
+              /*
               { verified && <div className='pwdSection'>
                 <div className="displayRow">
                   <button onClick={cancelEditPass} className="infoButton">cancel</button>{ legalPwd && passMatch &&   <button name="pwd" onClick={changeDataPwd} className="infoButton">Confirm</button>}
@@ -158,6 +174,7 @@ const Profile = ({profile = null}) => {
                   </div>
                 </div>
               </div>}
+               */}
 
             </div>
             
@@ -176,7 +193,9 @@ const Profile = ({profile = null}) => {
               }
 
               {
+               /*
                user.bio ? <p> {user.bio}</p> : "Write a short Bio..."
+               */
               }
 
             </div>

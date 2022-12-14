@@ -31,6 +31,7 @@ function App() {
    },[]);
 
   const views = () => {
+    console.log("who im I:", user?.current_user?.name, user?.current_user?.roles)
     return (
       <>
         <Route path="customersprojects" element={<CustomersProjects />} />
