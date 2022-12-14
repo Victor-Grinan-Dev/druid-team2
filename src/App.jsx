@@ -30,10 +30,6 @@ function App() {
     }
    },[]);
 
-   const csrfToken2 = useSelector(state => {
-    console.log("redux", state.druid.user.csrf_token)
-    return state.druid.user.csrf_token})
-
   const views = () => {
     return (
       <>

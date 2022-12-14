@@ -31,7 +31,6 @@ export default async () => {
       //stupid idea
 
       const csrfToken = response.data;
-      console.log(csrfToken)
       //console.log(response.data);
       //Cookies.set("druidLog", csrfToken);
       singleton = axios.create({
