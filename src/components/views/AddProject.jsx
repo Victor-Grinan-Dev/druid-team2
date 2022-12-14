@@ -13,7 +13,7 @@ const emitter = new events.EventEmitter();
 const AddProject = () => {
   
   const [customers, setCustomers] = useState();
-  //const [developers, setDevelopers] = useState([]);
+  const [developers, setDevelopers] = useState([]);
   const [users, setUsers] = useState([]);
   const [customer_users, setCustomer_users] = useState([]);
   const [expand, setExpand] = useState(false)
@@ -77,6 +77,12 @@ const AddProject = () => {
         });
         console.log("only customers", cus_users)
         setCustomer_users(cus_users);
+        /*****/
+        const dev_users = response.filter(u=>{
+          return u.roles[0].target_id === "developer";
+        });
+        console.log("only dev", dev_users)
+        setDevelopers(dev_users);
       }
     });
   };
@@ -173,21 +179,21 @@ const AddProject = () => {
               }
           </select>
         </div>
+
+        <div className="flexCenter">
+            <label className="createProjectLabels">Developer</label>
+          
+          <select onChange={(e) => handleChange(e, "field_customer_conctact")} className="createProjectInputs">
+              <option value="" hidden>Choose...</option>
+              { developers &&
+                  developers
+                  .map((u, i) => {
+                    return <option key={i} value={u.uid[0].value} >{u.name[0].value} </option>
+                  })
+              }
+          </select>
+        </div>
         
-        {/*
-        <label>developers</label>
-        <br />
-            <select onChange={(e) => handleChange(e, "developers")}>
-                <option value="" hidden>Choose...</option>
-                {
-                    developers && 
-                    developers.map((d, i) => (
-                        <option key={i} value={d.uid[0].value} >{d.name[0].value}, {d.uid[0].value}</option>
-                    ))
-                }
-            </select>
-            <button>add developer</button>
-        */}
             <p onClick={()=> setExpand(!expand) } className="createProjectButton centerText">{expand ? "Hide services" : "Add services"} </p>
             {expand && <div style={{
               display:"flex",
