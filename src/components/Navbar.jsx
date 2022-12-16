@@ -33,9 +33,11 @@ const Navbar = () => {
   return (
     <nav>
       <ul>
-        { user.current_user && (
+        {user.current_user && (
           <li className="projectsLink">
-            <Link to="/customersprojects">{user.current_user?.roles ? "Projects" : "My Projects"}</Link>
+            <Link to="/customersprojects">
+              {user.current_user?.roles ? "Projects" : "My Projects"}
+            </Link>
           </li>
         )}
         {user.current_user?.roles && (
@@ -65,15 +67,14 @@ const Navbar = () => {
             <Link to="/profile">Profile</Link>
           </li>
         )}
-
-        {user.current_user && (
-          <li className="projectsLink">
-            <Link to="/" onClick={logout}>
-              Logout
-            </Link>
-          </li>
-        )}
       </ul>
+      {user.current_user && (
+        <li className="logoutButton">
+          <Link to="/" onClick={logout}>
+            Logout
+          </Link>
+        </li>
+      )}
     </nav>
   );
 };
